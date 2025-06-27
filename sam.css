@@ -1,0 +1,249 @@
+/* General Styling */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  background: linear-gradient(to right, #e0e0e0, #a55eea, #7a00b8, #4c0070);
+  color: #2c022c;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #211327;
+  color: white;
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #5a007b;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+}
+
+.header-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.header-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 5px 10px;
+  transition: color 0.3s;
+}
+
+.header-nav a:hover {
+  color: #c5a1e4;
+}
+
+.hero {
+  text-align: center;
+  padding: 5vh 5vw;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 2rem;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #7a00b8;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.cta-button:hover {
+  background: #a55eea;
+}
+
+.footer {
+  background: #211327;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 250px;
+  height: 100%;
+  background: #333;
+  color: white;
+  padding: 20px;
+  transition: right 0.3s;
+  z-index: 1001;
+}
+
+.sidebar.open {
+  right: 0;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar-nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar-nav a:hover {
+  color: #a55eea;
+}
+
+.close-sidebar {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-nav {
+    display: none; /* Hide navigation on small screens */
+  }
+
+  .menu-toggle {
+    display: inline-block; /* Show hamburger menu */
+  }
+}
+
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none; /* Hide hamburger menu on desktops */
+  }
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+.navbar {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 1rem;
+}
+
+.navbar a:hover {
+    color: #c5a1e4;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+.navbar {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 15px;
+  font-size: 1rem;
+}
+
+.navbar a:hover {
+  color: #c5a1e4;
+}
+@media (max-width: 768px) {
+  .header {
+      flex-direction: column; /* Stack the header items */
+      align-items: center;
+  }
+
+  .navbar {
+      flex-direction: column; /* Stack nav links vertically */
+      gap: 10px;
+      align-items: center;
+  }
+
+  .header-right button {
+      margin-top: 10px; /* Adjust button position */
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar a {
+      font-size: 0.9rem; /* Smaller font size for smaller screens */
+      padding: 8px 10px;
+  }
+}
+.hamburger-menu {
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger-menu span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .hamburger-menu {
+      display: flex;
+  }
+
+  .navbar {
+      display: none; /* Hide the navbar by default */
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+  }
+
+  .navbar.active {
+      display: flex; /* Show navbar when active */
+  }
+}
+

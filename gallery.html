@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="stylesgallery.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="abcd.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <button id="hamburger" class="hamburger" aria-label="Menu">&#9776;</button>
+            <div class="logo">
+                <img src="logos/proto.png" alt="Protocol Club Logo" class="header-logo">
+                <span>Protocol</span>
+            </div>
+        </div>
+        <nav id="navbar" class="navbar">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="events.html">Events</a>
+            <a href="articles.html">Articles</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="header-right">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌓</button>
+        </div>
+    </header>
+
+    <aside id="sidebar" class="sidebar">
+        <button id="close-sidebar" class="close-sidebar" aria-label="Close menu">&times;</button>
+        <nav class="sidebar-nav">
+            <a href="abcd.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="events.html">Events</a>
+            <a href="articles.html">Articles</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </aside>
+
+    <main>
+        <!-- Book Viewer Section -->
+        <div id="book-viewer" class="book-viewer hidden">
+            <div class="book-container">
+                <button class="close-book" id="close-book" aria-label="Close book viewer">&times;</button>
+                <div class="book">
+                    <div class="page"><img src="team/TechHead.png" alt="Team Tech Head"></div>
+                    <div class="page"><img src="event1-2.jpg" alt="Event 1 Photo 2"></div>
+                    <div class="page"><img src="event2-1.jpg" alt="Event 2 Photo 1"></div>
+                    <div class="page"><img src="event2-2.jpg" alt="Event 2 Photo 2"></div>
+                    <div class="page"><img src="event2-3.jpg" alt="Event 2 Photo 3"></div>
+                </div>
+                <button id="prev-page" class="book-nav" aria-label="Previous page">⟵</button>
+                <button id="next-page" class="book-nav" aria-label="Next page">⟶</button>
+            </div>
+        </div>
+    
+        <!-- Event Highlights Section -->
+        <section class="event-highlights-section">
+            <h2>Event Highlights</h2>
+            <div class="gallery-filter">
+                <button data-filter="all">All</button>
+                <button data-filter="event1">Event 1</button>
+                <button data-filter="event2">Event 2</button>
+                <button data-filter="year2023">2023</button>
+                <button data-filter="year2024">2024</button>
+            </div>
+            <div class="masonry-grid">
+                <!-- Gallery Items -->
+                <div class="gallery-item" data-category="event1 year2024">
+                    <div class="photo-card">
+                        <img src="event1-1.jpg" alt="Event 1 Photo 1">
+                        <h3>Event 1 - Photo 1</h3>
+                        <div class="view-3d">
+                            <button class="view-3d-button" data-page="1">View in 3D</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="event1 year2024">
+                    <div class="photo-card">
+                        <img src="event1-2.jpg" alt="Event 1 Photo 2">
+                        <h3>Event 1 - Photo 2</h3>
+                        <div class="view-3d">
+                            <button class="view-3d-button" data-page="2">View in 3D</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="event2 year2024">
+                    <div class="photo-card">
+                        <img src="event2-1.jpg" alt="Event 2 Photo 1">
+                        <h3>Event 2 - Photo 1</h3>
+                        <div class="view-3d">
+                            <button class="view-3d-button" data-page="3">View in 3D</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="event2 year2023">
+                    <div class="photo-card">
+                        <img src="event2-2.jpg" alt="Event 2 Photo 2">
+                        <h3>Event 2 - Photo 2</h3>
+                        <div class="view-3d">
+                            <button class="view-3d-button" data-page="4">View in 3D</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="event2 year2023">
+                    <div class="photo-card">
+                        <img src="event2-3.jpg" alt="Event 2 Photo 3">
+                        <h3>Event 2 - Photo 3</h3>
+                        <div class="view-3d">
+                            <button class="view-3d-button" data-page="5">View in 3D</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Article Management Section (moved outside gallery section) -->
+        <section id="article-management" class="article-section">
+            <h2>Article Management</h2>
+            <div id="article-list"></div>
+        </section>
+
+        <!-- Upload Modal -->
+        <div id="upload-modal" class="modal">
+            <div class="modal-content">
+                <span id="close-upload" class="close-modal" aria-label="Close modal">&times;</span>
+                <h2>Add Article with Google Drive Link</h2>
+                <form id="upload-form">
+                    <div class="form-group">
+                        <label for="article-title">Article Title*</label>
+                        <input type="text" id="article-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="article-summary">Summary*</label>
+                        <textarea id="article-summary" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="google-drive-link">Google Drive Link*</label>
+                        <input type="url" id="google-drive-link" placeholder="https://drive.google.com/..." required>
+                        <small>Paste the shareable link to your Google Drive document</small>
+                    </div>
+                    <button type="submit">Add Article</button>
+                </form>
+            </div>
+        </div>
+  
+        <!-- Upload button -->
+        <button id="open-upload" class="floating-button" aria-label="Add article">
+            <svg width="24" height="24" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
+            </svg>
+            Add Article
+        </button>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Protocol Club</h3>
+                <p>Official computer science club of BMS College of Engineering, Bengaluru. Join us in our journey of innovation and learning.</p>
+                <div class="socials">
+                    <a href="#" aria-label="LinkedIn"><img src="logos/linkedinlogo.png" alt="LinkedIn"></a>
+                    <a href="#" aria-label="Instagram"><img src="logos/instalogo.png" alt="Instagram"></a>
+                    <a href="#" aria-label="Email"><img src="logos/maillogo.png" alt="Email"></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="articles.html">Articles</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><img src="logos/maillogo.png" alt="Email icon" class="icon"> protocol.cse@bmsce.ac.in</p>
+                <p>B M S College of Engineering<br>Bull Temple Road, Basavanagudi<br>Bengaluru - 560019</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 Protocol Club. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

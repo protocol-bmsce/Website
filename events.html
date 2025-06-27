@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Protocol Club</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="eventsstyles.css">
+    <link rel="stylesheet" href="abcd.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="abcd.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                Protocol
+                <img src="logos/proto.png" alt="Protocol Club Logo" class="header-logo">
+            </div>
+        </div>
+        <nav id="navbar" class="navbar">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="events.html">Events</a>
+            <a href="articles.html">Articles</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="header-right">
+            <button id="hamburger" class="hamburger">&#9776;</button>
+            <button id="theme-toggle" class="theme-toggle">🌓</button>
+        </div>
+    </header>
+    
+
+    <aside id="sidebar" class="sidebar">
+        <nav class="sidebar-nav">
+            <a href="abcd.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="events.html">Events</a>
+            <a href="articles.html">Articles</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+            <button id="close-sidebar" class="close-sidebar">&times;</button>
+            
+        </nav>
+    </aside>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        // --- Element Selectors ---
+        const elements = {
+            body: document.body,
+            hamburger: document.getElementById('hamburger'),
+            sidebar: document.getElementById('sidebar'),
+            closeSidebar: document.getElementById('close-sidebar'),
+            navbar: document.getElementById('navbar'),
+            navLinks: document.querySelectorAll('#navbar a'),
+        }
+    });
+        function handleSidebar() {
+        elements.hamburger.addEventListener('click', () => {
+            elements.sidebar.style.right = '0';
+        });
+
+        elements.closeSidebar.addEventListener('click', () => {
+            elements.sidebar.style.right = '-250px';
+        });
+
+        elements.navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                elements.sidebar.style.right = '-250px';
+            });
+        });
+    }
+    </script>
+
+    <main>
+        <section class="events-section">
+            <h2>Our Events</h2>
+            <div class="event-container">
+                <div class="event-box">
+                    <img src="events/codeblitz.jpg" alt="Climb and Slide Event" class="event-image">
+                    <h3>Climb and Slide</h3>
+                    <p>Experience the thrill of navigating through obstacles and racing to the finish line.</p>
+                    <p class="event-date"><strong>Date:</strong> 9 April 2025</p>
+                    <a href="https://forms.gle/sampleGoogleFormLink1" target="_blank" class="register-btn">Register →</a>
+                </div>
+    
+                <div class="event-box">
+                    <img src="events/amongus.jpg" alt="Among Us - IRL Event" class="event-image">
+                    <h3>Among Us - IRL</h3>
+                    <p>Join an exciting real-life version of Among Us! Team up and find the imposters.</p>
+                    <p class="event-date"><strong>Date:</strong> 10 & 11 April 2025</p>
+                    <a href="https://forms.gle/sampleGoogleFormLink2" target="_blank" class="register-btn">Register →</a>
+                </div>
+    
+                <div class="event-box">
+                    <img src="events/UIUX.png" alt="Coding Challenge" class="event-image">
+                    <h3>UI/UX Workshop</h3>
+                    <p>Upskill your designing skills with this mind blowing hands-on workshop!</p>
+                    <p class="event-date"><strong>Date:</strong> 15 April 2025</p>
+                    <a href="https://forms.gle/sampleGoogleFormLink3" target="_blank" class="register-btn">Register →</a>
+                </div>
+    
+                <div class="event-box">
+                    <img src="tech-talk.jpg" alt="Tech Talk" class="event-image">
+                    <h3>Tech Talk</h3>
+                    <p>Attend an insightful talk by industry experts on the latest advancements in technology.</p>
+                    <p class="event-date"><strong>Date:</strong> 18 April 2025</p>
+                    <a href="https://forms.gle/sampleGoogleFormLink4" target="_blank" class="register-btn">Register →</a>
+                </div>
+    
+                <div class="event-box">
+                    <img src="gaming-tournament.jpg" alt="Gaming Tournament" class="event-image">
+                    <h3>Gaming Tournament</h3>
+                    <p>Compete in a high-stakes gaming tournament. Bring your best skills and dominate the competition!</p>
+                    <p class="event-date"><strong>Date:</strong> 22 April 2025</p>
+                    <a href="https://forms.gle/sampleGoogleFormLink5" target="_blank" class="register-btn">Register →</a>
+                </div>
+    
+                <div class="event-box">
+                    <img src="hackathon.jpg" alt="Hackathon" class="event-image">
+                    <h3>Hackathon</h3>
+                    <p>Collaborate with a team to build innovative projects in a 24-hour hackathon. Unleash your creativity!</p>
+                    <p class="event-date"><strong>Date:</strong> 26 & 27 April 2025</p>
+                    <a href="https://forms.gle/sampleGoogleFormLink6" target="_blank" class="register-btn">Register →</a>
+                </div>
+            </div>
+    
+            <div class="view-all">
+                <a href="viewmore.html" class="view-all-btn">View More Events</a>
+            </div>
+        </section>
+    </main>
+   
+    
+    
+
+                
+                
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Protocol Club</h3>
+                <p>
+                    Official computer science club of BMS College of Engineering, Bengaluru.
+                    Join us in our journey of innovation and learning.
+                </p>
+                <div class="socials">
+                    <a href="https://www.linkedin.com/company/protocol-bmsce/"><img src="logos/linkedinlogo.png" alt="LinkedIn"></a>
+                    <a href="https://www.instagram.com/protocol-bmsce/"><img src="logos/instalogo.png" alt="Instagram"></a>
+                    <a href="mailto:protocol.cse@bmsce.ac.in"><img src="logos/maillogo.png" alt="Gmail"></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="articles.html">Articles</a></li>
+                </ul>
+            </div>
+
+            <div class="contact-us">
+                <h2>Contact Us</h2>
+                <div class="email">
+                    
+                    <p>protocol.cse@bmsce.ac.in</p>
+                </div>
+                <p>B M S College of Engineering<br>
+                   Bull Temple Road, Basavanagudi<br>
+                   Bengaluru - 560019</p>
+            </div>
+            
+        </div>
+        <div class="footer-bottom">
+            © 2025 Protocol Club. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        function handleSidebar() {
+            const hamburger = document.getElementById('hamburger');
+            const sidebar = document.getElementById('sidebar');
+            const closeSidebar = document.getElementById('close-sidebar');
+            const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+            hamburger.addEventListener('click', () => {
+                sidebar.style.right = '0';
+            });
+
+            closeSidebar.addEventListener('click', () => {
+                sidebar.style.right = '-250px';
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    sidebar.style.right = '-250px';
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', handleSidebar);
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

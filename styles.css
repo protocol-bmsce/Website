@@ -1,0 +1,802 @@
+/* General styling */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    color: #2c022c;
+    background: linear-gradient(to right, #e0e0e0, #a55eea, #7a00b8, #4c0070);
+    opacity: 0.9;
+    /* Optional: Add a transition for smooth background color change */
+    transition: background-color 0.3s, color 0.3s;
+    /* Optional: Add a transition for smooth text color change */
+    /* Optional: Add a transition for smooth background image change */
+    /* Optional: Add a transition for smooth text color change */
+
+    transition: background 0.3s, color 0.3s;
+    /* Add background image */
+    background-image: url('bg.jpg');
+    /* Ensure the image covers the entire body */
+    background-size: cover;
+    /* Prevent the image from repeating */
+    background-repeat: no-repeat;
+    /* Optional: Center the image */
+    background-position: center;
+    /* Optional: Fix the image in place so it doesn't scroll */
+    background-attachment: fixed;
+}
+.hero {
+    /* ... other styles ... */
+    background: linear-gradient(to right, #e0e0e0, #4c0070); /* Example gradient */
+    color: inherit;
+    padding: 4rem 2rem;
+}
+body.dark {
+    background-color: #3d0532;
+    color: #f2f2f2;
+}
+
+.hero {
+    /* ... other styles ... */
+    background: linear-gradient(to right, #f0f0f0, #4c0070);
+    
+    /* ... other styles ... */
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to left, #211327, #020202); /* Dialed-down purple gradient */
+    color: white;
+    align-items: center;
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 4px 6px rgba(180, 10, 227, 0.1);
+}
+
+
+/* Adjust navigation spacing */
+.navbar {
+    display: flex;
+    justify-content:right; /* Distribute space evenly */
+    flex-grow: 1;
+     /* Allow it to take available space */
+}
+
+.navbar a {
+    padding: 0.5rem 2; /* Adjust vertical padding if needed */
+}
+
+.navbar a:hover {
+    color: #3d00b6;
+}
+
+
+.header-logo {
+    width: 60px; /* Adjust logo size */
+    height: 60px;
+    margin-left: 10px;
+    border-radius: 50%;
+    border: 3px solid #5a007b; /* Adjust border size */
+}
+.header-nav {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s;
+    padding: 0.5rem 2rem; /* Increased horizontal padding */
+}
+
+.header-nav a:hover {
+    color: #c5a1e4; /* Subtle lavender color on hover */
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    margin-left: 20px; /* Add some spacing from the navigation */
+}
+.navbar a {
+    margin-left: 30px;
+    text-decoration: none;
+    color: rgb(212, 173, 237);
+    font-weight: 500;
+    transition: color 0.3s;
+    font-size: 1.25rem;
+}
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10vh 10vw; /* Adjusted padding based on viewport size */
+}
+
+.hero-left {
+    width: 50%;
+}
+.header-right button {
+    margin-left: 10px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.logo {
+    font-size: 1.2rem; /* Adjust logo text size */
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    color: white;
+}
+
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(to right, #120219, #0b0239); /* Billboard gradient */
+    color: white;
+    padding: 4rem 2rem;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    max-width: 1200px; /* Optional: Limit width for larger screens */
+    margin: 0 auto; /* Center the container */
+    flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+}
+
+.hero-text-area {
+    flex: 1;
+    padding: 2rem;
+    text-align: left;
+    margin-bottom: 0px; /* Align text to the left */
+}
+
+.club-info {
+    margin-bottom: 0rem;
+}
+
+.club-name {
+    font-size: 2.5rem;
+    margin-bottom: 0rem;
+}
+
+.club-location {
+    font-size: 1.1rem;
+    color: #ddd;
+}
+
+.hero-text-area h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.hero-text-area p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.gradient-button {
+    display: inline-block;
+    padding: 12px 24px;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(to right, #3c005a, #5e008c); /* Button gradient */
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.gradient-button:hover {
+    background: linear-gradient(to right, #9400d3, #7a00b8); /* Darker hover effect */
+}
+
+.hero-logo-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.neon-circle {
+    position: relative;
+    width: 320px; /* Adjust size of the neon circle */
+    height: 320px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7a00b8, #3a014f); /* Adjusted neon circle gradient */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: glow 2s infinite alternate, grow-shrink 2s infinite ease-in-out; /* Apply both animations */
+}
+
+.hero-logo-image {
+    width: 120%;
+    height: 120%;
+    border-radius: 500%;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px #9400d3, 0 0 20px #7a00b8; /* Reduced glow intensity */
+    }
+    100% {
+        box-shadow: 0 0 15px #7a00b8, 0 0 30px #9400d3;
+    }
+}
+
+@keyframes grow-shrink {
+    0%, 100% {
+        transform: scale(1.05); /* Subtle grow/shrink */
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.changing-word {
+    display: inline-block; /* To control width and animation */
+    transition: opacity 0.5s ease-in-out; /* Fade transition */
+    color: rgb(12, 198, 245); /* Default white color */
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+/* Countdown Timer */
+.countdown {
+    text-align: center;
+    margin: 3rem auto;
+    color: black;
+}
+
+#timer {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 1.5rem;
+    margin: 1rem auto;
+    background: linear-gradient(135deg, #3c0152, #007acc); /* Subtle gradient */
+    padding: 1rem;
+    border-radius: 10px;
+    color: white;
+    width: 60%; /* Limit to 60% of screen width */
+}
+
+#timer div {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+/* Sidebar Menu */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background: #333;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    transition: right 0.3s;
+    z-index: 1000;
+}
+
+.sidebar-nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.sidebar-nav a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #c5a1e4; /* Lavender color on hover */
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    background: linear-gradient(to right, #260234, #1f0030);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+footer .socials img {
+    width: 48px; /* Consistent icon size */
+    height: 48px;
+    margin: 0 10px;
+    transition: transform 0.3s;
+}
+
+footer .socials img:hover {
+    transform: scale(1.2);
+}
+
+/* Utility Classes */
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.close-sidebar {
+    position: absolute; /* Make it absolute, relative to sidebar */
+    top: 1rem;          /* Position from the top */
+    right: 1rem;         /* Position from the right */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001; /* Ensure it's above other sidebar content */
+}
+.sidebar.open {
+    left: 0;
+}
+/* Footer Styling */
+.footer {
+    background-color: #0c0c2c; /* Deep navy color */
+    color: #fff;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-section p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin: 0.5rem 0;
+  }
+  
+  .footer-section ul li a {
+    color: #c5a1e4; /* Subtle lavender color for links */
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #ffffff; /* White on hover */
+  }
+  
+  .footer-section .socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    display: flex;
+   
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+  }
+  
+  .footer-section .socials img {
+    width: 48px;
+    height: 35px;
+    transition: transform 0.3s;
+    text-align: center;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+  }
+  
+  .footer-section .socials img:hover {
+    transform: scale(1.2);
+  }
+  
+  .footer-bottom {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1rem;
+  }
+  
+  .icon {
+    width: 40px;
+    height: 30px;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    justify-content: center;
+  }
+    .footer-logo {
+        width: 15px; /* Adjust logo size */
+        height: 15px;
+        border-radius: 50%;
+        border: 3px solid #3b0051;
+        justify-content: center; /* Adjust border size */
+    } 
+    
+    .hero-container {
+        margin-top: 8px; /* Increase as needed */
+        padding: 20px;
+        text-align: center;
+      }
+      .sidebar {
+        position: fixed;
+        top: 0;
+        right: -250px;
+        width: 250px;
+        height: 100%;
+        background: #333;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 2rem 1rem;
+        transition: right 0.3s;
+        z-index: 1000;
+    }
+    
+    
+    .sidebar-nav a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        transition: background 0.3s, color 0.3s;
+    }
+    
+    .sidebar-nav a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        color: #12031f; /* Lavender color on hover */
+    }
+    
+    
+    .sidebar.open {
+        left: 0;
+    }
+    
+    .sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .sidebar-nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+    }
+    
+    .sidebar-nav a:hover {
+        color: #963fe1;
+    }
+    
+    
+    .close-sidebar {
+        position: absolute; /* Make it absolute, relative to sidebar */
+        top: 1rem;          /* Position from the top */
+        right: 0rem;         /* Position from the right */
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001; /* Ensure it's above other sidebar content */
+    }
+    /* Existing styles in styles.css remain unchanged */
+
+/* Responsiveness */
+
+/* Adjust for large tablets or small desktops */
+@media (max-width: 1200px) {
+    .logo {
+      width: 80%; /* Shrink logo size */
+      max-width: 200px; /* Ensure it doesn't get too large */
+    }
+    
+    .nav {
+      justify-content: space-between;
+    }
+    
+    .nav-item {
+      margin: 0 10px;
+    }
+    
+    .text {
+      font-size: 1.1rem;
+    }
+  }
+  
+  /* Adjust for tablets */
+  @media (max-width: 992px) {
+    .logo {
+      width: 70%; 
+      max-width: 150px;
+      margin: 0 auto; /* Center the logo */
+    }
+    
+    .nav {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .nav-item {
+      margin: 5px 0;
+      font-size: 1rem;
+    }
+    
+    .text {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+  }
+  
+  /* Adjust for mobile devices */
+  @media (max-width: 768px) {
+    .logo {
+      width: 60%; 
+      max-width: 120px;
+    }
+    
+    .nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .nav-item {
+      font-size: 0.9rem;
+      padding: 5px 0;
+    }
+    
+    .text {
+      font-size: 0.9rem;
+      line-height: 1.3;
+      padding: 10px;
+    }
+  }
+  
+  /* Adjust for smaller mobile devices */
+  @media (max-width: 576px) {
+    .logo {
+      width: 50%; 
+      max-width: 100px;
+    }
+    
+    .nav {
+      flex-direction: column;
+    }
+    
+    .nav-item {
+      font-size: 0.8rem;
+    }
+    
+    .text {
+      font-size: 0.8rem;
+      text-align: justify;
+    }
+  }
+    /* Adjust for extra small devices */
+    @media (max-width: 480px) {
+        .hero {
+            padding: 2rem 1rem; /* Adjust padding for smaller screens */
+        }
+        
+        .hero-text-area h2 {
+            font-size: 1.5rem; /* Smaller font size */
+        }
+        
+        .hero-text-area p {
+            font-size: 0.9rem; /* Smaller font size */
+        }
+        
+        .gradient-button {
+            padding: 10px 20px; /* Smaller button */
+            font-size: 0.9rem; /* Smaller font size */
+        }
+        
+        .neon-circle {
+            width: 200px; /* Smaller circle */
+            height: 200px;
+        }
+        
+        .hero-logo-image {
+            width: 100%;
+            height: 100%;
+        }
+    } 
+    /* Adjust for extra small devices */
+    @media (max-width: 480px) {
+        .hero {
+            padding: 2rem 1rem; /* Adjust padding for smaller screens */
+        }
+        
+        .hero-text-area h2 {
+            font-size: 1.5rem; /* Smaller font size */
+        }
+        
+        .hero-text-area p {
+            font-size: 0.9rem; /* Smaller font size */
+        }
+        
+        .gradient-button {
+            padding: 10px 20px; /* Smaller button */
+            font-size: 0.9rem; /* Smaller font size */
+        }
+        
+        .neon-circle {
+            width: 200px; /* Smaller circle */
+            height: 200px;
+        }
+        
+        .hero-logo-image {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    /* Modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 600px; /* Limit max width */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+.modal-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #171616;
+    text-align: center;
+}
+/* Existing styles remain unchanged */
+
+/* Responsiveness for Protocol Logo and Description */
+
+/* Adjust for large tablets or small desktops */
+@media (max-width: 1200px) {
+    .protocol-logo {
+      font-size: 2rem; /* Reduce font size */
+      text-align: center; /* Center align the logo text */
+      word-wrap: break-word; /* Prevent overflow */
+    }
+  
+    .protocol-description {
+      font-size: 1.2rem; /* Slightly smaller font for better readability */
+      margin: 0 auto; /* Center the text block */
+      width: 90%; /* Restrict width to prevent overflow */
+      line-height: 1.5;
+    }
+  }
+  
+  /* Adjust for tablets */
+  @media (max-width: 992px) {
+    .protocol-logo {
+      font-size: 1.8rem; 
+      text-align: center;
+    }
+  
+    .protocol-description {
+      font-size: 1rem;
+      width: 85%;
+      margin: 0 auto;
+      text-align: justify; /* Ensure text fits properly */
+    }
+  }
+  
+  /* Adjust for mobile devices */
+  @media (max-width: 768px) {
+    .protocol-logo {
+      font-size: 1.5rem; 
+      width: 100%; 
+      text-align: center;
+      word-break: break-word; /* Prevent long words from breaking layout */
+    }
+  
+    .protocol-description {
+      font-size: 0.9rem;
+      width: 90%;
+      margin: 0 auto;
+      line-height: 1.4;
+    }
+  }
+  
+  /* Adjust for smaller mobile devices */
+  @media (max-width: 576px) {
+    .protocol-logo {
+      font-size: 1.2rem;
+      text-align: center;
+    }
+  
+    .protocol-description {
+      font-size: 0.8rem;
+      text-align: justify;
+      padding: 0 10px; /* Add padding for better appearance */
+    }
+  }
+    /* Adjust for extra small devices */
+    @media (max-width: 480px) {
+        .protocol-logo {
+            font-size: 1rem; 
+            text-align: center;
+        }
+    
+        .protocol-description {
+            font-size: 0.7rem; 
+            text-align: justify;
+            padding: 0 5px; /* Add padding for better appearance */
+        }
+    }
+    /* Adjust for extra small devices */
+   

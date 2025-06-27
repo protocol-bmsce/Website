@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navigation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <img src="logo.png" alt="Logo" class="header-logo">
+      <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+      <nav class="header-nav" id="nav-bar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Welcome to Our Club</h1>
+      <p>Where innovation meets creativity. Join us today!</p>
+      <a href="#" class="cta-button">Learn More</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Our Club. All rights reserved.</p>
+  </footer>
+
+  <div class="sidebar" id="sidebar">
+    <button class="close-sidebar" onclick="toggleSidebar()">×</button>
+    <nav class="sidebar-nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
