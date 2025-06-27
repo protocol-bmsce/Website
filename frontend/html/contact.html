@@ -3,12 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocol - Home</title>
-    <link rel="stylesheet" href="abcd.css">
-    <script src="abcd.js" defer></script>
+    <title>Protocol Club - Contact Us</title>
+    <link rel="stylesheet" href="../css/abcd.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="../js/abcd.js" defer></script>
+    <style>
+        .contact {
+            text-align: center;
+            padding: 20px;
+            color: #000;
+        }
+        
+        .contact h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .contact a {
+            color: #000;
+            text-decoration: none;
+        }
+        
+        .contact a:hover {
+            color: #800080;
+            text-decoration: underline;
+        }
+    </style>
 </head>
-<body class="dark">
+<body>
     <header class="header">
         <div class="header-left">
             <button id="hamburger" class="hamburger">&#9776;</button>
@@ -18,7 +46,7 @@
             </div>
         </div>
         <nav id="navbar" class="navbar">
-            <a href="abcd.html" class="active">Home</a>
+            <a href="index.html" class="active">Home</a>
             <a href="about.html">About</a>
             <a href="events.html">Events</a>
             <a href="articles.html">Articles</a>
@@ -33,7 +61,7 @@
     <aside id="sidebar" class="sidebar">
         <button id="close-sidebar" class="close-sidebar">&times;</button>
         <nav class="sidebar-nav">
-            <a href="index.html" class="active">Home</a>
+            <a href="abcd.html" class="active">Home</a>
             <a href="about.html">About</a>
             <a href="events.html">Events</a>
             <a href="articles.html">Articles</a>
@@ -41,35 +69,10 @@
             <a href="contact.html">Contact</a>
         </nav>
     </aside>
-
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-text-area">
-                <div class="club-info">
-                    <h1 class="club-name">PROTOCOL</h1>
-                    <p class="club-location">BMSCE, Bengaluru</p>
-                </div>
-                <h2>Where <span class="changing-word">Creativity</span> Happens</h2>
-                <p>Join our community to explore, learn, and build cutting-edge technologies together.</p>
-                <a href="about.html" class="btn gradient-button">Learn More</a>
-            </div>
-            <div class="hero-logo-area">
-                <div class="neon-circle">
-                    <img src="logos/proto.png" alt="Protocol Club Logo" class="hero-logo-image">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="countdown" class="countdown">
-        <h2>Next Big Event</h2>
-        <div id="timer">
-            <div><span id="days">00</span><small>Days</small></div>
-            <div><span id="hours">00</span><small>Hours</small></div>
-            <div><span id="minutes">00</span><small>Minutes</small></div>
-            <div><span id="seconds">00</span><small>Seconds</small></div>
-        </div>
-        <a href="events.html" class="btn gradient-button">View Events</a>
+    <section class="contact">
+        <h1>Contact Us</h1>
+        <p>Email: <a href="mailto:protocol.cse@bmsce.ac.in">protocol.cse@bmsce.ac.in</a></p>
+        <p>Address: B M S College of Engineering<br>Bull Temple Road, Basavanagudi<br>Bengaluru - 560019</p>
     </section>
 
     <footer class="footer">
@@ -102,7 +105,5 @@
             © 2025 Protocol Club. All rights reserved.
         </div>
     </footer>
-
-    <script src="abcd.js"></script>
 </body>
 </html>
