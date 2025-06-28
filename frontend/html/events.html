@@ -4,140 +4,721 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events - Protocol Club</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/eventsstyles.css">
-    <link rel="stylesheet" href="../css/abcd.css">
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="../js/abcd.js" defer></script>
+    <!-- Font Awesome for icons (e.g., hamburger, close, theme toggle) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset default styles to ensure consistency */
+        body,
+        h1,
+        h2,
+        h3,
+        p,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333; /* Default text color for the page content */
+            background-color: #f8f8f8; /* Light background */
+        }
+
+        .events-section h2 {
+    font-weight: 800; /* Makes the font extra bold */
+    /* color: #7a00b8;  (Keeping the existing color) */
+}
+
+        /* --- Global Styles --- */
+        .subheading {
+            font-size: 2.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #7a00b8; /* Purple-ish color */
+        }
+
+        /* --- Header & Navigation Styles --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to left, #211327, #020202); /* Dark gradient */
+            color: white;
+            padding: 12px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 4px 6px rgba(180, 10, 227, 0.1); /* Subtle shadow */
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            gap: 10px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #5a007b;
+            margin-right: 10px;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar a {
+            color: rgb(212, 173, 237); /* Light purple */
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            white-space: nowrap;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: #3d00b6; /* Darker purple on hover/active */
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.3rem;
+        }
+
+        .hamburger {
+            display: none; /* Hidden by default on desktop */
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.3rem;
+            margin-right: 15px;
+            order: -1; /* Forces to left of logo on mobile */
+            z-index: 1001;
+        }
+
+        /* --- Sidebar Styles --- */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%; /* Fully hidden off-screen */
+            width: 250px;
+            height: 100vh;
+            background: #1a0126; /* Dark background */
+            z-index: 1000;
+            transition: right 0.3s ease;
+            padding: 2rem 1.5rem;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+            overflow-y: auto; /* Allows scrolling if content is long */
+        }
+
+        .sidebar.open {
+            right: 0; /* Slides in when open */
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .sidebar-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: rgba(122, 0, 184, 0.3); /* Purple transparent background on hover/active */
+        }
+
+        .close-sidebar {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            z-index: 998; /* Below sidebar but above other content */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* --- Events Section Styles --- */
+        .events-section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .events-section h2 {
+            font-size: 2.8rem;
+            color: #7a00b8;
+            margin-bottom: 2rem;
+        }
+
+        .event-container {
+            display: grid;
+            /* Made placeholders a bit smaller */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem; /* Increased gap for better spacing */
+            justify-content: center;
+            align-items: stretch; /* Ensure boxes stretch to same height */
+            padding: 1rem 0;
+        }
+
+        .event-box {
+            background-color: #515050; /* Subtle black background */
+            border: 3px solid #20bed2; /* Sleek bold neon blue border */
+            border-radius: 12px; /* Slightly more rounded corners */
+            box-shadow: 0 0 15px rgba(0, 224, 255, 0.3), 0 6px 15px rgba(0, 0, 0, 0.2); /* Neon glow effect + softer, larger shadow */
+            padding: 1.8rem; /* More internal padding */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Pushes content and date apart */
+            cursor: pointer; /* Indicate clickable */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            color: #f0f0f0; /* Light text for dark background */
+        }
+
+        .event-box:hover {
+            transform: translateY(-8px); /* More pronounced lift on hover */
+            box-shadow: 0 0 25px rgba(0, 224, 255, 0.6), 0 10px 25px rgba(0, 0, 0, 0.3); /* Stronger neon glow + shadow on hover */
+            border-color: #24b8b8; /* Slightly brighter on hover */
+        }
+
+        .event-image {
+            width: 100%;
+            height: 220px; /* Consistent height for images */
+            object-fit: cover;
+            border-radius: 8px; /* Match box border radius */
+            margin-bottom: 1.2rem; /* More space below image */
+        }
+
+        .event-box h3 {
+            font-size: 1.8rem; /* Larger event titles */
+            color: #00e0ff; /* Neon blue for titles */
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .event-box .event-date {
+            font-size: 0.95rem;
+            color: #88eeff; /* Lighter neon blue for date */
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .event-box p {
+            font-size: 1rem;
+            color: #d0d0d0; /* Lighter grey for description */
+            line-height: 1.5;
+            margin-bottom: 1.5rem; /* Space before potential buttons */
+            flex-grow: 1; /* Allows description to take available space */
+        }
+
+        /* --- Modal Styles --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); /* Darker overlay for better focus */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* On top of everything */
+            opacity: 0; /* Start hidden */
+            visibility: hidden; /* Start hidden */
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+            max-width: 90vw; /* Max width relative to viewport */
+            max-height: 90vh; /* Max height relative to viewport */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: scale(0.85); /* Start slightly smaller */
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bounce effect */
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1); /* Scale to full size when active */
+        }
+
+        .modal-image-enlarged {
+            max-width: 100%;
+            max-height: 75vh; /* Max height for the image within the modal */
+            display: block;
+            border-radius: 8px; /* Rounded corners for the enlarged image */
+            object-fit: contain; /* Ensures entire image is visible without cropping */
+        }
+
+        .modal-close-button {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 2.2rem; /* Slightly larger close icon */
+            color: #666; /* Softer color */
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close-button:hover {
+            color: #dc3545; /* Red on hover */
+            transform: scale(1.1);
+        }
+
+        /* --- Footer Styles --- */
+        .footer {
+            width: 100%;
+            background: linear-gradient(to right, #330245, #1f0030); /* Dark gradient */
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem; /* More padding */
+            margin-top: 2rem; /* Add some margin from content above */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around; /* Use space-around for distribution */
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 2.5rem; /* More gap */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px; /* Increased min-width for sections */
+            text-align: left; /* Align text left within sections */
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: #c5a1e4; /* Light purple heading */
+        }
+
+        .footer-section p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
+            color: #e0e0e0;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin: 0.6rem 0;
+        }
+
+        .footer-section ul li a {
+            color: #e0e0e0; /* Lighter link color */
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ffffff; /* White on hover */
+            text-decoration: underline;
+        }
+
+        .footer-section .socials {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            justify-content: flex-start; /* Align social icons to the left */
+        }
+
+        .footer-section .socials img {
+            width: 38px; /* Slightly larger social icons */
+            height: 38px;
+            transition: transform 0.3s ease;
+            object-fit: contain;
+        }
+
+        .footer-section .socials img:hover {
+            transform: scale(1.15);
+        }
+
+        .contact-us h2 { /* Targeting the h2 within contact-us */
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: #c5a1e4;
+            text-align: left; /* Ensure it's left aligned */
+        }
+
+        .contact-us .email,
+        .contact-us p {
+            text-align: left; /* Align contact details left */
+            font-size: 0.95rem;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+
+        .contact-us .email {
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Space between icon and text */
+            margin-bottom: 0.5rem;
+        }
+
+        .icon {
+            width: 18px; /* Slightly larger icon */
+            height: 18px;
+            vertical-align: middle;
+        }
+
+        .footer-bottom {
+            margin-top: 3rem; /* More space before copyright */
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.25); /* Stronger separator */
+            padding-top: 1.5rem;
+            color: #bbbbbb;
+            width: 100%; /* Ensure separator spans full width */
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 1024px) {
+            .navbar {
+                display: none;
+            }
+            .hamburger {
+                display: block;
+            }
+            .events-section h2 {
+                font-size: 2.2rem;
+            }
+            .event-container {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Adjusted minmax for smaller boxes */
+                gap: 2rem;
+            }
+            .event-box h3 {
+                font-size: 1.5rem;
+            }
+            .event-image {
+                height: 180px;
+            }
+            .event-box p {
+                font-size: 0.95rem;
+            }
+            .footer-section {
+                min-width: 45%; /* Two columns for footer on tablets */
+            }
+            .footer-container {
+                justify-content: space-around;
+                gap: 2rem;
+            }
+            .footer-section h3, .contact-us h2 {
+                font-size: 1.2rem;
+                text-align: center; /* Center headings */
+            }
+            .footer-section p, .footer-section ul, .contact-us p, .contact-us .email {
+                text-align: center; /* Center text/lists */
+                padding-left: 0;
+            }
+            .footer-section .socials {
+                justify-content: center; /* Center social icons */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 3%;
+            }
+            .logo {
+                font-size: 1.1rem;
+            }
+            .header-logo {
+                width: 35px;
+                height: 35px;
+            }
+            .events-section {
+                padding: 1.5rem;
+            }
+            .events-section h2 {
+                font-size: 2rem;
+            }
+            .event-container {
+                grid-template-columns: 1fr; /* Single column on mobile */
+                gap: 1.5rem;
+            }
+            .event-box {
+                padding: 1.5rem;
+            }
+            .event-box h3 {
+                font-size: 1.4rem;
+            }
+            .event-image {
+                height: 160px;
+            }
+            .event-box .event-date {
+                font-size: 0.9rem;
+            }
+            .event-box p {
+                font-size: 0.9rem;
+            }
+            .footer-section {
+                min-width: 100%; /* Stack footer sections vertically */
+                text-align: center;
+            }
+            .footer-section .socials {
+                justify-content: center;
+            }
+             .footer-section h3, .contact-us h2 {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 80%;
+            }
+            .logo {
+                font-size: 1rem;
+            }
+            .header-logo {
+                width: 30px;
+                height: 30px;
+            }
+            .hamburger {
+                font-size: 1.3rem;
+            }
+            .events-section {
+                padding: 1rem;
+            }
+            .events-section h2 {
+                font-size: 1.8rem;
+            }
+            .event-box {
+                padding: 1rem;
+            }
+            .event-box h3 {
+                font-size: 1.2rem;
+            }
+            .event-image {
+                height: 140px;
+            }
+            .event-box .event-date {
+                font-size: 0.85rem;
+            }
+            .event-box p {
+                font-size: 0.85rem;
+            }
+             .footer-section h3, .contact-us h2 {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header">
         <div class="header-left">
-            <div class="logo">
-                Protocol
-                <img src="logos/proto.png" alt="Protocol Club Logo" class="header-logo">
-            </div>
+            <div class="logo">Protocol <img src="logos/proto.png" alt="Protocol Club Logo" class="header-logo"></div>
         </div>
         <nav id="navbar" class="navbar">
-            <a href="../index.html" class="active">Home</a>
+            <a href="index.html">Home</a>
             <a href="about.html">About Us</a>
-            <a href="events.html">Events</a>
+            <a href="events.html" class="active">Events</a>
             <a href="articles.html">Articles</a>
             <a href="gallery.html">Gallery</a>
             <a href="contact.html">Contact</a>
         </nav>
         <div class="header-right">
-            <button id="hamburger" class="hamburger">&#9776;</button>
+            <button id="hamburger" class="hamburger"><i class="fas fa-bars"></i></button>
             <button id="theme-toggle" class="theme-toggle">🌓</button>
         </div>
     </header>
-    
 
     <aside id="sidebar" class="sidebar">
         <nav class="sidebar-nav">
-            <a href="abcd.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="about.html">About Us</a>
             <a href="events.html">Events</a>
             <a href="articles.html">Articles</a>
             <a href="gallery.html">Gallery</a>
             <a href="contact.html">Contact</a>
-            <button id="close-sidebar" class="close-sidebar">&times;</button>
-            
+            <button id="close-sidebar" class="close-sidebar"><i class="fas fa-times"></i></button>
         </nav>
     </aside>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-        // --- Element Selectors ---
-        const elements = {
-            body: document.body,
-            hamburger: document.getElementById('hamburger'),
-            sidebar: document.getElementById('sidebar'),
-            closeSidebar: document.getElementById('close-sidebar'),
-            navbar: document.getElementById('navbar'),
-            navLinks: document.querySelectorAll('#navbar a'),
-        }
-    });
-        function handleSidebar() {
-        elements.hamburger.addEventListener('click', () => {
-            elements.sidebar.style.right = '0';
-        });
-
-        elements.closeSidebar.addEventListener('click', () => {
-            elements.sidebar.style.right = '-250px';
-        });
-
-        elements.navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                elements.sidebar.style.right = '-250px';
-            });
-        });
-    }
-    </script>
+    <div class="overlay" id="overlay"></div>
 
     <main>
         <section class="events-section">
             <h2>Our Events</h2>
             <div class="event-container">
+                <!-- Existing Events -->
                 <div class="event-box">
                     <img src="events/codeblitz.jpg" alt="Climb and Slide Event" class="event-image">
                     <h3>Climb and Slide</h3>
-                    <p>Experience the thrill of navigating through obstacles and racing to the finish line.</p>
                     <p class="event-date"><strong>Date:</strong> 9 April 2025</p>
-                    <a href="https://forms.gle/sampleGoogleFormLink1" target="_blank" class="register-btn">Register →</a>
+                    <p>An amazing way to experience the thrill of navigating through obstacles and racing to the finish line.</p>
                 </div>
-    
+
                 <div class="event-box">
                     <img src="events/amongus.jpg" alt="Among Us - IRL Event" class="event-image">
                     <h3>Among Us - IRL</h3>
-                    <p>Join an exciting real-life version of Among Us! Team up and find the imposters.</p>
                     <p class="event-date"><strong>Date:</strong> 10 & 11 April 2025</p>
-                    <a href="https://forms.gle/sampleGoogleFormLink2" target="_blank" class="register-btn">Register →</a>
+                    <p>One heck of a rollercoaster-An exciting real-life version of Among Us! Team up and find the imposters.</p>
                 </div>
-    
+
                 <div class="event-box">
                     <img src="events/UIUX.png" alt="Coding Challenge" class="event-image">
                     <h3>UI/UX Workshop</h3>
-                    <p>Upskill your designing skills with this mind blowing hands-on workshop!</p>
                     <p class="event-date"><strong>Date:</strong> 15 April 2025</p>
-                    <a href="https://forms.gle/sampleGoogleFormLink3" target="_blank" class="register-btn">Register →</a>
+                    <p>Upskilling your designing skills with this mind blowing hands-on workshop!</p>
                 </div>
-    
+
                 <div class="event-box">
                     <img src="tech-talk.jpg" alt="Tech Talk" class="event-image">
                     <h3>Tech Talk</h3>
-                    <p>Attend an insightful talk by industry experts on the latest advancements in technology.</p>
                     <p class="event-date"><strong>Date:</strong> 18 April 2025</p>
-                    <a href="https://forms.gle/sampleGoogleFormLink4" target="_blank" class="register-btn">Register →</a>
+                    <p>An insightful talk by industry experts on the latest advancements in technology.</p>
                 </div>
-    
+
                 <div class="event-box">
                     <img src="gaming-tournament.jpg" alt="Gaming Tournament" class="event-image">
                     <h3>Gaming Tournament</h3>
-                    <p>Compete in a high-stakes gaming tournament. Bring your best skills and dominate the competition!</p>
                     <p class="event-date"><strong>Date:</strong> 22 April 2025</p>
-                    <a href="https://forms.gle/sampleGoogleFormLink5" target="_blank" class="register-btn">Register →</a>
+                    <p>Competing in a high-stakes gaming tournament while bringing your best skills and dominate the competition!</p>
                 </div>
-    
+
                 <div class="event-box">
                     <img src="hackathon.jpg" alt="Hackathon" class="event-image">
                     <h3>Hackathon</h3>
-                    <p>Collaborate with a team to build innovative projects in a 24-hour hackathon. Unleash your creativity!</p>
                     <p class="event-date"><strong>Date:</strong> 26 & 27 April 2025</p>
-                    <a href="https://forms.gle/sampleGoogleFormLink6" target="_blank" class="register-btn">Register →</a>
+                    <p>Collaborating with a team to build innovative projects in a 24-hour hackathon. Unleashing your creativity!</p>
                 </div>
-            </div>
-    
-            <div class="view-all">
-                <a href="viewmore.html" class="view-all-btn">View More Events</a>
+
+                <!-- New Events -->
+                <div class="event-box">
+                    <img src="events/flutter_workshop.jpg" alt="Flutter Workshop" class="event-image">
+                    <h3>Flutter Workshop</h3>
+                    <p class="event-date"><strong>Date:</strong> TBD</p>
+                    <p>A whirlwind of app-building magic that left everyone inspired and buzzing with ideas.</p>
+                </div>
+                <div class="event-box">
+                    <img src="events/leapcode.jpg" alt="LeapCode" class="event-image">
+                    <h3>LeapCode</h3>
+                    <p class="event-date"><strong>Date:</strong> TBD</p>
+                    <p>A power-packed coding spree where brilliance shone and problem-solving skills soared.</p>
+                </div>
+                <div class="event-box">
+                    <img src="events/ciphered_coordinates.jpg" alt="The Ciphered Coordinates Quest" class="event-image">
+                    <h3>The Ciphered Coordinates Quest</h3>
+                    <p class="event-date"><strong>Date:</strong> TBD</p>
+                    <p>A thrilling treasure hunt that had everyone decoding, running, and celebrating every clue cracked.</p>
+                </div>
+                <div class="event-box">
+                    <img src="events/mergerverse.jpg" alt="MergerVerse" class="event-image">
+                    <h3>MergerVerse</h3>
+                    <p class="event-date"><strong>Date:</strong> TBD</p>
+                    <p>A fusion of ideas, innovation, and collaboration that created pure magic.</p>
+                </div>
+                <div class="event-box">
+                    <img src="events/call_of_duty.jpg" alt="COD (Call of Duty)" class="event-image">
+                    <h3>COD (Call of Duty)</h3>
+                    <p class="event-date"><strong>Date:</strong> TBD</p>
+                    <p>A gaming showdown full of intense battles, epic plays, and roaring cheers.</p>
+                </div>
+                <div class="event-box">
+                    <img src="events/cryptic_killer.jpg" alt="Cryptic Killer" class="event-image">
+                    <h3>Cryptic Killer</h3>
+                    <p class="event-date"><strong>Date:</strong> TBD</p>
+                    <p>A gripping mystery that kept everyone hooked till the final twist unraveled.</p>
+                </div>
             </div>
         </section>
     </main>
-   
-    
-    
 
-                
-                
+    <!-- The Modal for Enlarged Image -->
+    <div id="imageModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button" id="closeModal"><i class="fas fa-times"></i></button>
+            <img src="" alt="Enlarged Event Image" class="modal-image-enlarged" id="enlargedImage">
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="footer-container">
@@ -148,8 +729,8 @@
                     Join us in our journey of innovation and learning.
                 </p>
                 <div class="socials">
-                    <a href="https://www.linkedin.com/company/protocol-bmsce/"><img src="logos/linkedinlogo.png" alt="LinkedIn"></a>
-                    <a href="https://www.instagram.com/protocol-bmsce/"><img src="logos/instalogo.png" alt="Instagram"></a>
+                    <a href="https://www.linkedin.com/company/protocol-bmsce/" target="_blank"><img src="logos/linkedinlogo.png" alt="LinkedIn"></a>
+                    <a href="https://www.instagram.com/protocol-bmsce/" target="_blank"><img src="logos/instalogo.png" alt="Instagram"></a>
                     <a href="mailto:protocol.cse@bmsce.ac.in"><img src="logos/maillogo.png" alt="Gmail"></a>
                 </div>
             </div>
@@ -164,17 +745,15 @@
                 </ul>
             </div>
 
-            <div class="contact-us">
+            <div class="footer-section contact-us">
                 <h2>Contact Us</h2>
                 <div class="email">
-                    
-                    <p>protocol.cse@bmsce.ac.in</p>
+                    <p><img src="logos/maillogo.png" alt="Gmail" class="icon"> protocol.cse@bmsce.ac.in</p>
                 </div>
                 <p>B M S College of Engineering<br>
-                   Bull Temple Road, Basavanagudi<br>
-                   Bengaluru - 560019</p>
+                    Bull Temple Road, Basavanagudi<br>
+                    Bengaluru - 560019</p>
             </div>
-            
         </div>
         <div class="footer-bottom">
             © 2025 Protocol Club. All rights reserved.
@@ -182,29 +761,88 @@
     </footer>
 
     <script>
-        function handleSidebar() {
+        document.addEventListener("DOMContentLoaded", () => {
+            // --- Element Selectors ---
+            const body = document.body;
             const hamburger = document.getElementById('hamburger');
             const sidebar = document.getElementById('sidebar');
             const closeSidebar = document.getElementById('close-sidebar');
-            const navLinks = document.querySelectorAll('.sidebar-nav a');
+            const overlay = document.getElementById('overlay');
+            const navLinks = document.querySelectorAll('.sidebar-nav a, .navbar a'); // Select all nav links
 
-            hamburger.addEventListener('click', () => {
-                sidebar.style.right = '0';
-            });
+            // --- Sidebar / Overlay Logic ---
+            function toggleSidebar() {
+                if (sidebar && overlay) {
+                    sidebar.classList.toggle('open');
+                    overlay.classList.toggle('active');
+                }
+            }
 
-            closeSidebar.addEventListener('click', () => {
-                sidebar.style.right = '-250px';
-            });
+            if (hamburger) hamburger.addEventListener('click', toggleSidebar);
+            if (closeSidebar) closeSidebar.addEventListener('click', toggleSidebar);
+            if (overlay) overlay.addEventListener('click', toggleSidebar);
 
+            // Close sidebar when a navigation link is clicked
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    sidebar.style.right = '-250px';
+                    if (sidebar.classList.contains('open')) {
+                        toggleSidebar();
+                    }
                 });
             });
-        }
 
-        document.addEventListener('DOMContentLoaded', handleSidebar);
+            // --- Theme Toggle Logic (Placeholder) ---
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', function() {
+                    body.classList.toggle('dark');
+                    // You might want to save the user's preference in localStorage
+                    // if (body.classList.contains('dark')) {
+                    //     localStorage.setItem('theme', 'dark');
+                    // } else {
+                    //     localStorage.setItem('theme', 'light');
+                    // }
+                });
+                // Apply saved theme on load (if using localStorage)
+                // if (localStorage.getItem('theme') === 'dark') {
+                //     body.classList.add('dark');
+                // } else {
+                //     body.classList.remove('dark');
+                // }
+            }
+
+            // --- Image Modal Logic for Event Images ---
+            const eventImages = document.querySelectorAll('.event-image');
+            const imageModal = document.getElementById('imageModal');
+            const enlargedImage = document.getElementById('enlargedImage');
+            const closeModalBtn = document.getElementById('closeModal');
+
+            eventImages.forEach(image => {
+                image.addEventListener('click', function() {
+                    if (enlargedImage && imageModal) {
+                        enlargedImage.src = this.src; // Set enlarged image source
+                        imageModal.classList.add('active'); // Show the modal
+                    }
+                });
+            });
+
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', function() {
+                    if (imageModal) {
+                        imageModal.classList.remove('active'); // Hide the modal
+                    }
+                });
+            }
+
+            if (imageModal) {
+                imageModal.addEventListener('click', function(event) {
+                    // Close modal if clicking directly on the overlay, not on the content
+                    if (event.target === imageModal) {
+                        imageModal.classList.remove('active');
+                    }
+                });
+            }
+        });
     </script>
-    <script src="../js/script.js"></script>
 </body>
 </html>
