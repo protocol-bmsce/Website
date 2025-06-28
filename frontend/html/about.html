@@ -134,19 +134,19 @@
         .sidebar {
             position: fixed;
             top: 0;
-            right: -100%; /* Fully hidden off-screen */
+            left: -100%; /* Fully hidden off-screen */
             width: 250px;
             height: 100vh;
             background: #1a0126; /* Dark background */
             z-index: 1000;
-            transition: right 0.3s ease;
+            transition: left 0.3s ease;
             padding: 2rem 1.5rem;
             box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
             overflow-y: auto; /* Allows scrolling if content is long */
         }
 
         .sidebar.open {
-            right: 0; /* Slides in when open */
+            left: 0; /* Slides in when open */
         }
 
         .sidebar-nav {

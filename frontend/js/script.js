@@ -97,16 +97,16 @@ function setTheme(customTheme) {
      */
     function handleSidebar() {
         elements.hamburger.addEventListener('click', () => {
-            elements.sidebar.style.right = '0';
+            elements.sidebar.style.left = '0';
         });
 
         elements.closeSidebar.addEventListener('click', () => {
-            elements.sidebar.style.right = '-250px';
+            elements.sidebar.style.left = '-250px';
         });
 
         elements.navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                elements.sidebar.style.right = '-250px';
+                elements.sidebar.style.left = '-250px';
             });
         });
     }
