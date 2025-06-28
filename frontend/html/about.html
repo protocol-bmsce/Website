@@ -1,11 +1,619 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Protocol Club</title>
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/stylesheetabout.css">
-    <script src="../js/abcd.js" defer></script>
+    <!-- Font Awesome for icons (e.g., hamburger, close, theme toggle) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset default styles to ensure consistency */
+        body,
+        h1,
+        h2,
+        h3,
+        p,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1;
+            color: #fff; /* Default text color, overridden by specific sections */
+            background-color: #f0f0f0; /* Default background */
+            /* If you have a background image, you can use it here: */
+            /* background-image: url('bg.jpg'); */
+            /* background-size: cover; */
+            /* background-attachment: fixed; */
+        }
+
+        /* --- Global Styles --- */
+        .subheading {
+            font-size: 2.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #7a00b8; /* Purple-ish color */
+        }
+
+        /* --- Header & Navigation Styles --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to left, #211327, #020202); /* Dark gradient */
+            color: white;
+            padding: 12px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 4px 6px rgba(180, 10, 227, 0.1); /* Subtle shadow */
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            gap: 10px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #5a007b;
+            margin-right: 10px;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar a {
+            color: rgb(212, 173, 237); /* Light purple */
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            white-space: nowrap;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: #3d00b6; /* Darker purple on hover/active */
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.3rem;
+        }
+
+        .hamburger {
+            display: none; /* Hidden by default on desktop */
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.3rem;
+            margin-right: 15px;
+            order: -1; /* Forces to left of logo on mobile */
+            z-index: 1001;
+        }
+
+        /* --- Sidebar Styles --- */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%; /* Fully hidden off-screen */
+            width: 250px;
+            height: 100vh;
+            background: #1a0126; /* Dark background */
+            z-index: 1000;
+            transition: right 0.3s ease;
+            padding: 2rem 1.5rem;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+            overflow-y: auto; /* Allows scrolling if content is long */
+        }
+
+        .sidebar.open {
+            right: 0; /* Slides in when open */
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .sidebar-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: rgba(122, 0, 184, 0.3); /* Purple transparent background on hover/active */
+        }
+
+        .close-sidebar {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            z-index: 999; /* Below sidebar but above other content */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* --- About Us Page Content Styles --- */
+        .about-us-page {
+            padding: 2rem;
+            max-width: 960px;
+            margin: 2rem auto;
+            color: #0b0202; /* Dark text for readability on light background */
+            text-align: center;
+        }
+
+        .about-description {
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1.2em;
+        }
+
+        /* --- Base Member Card Styles (common to all cards) --- */
+        .member-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: #ffffff;
+            color: #000; /* Ensuring text is visible on white background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .member-card img {
+            width: 100%;
+            height: 200px; /* Standardized height for better visual consistency */
+            object-fit: cover;
+            border-radius: 10px; /* Soften image corners */
+            margin-bottom: 10px; /* Space below image */
+        }
+
+        .member-name {
+            font-weight: bold;
+            margin-bottom: 0.2rem;
+            color: #000;
+            font-size: 1.1em;
+        }
+
+        .member-desc {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-details {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Single Faculty Coordinator Card */
+        .member-card.single-card {
+            width: auto;
+            max-width: 250px;
+            margin: 0 auto 30px; /* Center single card */
+        }
+
+        /* --- Senior Core Team Layout (5 members: 3 then 2) --- */
+        .card-container { /* Renamed from senior-core-container to match your HTML, but handles 3-then-2 layout */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centers the rows */
+            gap: 1.5rem; /* Gap between cards */
+            margin-bottom: 2rem;
+            padding: 20px 0;
+        }
+
+        .card-container .member-card {
+            width: calc(33.33% - 1.5rem); /* For 3 cards per row, accounting for gap */
+            max-width: 280px; /* Adjust max-width as needed */
+        }
+
+        /* --- Senior Team Layout (12 members: 4 in each of 3 rows) --- */
+        /* Re-using .card-container for the Senior Team. This implies that
+           the 'senior-team-container-twelve' class mentioned in the previous
+           response is now handled by the general '.card-container' and its
+           specific member card sizing for 4-per-row is defined here.
+           If you want distinctly different styles for Senior Core and Senior Team,
+           you would need to revert to separate container classes.
+           For now, I'm adapting to your provided HTML's use of 'card-container'
+           for both.
+        */
+        .senior-team-layout .member-card { /* Using a dummy class for demonstration */
+            width: calc(25% - 1rem); /* For 4 cards per row, accounting for gap */
+            max-width: 220px; /* Adjust max-width for 4 columns */
+        }
+
+        /* --- Milestones Section --- */
+        #milestones {
+            text-align: center;
+            margin: 2rem auto;
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2; /* Subtle grayish background */
+            padding: 30px; /* Add padding for the section */
+            margin-top: 0; /* Ensures no extra space above from previous elements */
+        }
+
+        .milestones-heading { /* Renamed from milestones-title in prev CSS */
+            font-size: 2.5rem; /* Matches subheading size for consistency */
+            font-weight: bold;
+            color: #7a00b8;
+            margin-bottom: 1rem;
+        }
+
+        .milestones-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+            gap: 20px; /* Spacing between elements in milestones container */
+        }
+
+        .milestones-text {
+            text-align: center; /* Centered for the general text */
+            font-size: 1rem;
+            color: #333;
+            line-height: 1.5;
+            padding: 0 1rem; /* Add some horizontal padding */
+        }
+
+        .milestones-text span {
+            display: block;
+            /* text-align: left; Removed to allow centering */
+            margin-bottom: 0.5rem;
+        }
+
+        .milestones-text span strong {
+            font-weight: bold;
+            color: #6a0dad;
+        }
+        .milestones-list {
+            list-style-type: none;
+            padding: 0;
+            font-size: 1.2em;
+            color: #555;
+            width: 100%; /* Allows the ul to take full width of its container */
+            max-width: 600px; /* Limit list width */
+        }
+
+        .milestones-list li {
+            margin: 5px 0;
+            display: flex; /* Make li a flex container */
+            align-items: center; /* Align checkmark and text vertically */
+            justify-content: center; /* Center the flex items horizontally within the li */
+            gap: 8px; /* Space between checkmark and text */
+            /* Removed position: relative and padding-left */
+        }
+
+        .milestones-list li::before {
+            content: "✔️";
+            color: #6a0dad;
+            /* Removed position: absolute and left: 0 */
+        }
+
+        /* Specific styles for the interactive timeline image */
+        .milestones-image { /* Renamed from timeline-image to match your HTML */
+            display: block;
+            margin: 0 auto;
+            width: 150px; /* Initial size */
+            height: 150px; /* Made square for better object-fit */
+            border-radius: 50%; /* Circular */
+            object-fit: cover; /* Ensures image fills without distortion */
+            animation: float 4s infinite alternate;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer; /* Indicate it's clickable */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover */
+        }
+
+
+        .milestones-image:hover {
+            transform: scale(1.05) translateY(-5px); /* Slight scale and float up on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* --- Modal Styles --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* On top of everything */
+            opacity: 0; /* Start hidden */
+            visibility: hidden; /* Start hidden */
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            max-width: 90vw; /* Max width relative to viewport */
+            max-height: 90vh; /* Max height relative to viewport */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: scale(0.9); /* Start slightly smaller */
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1); /* Scale to full size when active */
+        }
+
+        .modal-image-enlarged {
+            max-width: 100%;
+            max-height: 75vh; /* Max height for the image within the modal */
+            display: block;
+            border-radius: 8px; /* Rounded corners for the enlarged image */
+            object-fit: contain; /* Ensures entire image is visible without cropping */
+        }
+
+        .modal-close-button {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #333;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close-button:hover {
+            color: #dc3545; /* Red on hover */
+        }
+
+        /* --- Footer Styles --- */
+        .footer {
+            width: 100%;
+            background: linear-gradient(to right, #330245, #1f0030); /* Dark gradient */
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 0; /* Remove top margin based on previous input */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin: 0.5rem 0;
+        }
+
+        .footer-section ul li a {
+            color: #c5a1e4; /* Subtle lavender color for links */
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ffffff; /* White on hover */
+        }
+
+        .footer-section .socials {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-section .socials img {
+            width: 32px; /* Standard size for social icons */
+            height: 32px;
+            transition: transform 0.3s;
+            object-fit: contain; /* Ensure logos fit well */
+        }
+
+        .footer-section .socials img:hover {
+            transform: scale(1.2);
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1rem;
+        }
+
+        .icon {
+            width: 16px; /* Smaller icon for inline text */
+            height: 16px;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 1024px) {
+            .navbar {
+                display: none;
+            }
+            .hamburger {
+                display: block;
+            }
+            .card-container .member-card {
+                width: calc(50% - 1.5rem); /* 2 cards per row for Senior Core */
+            }
+            /* Senior Team will also default to 2 per row if only .card-container is used for them */
+            .milestones-image {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 3%;
+            }
+            .logo {
+                font-size: 1.1rem;
+            }
+            .header-logo {
+                width: 35px;
+                height: 35px;
+            }
+            .card-container .member-card {
+                width: calc(100% - 1.5rem); /* 1 card per row for Senior Core on mobile */
+                max-width: 300px;
+            }
+            .milestones-heading {
+                font-size: 2rem;
+            }
+            .milestones-text {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 80%;
+            }
+            .logo {
+                font-size: 1rem;
+            }
+            .header-logo {
+                width: 30px;
+                height: 30px;
+            }
+            .hamburger {
+                font-size: 1.3rem;
+            }
+            .milestones-heading {
+                font-size: 1.8rem;
+            }
+            .milestones-text {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
 </head>
 <body class="dark background-image">
     <header class="header">
@@ -13,7 +621,7 @@
             <div class="logo">Protocol <img src="logos/proto.png" alt="Logo" class="header-logo"></div>
         </div>
         <nav id="navbar" class="navbar">
-            <a href="../index.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="about.html" class="active">About Us</a>
             <a href="events.html">Events</a>
             <a href="articles.html">Articles</a>
@@ -21,11 +629,11 @@
             <a href="contact.html">Contact</a>
         </nav>
         <div class="header-right">
-            <button id="hamburger" class="hamburger">&#9776;</button>
+            <button id="hamburger" class="hamburger"><i class="fas fa-bars"></i></button>
             <button id="theme-toggle" class="theme-toggle">🌓</button>
         </div>
     </header>
-    
+
     <aside id="sidebar" class="sidebar">
         <nav class="sidebar-nav">
             <a href="abcd.html">Home</a>
@@ -34,18 +642,20 @@
             <a href="articles.html">Articles</a>
             <a href="gallery.html">Gallery</a>
             <a href="contact.html">Contact</a>
-            <button id="close-sidebar" class="close-sidebar">&times;</button>
+            <button id="close-sidebar" class="close-sidebar"><i class="fas fa-times"></i></button>
         </nav>
     </aside>
+    <div class="overlay" id="overlay"></div>
 
     <main>
         <section class="about-us-page">
-            <h1 class="subheading">About Us</h1>  <p class="about-description">
+            <h1 class="subheading">About Us</h1>
+            <p class="about-description">
                 Protocol Club is the official computer science club of BMS College of Engineering, Bengaluru.
                 <br><br>We aim to create a community of tech enthusiasts and provide a platform for students to learn, collaborate and grow in the field of computer science.
                 <br><br>From workshops and seminars to hackathons and coding competitions, we organize various events throughout the academic year to enhance the technical skills and knowledge of our members.
             </p>
-        
+
             <h3 class="subheading">Faculty Coordinator</h3>
             <div class="member-card single-card">
                 <img src="team/faculty.png" alt="Faculty Coordinator">
@@ -53,9 +663,9 @@
                 <p class="member-desc">Associate Professor</p>
                 <p class="member-details">M.E. (CSE), Ph.D</p>
             </div>
-        
+
             <h3 class="subheading">Senior Core '25</h3>
-            <div class="card-container">
+            <div class="card-container"> <!-- This container handles the 3-then-2 layout -->
                 <div class="member-card">
                     <img src="team/president.png" alt="President">
                     <p class="member-name">Aaryan Prakash</p>
@@ -79,12 +689,13 @@
                 <div class="member-card">
                     <img src="team/synergyHead.png" alt="Synergy Head">
                     <p class="member-name">Bhoomi S Kota</p>
-                    <p class="member-desc">Cheif editor of Synergy</p>
+                    <p class="member-desc">Chief editor of Synergy</p>
                 </div>
             </div>
-        
+
             <h3 class="subheading">Senior Team '25</h3>
-            <div class="card-container">
+            <div class="card-container senior-team-layout"> <!-- Use a combined class for Senior Team to differentiate if needed -->
+                <!-- 12 Senior Team Members: 4 in each of 3 rows -->
                 <div class="member-card">
                     <img src="team/member1.png" alt="Suhan S">
                     <p class="member-name">Suhan S</p>
@@ -99,127 +710,179 @@
                 </div>
                 <div class="member-card">
                     <img src="team/member4.png" alt="Punarnava V">
-                    <p class="member-name">Punarnava V</p>
+                    <p class="member-name">Aaron B Ajay</p>
                 </div>
                 <div class="member-card">
                     <img src="team/member5.png" alt="Afeefah">
-                    <p class="member-name">Afeefah</p>
+                    <p class="member-name">Bhuvan A</p>
                 </div>
                 <div class="member-card">
                     <img src="team/member6.png" alt="Revathi">
+                    <p class="member-name">Manoj Kumar</p>
+                </div>
+                <div class="member-card">
+                    <img src="team/member1.png" alt="Sanath S Shetty">
+                    <p class="member-name">Sanath S Shetty</p>
+                </div>
+                <div class="member-card">
+                    <img src="team/member2.png" alt="Sam Manu Jacob">
+                    <p class="member-name">Sam Manu Jacob</p>
+                </div>
+                <div class="member-card">
+                    <img src="team/memebr3.png" alt="V Jayanth Vikram">
+                    <p class="member-name">V Jayanth Vikram</p>
+                </div>
+                <div class="member-card">
+                    <img src="team/member4.png" alt="Afeefah">
+                    <p class="member-name">Afeefah</p>
+                </div>
+                <div class="member-card">
+                    <img src="team/member5.png" alt="Revathi">
                     <p class="member-name">Revathi</p>
+                </div>
+                <div class="member-card">
+                    <img src="team/member6.png" alt="Punarnava">
+                    <p class="member-name">Punarnava</p>
                 </div>
             </div>
         </section>
-       
+
         <section id="milestones">
             <h2 class="milestones-heading">Milestones</h2>
             <div class="milestones-container">
                 <p class="milestones-text">Protocol Club - Our Journey</p>
-                <img src="team/time.jpg" alt="Timeline" class="milestones-image">
+                <!-- This image will now open in a modal on click -->
+                <img src="team/time.jpg" alt="Timeline" class="milestones-image" id="milestoneImage">
                 <ul class="milestones-list">
                     <li>2005: Founded the Protocol Club</li>
                     <li>2021: Hosted our first hackathon</li>
+                    <li>2023: Introduced new tech workshops</li>
+                    <li>2024: Expanded community outreach</li>
                 </ul>
             </div>
         </section>
-        
     </main>
-    <style>
-        .milestones {
-    text-align: center;
-    margin: 2rem auto;
-    font-family: 'Arial', sans-serif;
-  }
-  .timeline-image {
-    display: block;
-    margin: 0 auto; /* Centers the image horizontally */
-    width: 120px; /* Adjust to your desired size */
-    height: auto; /* Maintains aspect ratio */
-    animation: float 4s infinite alternate; /* Keeps the float animation */
-}
-.milestone-section {
-    margin-bottom: 0; /* Removes bottom margin */
-    padding-bottom: 0; /* Removes padding */
-}
 
-footer {
-    margin-top: 0; /* Removes top margin */
-    padding-top: 0; /* Removes padding */
-}
-.milestones-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  
-  .milestones-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #6a0dad;
-    margin-bottom: 1rem;
-  }
-  
-  .milestones-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-  }
-  
-
-  .milestones-text {
-    text-align: left;
-    font-size: 1rem;
-    color: #333;
-    line-height: 1.5;
-  }
-  
-  .milestones-text span {
-    display: block;
-  }
-    .milestones-text span strong {
-        font-weight: bold;
-        color: #6a0dad;
-    }
-    </style>
+    <!-- The Modal for Enlarged Image -->
+    <div id="imageModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button" id="closeModal"><i class="fas fa-times"></i></button>
+            <img src="" alt="Enlarged Milestone Image" class="modal-image-enlarged" id="enlargedImage">
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="footer-container">
-          <div class="footer-section">
-            <h3>Protocol Club</h3>
-            <p>Official computer science club of BMS College of Engineering, Bengaluru. Join us in our journey of innovation and learning.</p>
-            <div class="socials">
-                <a href="https://www.linkedin.com/company/protocol-bmsce/"><img src="logos/linkedinlogo.png" alt="LinkedIn"></a>
-                <a href="https://www.instagram.com/protocol-bmsce/"><img src="logos/instalogo.png" alt="Instagram"></a>
-                <a href="mailto:protocol.cse@bmsce.ac.in"><img src="logos/maillogo.png" alt="Gmail"></a>
+            <div class="footer-section">
+                <h3>Protocol Club</h3>
+                <p>Official computer science club of BMS College of Engineering, Bengaluru. Join us in our journey of innovation and learning.</p>
+                <div class="socials">
+                    <a href="https://www.linkedin.com/company/protocol-bmsce/"><img src="logos/linkedinlogo.png" alt="LinkedIn"></a>
+                    <a href="https://www.instagram.com/protocol-bmsce/"><img src="logos/instalogo.png" alt="Instagram"></a>
+                    <a href="mailto:protocol.cse@bmsce.ac.in"><img src="logos/maillogo.png" alt="Gmail"></a>
+                </div>
             </div>
-          </div>
-          <div class="footer-section">
-            <h3>Quick Links</h3>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="events.html">Events</a></li>
-              <li><a href="about.html">About Us</a></li>
-              <li><a href="articles.html">Articles</a></li>
-            </ul>
-          </div>
-          <div class="footer-section">
-            <h3>Contact Us</h3>
-            <p><img src="logos/maillogo.png" alt="Gmail" class="icon"> protocol.cse@bmsce.ac.in</p>
-            <p>B M S College of Engineering<br>Bull Temple Road, Basavanagudi<br>Bengaluru - 560019</p>
-          </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="articles.html">Articles</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><img src="logos/maillogo.png" alt="Gmail" class="icon"> protocol.cse@bmsce.ac.in</p>
+                <p>B M S College of Engineering<br>Bull Temple Road, Basavanagudi<br>Bengaluru - 560019</p>
+            </div>
         </div>
         <div class="footer-bottom">
-          © 2025 Protocol Club. All rights reserved.
+            © 2025 Protocol Club. All rights reserved.
         </div>
-      </footer>
-      
-    
-    <script src="../js/script.js"></script>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Theme Toggle Logic (Placeholder - you might have actual dark mode logic in abcd.js/script.js)
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', function() {
+                    document.body.classList.toggle('dark');
+                    // You might want to save the user's preference in localStorage
+                    // if (document.body.classList.contains('dark')) {
+                    //     localStorage.setItem('theme', 'dark');
+                    // } else {
+                    //     localStorage.setItem('theme', 'light');
+                    // }
+                });
+                // Apply saved theme on load
+                // if (localStorage.getItem('theme') === 'dark') {
+                //     document.body.classList.add('dark');
+                // } else {
+                //     document.body.classList.remove('dark');
+                // }
+            }
+
+
+            // Sidebar Toggle Logic
+            const sidebar = document.getElementById('sidebar');
+            const openSidebarBtn = document.getElementById('hamburger'); // Corrected ID to your HTML
+            const closeSidebarBtn = document.getElementById('close-sidebar');
+            const overlay = document.getElementById('overlay');
+
+            function toggleSidebar() {
+                sidebar.classList.toggle('open');
+                overlay.classList.toggle('active');
+            }
+
+            if (openSidebarBtn) openSidebarBtn.addEventListener('click', toggleSidebar);
+            if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', toggleSidebar);
+            if (overlay) overlay.addEventListener('click', toggleSidebar); // Close sidebar when clicking outside
+
+            // Milestone Image Modal Logic
+            const milestoneImage = document.getElementById('milestoneImage');
+            const imageModal = document.getElementById('imageModal');
+            const enlargedImage = document.getElementById('enlargedImage');
+            const closeModalBtn = document.getElementById('closeModal');
+
+            // Open modal when milestone image is clicked
+            if (milestoneImage) {
+                milestoneImage.addEventListener('click', function() {
+                    enlargedImage.src = this.src; // Set enlarged image source to the clicked image's source
+                    imageModal.classList.add('active'); // Show the modal
+                });
+            }
+
+
+            // Close modal when close button is clicked
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', function() {
+                    imageModal.classList.remove('active'); // Hide the modal
+                });
+            }
+
+
+            // Close modal when clicking outside the modal content (on the overlay)
+            if (imageModal) {
+                imageModal.addEventListener('click', function(event) {
+                    // Check if the click occurred directly on the overlay, not on the content
+                    if (event.target === imageModal) {
+                        imageModal.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
