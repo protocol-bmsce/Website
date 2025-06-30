@@ -1062,3 +1062,38 @@ main {
   color: white;
 }
 
+/* logo stylings */
+
+.fa-instagram {
+    font-size: 1.5em; /* Adjust size as needed */
+    color: #E1306C;   /* Optional: adds Instagram color */
+    transition: transform 0.3s ease;
+}
+
+.fa-instagram:hover {
+    transform: scale(1.1); /* Slightly enlarges on hover */
+}
+
+
+
+.fa-linkedin-in{
+    font-size: 1.5em; /* Adjust size as needed */
+    color: #4e79fa;   /* Optional: adds Instagram color */
+    transition: transform 0.3s ease;
+}
+
+.fa-linkedin-in:hover {
+    transform: scale(1.1); /* Slightly enlarges on hover */
+}
+
+
+.fa-envelope{
+   font-size: 1.5em; /* Adjust size as needed */
+    color: #ffffff;   /* Optional: adds Instagram color */
+    transition: transform 0.3s ease;
+}
+
+
+.fa-envelope:hover {
+    transform: scale(1.1); /* Slightly enlarges on hover */
+}
