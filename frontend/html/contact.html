@@ -4,19 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Protocol Club - Contact Us</title>
-    <link rel="stylesheet" href="../css/abcd.css">
+    <!-- Assuming abcd.css contains your header, sidebar, and general styles -->
+    <link rel="stylesheet" href="abcd.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="../js/abcd.js" defer></script>
+    <!-- Assuming abcd.js contains your sidebar and theme toggle logic -->
+    <script src="abcd.js" defer></script>
     <style>
+        /* Ensure html and body take full viewport height and enable flexbox for layout */
+        html, body {
+            min-height: 100vh; /* Make sure body takes at least full viewport height */
+            margin: 0;
+            padding: 0;
+            display: flex; /* Enable flexbox on body */
+            flex-direction: column; /* Arrange children in a column */
+            font-family: 'Poppins', sans-serif; /* Ensure Poppins font is applied */
+            color: #333; /* Default text color for the page content */
+            background-color: #f8f8f8; /* Light background for the main content area */
+        }
+
+        /* Styles for the main contact section */
         .contact {
             text-align: center;
             padding: 20px;
             color: #000;
+            flex-grow: 1; /* Allow this section to grow and push the footer down */
+            display: flex; /* Use flexbox for content alignment within the section */
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
         }
         
         .contact h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
+            color: #7a00b8; /* Purple color for headings */
         }
         
         .contact p {
@@ -26,34 +47,441 @@
         }
         
         .contact a {
-            color: #000;
+            color: #7a00b8; /* Purple color for links */
             text-decoration: none;
+            transition: color 0.3s ease;
         }
         
         .contact a:hover {
-            color: #800080;
+            color: #5a007b; /* Darker purple on hover */
             text-decoration: underline;
+        }
+
+        /* Header Styles (assuming these are in abcd.css, but including for completeness) */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to left, #211327, #020202); /* Dark gradient */
+            color: white;
+            padding: 12px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 4px 6px rgba(180, 10, 227, 0.1); /* Subtle shadow */
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            gap: 10px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #5a007b;
+            margin-right: 10px;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar a {
+            color: rgb(212, 173, 237); /* Light purple */
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            white-space: nowrap;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: #3d00b6; /* Darker purple on hover/active */
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.3rem;
+        }
+
+        .hamburger {
+            display: none; /* Hidden by default on desktop */
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.3rem;
+            margin-right: 15px;
+            order: -1; /* Forces to left of logo on mobile */
+            z-index: 1001;
+        }
+
+        /* Sidebar Styles (assuming these are in abcd.css) */
+       .sidebar {
+            position: fixed;
+            top: 0;
+            left: -100%; /* Changed from right to left */
+            width: 250px;
+            height: 100vh;
+            background: #2a2a2a; /* Darker background to match image */
+            z-index: 1000;
+            transition: left 0.3s ease; /* Transition left property */
+            padding: 1.5rem; /* Adjusted padding to match image */
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); /* Shadow from right side of sidebar */
+            overflow-y: auto; /* Allows scrolling if content is long */
+            border-radius: 10px; /* Added border-radius to match image */
+        }
+
+        .sidebar.open {
+            left: 0; /* Slides in from left when open */
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0; /* Removed gap, spacing handled by padding/margin on links */
+            margin-top: 3rem;
+        }
+
+        .sidebar-nav a {
+            color: #f0f0f0; /* Off-white text to match image */
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.8rem 1.2rem; /* Adjusted padding to match image */
+            border-radius: 8px; /* Rounded corners for menu items */
+            transition: all 0.3s;
+            margin-bottom: 0.5rem; /* Space between menu items */
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: #4a4a4a; /* Darker background on hover/active to match image */
+            color: #9370DB; /* Medium purple text on hover/active to match image */
+        }
+
+        .close-sidebar {
+            position: absolute;
+            top: 1rem;
+            right: 1rem; /* Kept on right within the sidebar */
+            background: none;
+            border: none;
+            color: white; /* White color to match image */
+            font-size: 1.8rem; /* Larger icon to match image */
+            cursor: pointer;
+        }
+
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            z-index: 998; /* Below sidebar but above other content */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Footer Styles (assuming these are in abcd.css, but including for completeness) */
+        .footer {
+            width: 100%;
+            background: linear-gradient(to right, #330245, #1f0030); /* Dark gradient */
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem; /* More padding */
+            margin-top: 0; /* Removed margin-top to allow flexbox to handle positioning */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around; /* Use space-around for distribution */
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 2.5rem; /* More gap */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px; /* Increased min-width for sections */
+            text-align: left; /* Align text left within sections */
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: #c5a1e4; /* Light purple heading */
+        }
+
+        .footer-section p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
+            color: #e0e0e0;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin: 0.6rem 0;
+        }
+
+        .footer-section ul li a {
+            color: #e0e0e0; /* Lighter link color */
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ffffff; /* White on hover */
+            text-decoration: underline;
+        }
+
+        .footer-section .socials {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            justify-content: flex-start; /* Align social icons to the left */
+        }
+
+        .footer-section .socials img {
+            width: 38px; /* Slightly larger social icons */
+            height: 38px;
+            transition: transform 0.3s ease;
+            object-fit: contain;
+        }
+
+        .footer-section .socials img:hover {
+            transform: scale(1.15);
+        }
+
+        .contact-us h2 { /* Targeting the h2 within contact-us */
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: #c5a1e4;
+            text-align: left; /* Ensure it's left aligned */
+        }
+
+        .contact-us .email,
+        .contact-us p {
+            text-align: left; /* Align contact details left */
+            font-size: 0.95rem;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+
+        .contact-us .email {
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Space between icon and text */
+            margin-bottom: 0.5rem;
+        }
+
+        .icon {
+            width: 18px; /* Slightly larger icon */
+            height: 18px;
+            vertical-align: middle;
+        }
+
+        .footer-bottom {
+            margin-top: 3rem; /* More space before copyright */
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.25); /* Stronger separator */
+            padding-top: 1.5rem;
+            color: #bbbbbb;
+            width: 100%; /* Ensure separator spans full width */
+        }
+
+        /* --- Responsive Adjustments (assuming these are in abcd.css) --- */
+        @media (max-width: 1024px) {
+            .navbar {
+                display: none;
+            }
+            .hamburger {
+                display: block;
+            }
+            .events-section h2 {
+                font-size: 2.2rem;
+            }
+            .event-container {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+            .event-box h3 {
+                font-size: 1.5rem;
+            }
+            .event-image {
+                height: 180px;
+            }
+            .event-box p {
+                font-size: 0.95rem;
+            }
+            .footer-section {
+                min-width: 45%; /* Two columns for footer on tablets */
+            }
+            .footer-container {
+                justify-content: space-around;
+                gap: 2rem;
+            }
+            .footer-section h3, .contact-us h2 {
+                font-size: 1.2rem;
+                text-align: center; /* Center headings */
+            }
+            .footer-section p, .footer-section ul, .contact-us p, .contact-us .email {
+                text-align: center; /* Center text/lists */
+                padding-left: 0;
+            }
+            .footer-section .socials {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 3%;
+            }
+            .logo {
+                font-size: 1.1rem;
+            }
+            .header-logo {
+                width: 35px;
+                height: 35px;
+            }
+            .events-section {
+                padding: 1.5rem;
+            }
+            .events-section h2 {
+                font-size: 2rem;
+            }
+            .event-container {
+                grid-template-columns: 1fr; /* Single column on mobile */
+                gap: 1.5rem;
+            }
+            .event-box {
+                padding: 1.5rem;
+            }
+            .event-box h3 {
+                font-size: 1.4rem;
+            }
+            .event-image {
+                height: 160px;
+            }
+            .event-box .event-date {
+                font-size: 0.9rem;
+            }
+            .event-box p {
+                font-size: 0.9rem;
+            }
+            .footer-section {
+                min-width: 100%; /* Stack footer sections vertically */
+                text-align: center;
+            }
+            .footer-section .socials {
+                justify-content: center;
+            }
+             .footer-section h3, .contact-us h2 {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 80%;
+            }
+            .logo {
+                font-size: 1rem;
+            }
+            .header-logo {
+                width: 30px;
+                height: 30px;
+            }
+            .hamburger {
+                font-size: 1.3rem;
+            }
+            .events-section {
+                padding: 1rem;
+            }
+            .events-section h2 {
+                font-size: 1.8rem;
+            }
+            .event-box {
+                padding: 1rem;
+            }
+            .event-box h3 {
+                font-size: 1.2rem;
+            }
+            .event-image {
+                height: 140px;
+            }
+            .event-box .event-date {
+                font-size: 0.85rem;
+            }
+            .event-box p {
+                font-size: 0.85rem;
+            }
+             .footer-section h3, .contact-us h2 {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
     <header class="header">
-                    <button id="hamburger" class="hamburger">&#9776;</button>
-
         <div class="header-left">
-            <!-- <button id="hamburger" class="hamburger">&#9776;</button> -->
+            <button id="hamburger" class="hamburger">&#9776;</button>
             <div class="logo">
                 <img src="logos/proto.png" alt="Logo" class="header-logo">
                 <span>Protocol</span>
             </div>
         </div>
         <nav id="navbar" class="navbar">
-            <a href="../index.html" class="active">Home</a>
+            <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="events.html">Events</a>
             <a href="articles.html">Articles</a>
             <a href="gallery.html">Gallery</a>
-            <a href="contact.html">Contact</a>
+            <a href="contact.html" class="active">Contact</a>
         </nav>
         <div class="header-right">
             <button id="theme-toggle" class="theme-toggle">🌓</button>
@@ -63,7 +491,7 @@
     <aside id="sidebar" class="sidebar">
         <button id="close-sidebar" class="close-sidebar">&times;</button>
         <nav class="sidebar-nav">
-            <a href="abcd.html" class="active">Home</a>
+            <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="events.html">Events</a>
             <a href="articles.html">Articles</a>
@@ -71,6 +499,9 @@
             <a href="contact.html">Contact</a>
         </nav>
     </aside>
+    <!-- Overlay for sidebar, if used -->
+    <div class="overlay" id="overlay"></div>
+
     <section class="contact">
         <h1>Contact Us</h1>
         <p>Email: <a href="mailto:protocol.cse@bmsce.ac.in">protocol.cse@bmsce.ac.in</a></p>
