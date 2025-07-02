@@ -634,6 +634,136 @@ body {
         font-size: 0.85rem;
     }
 }
+/* Footer Container Styles */
+footer {
+    background-color: #311B51; /* Deep purple background as seen in the image */
+    color: #fff; /* White text color */
+    padding: 40px 0; /* Add top/bottom padding, no horizontal padding here */
+    font-family: Arial, sans-serif; /* Adjust font to match your site's typography */
+    text-align: center; /* Center align text within the footer sections */
+    position: relative; /* Needed for any absolute positioning if you add elements later */
+    width: 100%; /* Ensure it spans full width */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+/* Inner Container for main footer content (excluding copyright) */
+.footer-content {
+    display: flex; /* Use flexbox for distribution */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    justify-content: space-around; /* Distribute items with space around them */
+    align-items: flex-start; /* Align items to the start of the cross axis (top) */
+    max-width: 1200px; /* Max width for content to prevent it from spreading too wide */
+    margin: 0 auto; /* Center the content horizontally */
+    padding: 0 20px; /* Add horizontal padding to create space from the ends */
+    box-sizing: border-box;
+}
+
+/* Styling for each major section within the footer-content */
+.footer-section {
+    flex: 1; /* Allow sections to grow and shrink */
+    min-width: 250px; /* Minimum width before wrapping */
+    padding: 20px; /* Padding inside each section */
+    box-sizing: border-box;
+    text-align: center; /* Center content within each section */
+}
+
+.footer-section h3 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.footer-section p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    font-size: 0.9em;
+}
+
+/* Social Icons */
+.social-icons {
+    margin-top: 15px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+    color: #fff;
+    font-size: 24px; /* Adjust icon size as needed */
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px);
+}
+
+/* Quick Links Specific Styling */
+.footer-section.quick-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section.quick-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section.quick-links ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+.footer-section.quick-links ul li a:hover {
+    color: #007bff; /* Example hover color for links */
+}
+
+/* Contact Us Specific Styling */
+.footer-section.contact-us .contact-info {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the email and address lines */
+    margin-bottom: 10px;
+}
+
+.footer-section.contact-us .contact-info .icon {
+    font-size: 20px; /* Size of email icon */
+    margin-right: 10px;
+}
+
+.footer-section.contact-us .contact-info a,
+.footer-section.contact-us .contact-info p {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+
+/* Copyright Section */
+.copyright {
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle line above copyright */
+    padding-top: 20px;
+    margin-top: 30px;
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.7); /* Slightly faded copyright text */
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* Stack sections vertically on smaller screens */
+        align-items: center; /* Center items when stacked */
+    }
+
+    .footer-section {
+        width: 100%; /* Full width when stacked */
+        padding: 20px 10px; /* Adjust padding */
+    }
+}
 
     </style>
 </head>
