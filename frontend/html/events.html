@@ -9,7 +9,7 @@
     <!-- Font Awesome for icons (e.g., hamburger, close, theme toggle) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Reset default styles to ensure consistency */
+         /* Reset default styles to ensure consistency */
         body,
         h1,
         h2,
@@ -32,10 +32,11 @@
             background-color: #f8f8f8; /* Light background */
         }
 
-        .events-section h2 {
-    font-weight: 800; /* Makes the font extra bold */
-    /* color: #7a00b8;  (Keeping the existing color) */
-}
+        /* Theme-specific body styles (assuming .dark class is toggled by JS) */
+        body.dark {
+            background-color: #1a1a1a; /* Dark background for dark theme */
+            color: #f0f0f0; /* Light text for dark theme */
+        }
 
         /* --- Global Styles --- */
         .subheading {
@@ -44,6 +45,26 @@
             margin-bottom: 1rem;
             text-align: center;
             color: #7a00b8; /* Purple-ish color */
+        }
+
+        /* Gradient Button Style */
+        .btn.gradient-button {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            background: linear-gradient(45deg, #8A2BE2, #A020F0); /* Purple gradient */
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(128, 0, 128, 0.4); /* Subtle shadow for depth */
+        }
+
+        .btn.gradient-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(128, 0, 128, 0.6); /* More prominent shadow on hover */
         }
 
         /* --- Header & Navigation Styles --- */
@@ -135,16 +156,16 @@
         .sidebar {
             position: fixed;
             top: 0;
-            left: -100%; /* Changed from right to left */
+            left: -100%; /* Slides from left */
             width: 250px;
             height: 100vh;
-            background: #2a2a2a; /* Darker background to match image */
+            background: #2a2a2a; /* Darker background */
             z-index: 1000;
-            transition: left 0.3s ease; /* Transition left property */
-            padding: 1.5rem; /* Adjusted padding to match image */
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); /* Shadow from right side of sidebar */
-            overflow-y: auto; /* Allows scrolling if content is long */
-            border-radius: 10px; /* Added border-radius to match image */
+            transition: left 0.3s ease;
+            padding: 1.5rem;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+            border-radius: 0 10px 10px 0; /* Rounded corners on right side */
         }
 
         .sidebar.open {
@@ -154,34 +175,33 @@
         .sidebar-nav {
             display: flex;
             flex-direction: column;
-            gap: 0; /* Removed gap, spacing handled by padding/margin on links */
             margin-top: 3rem;
         }
 
         .sidebar-nav a {
-            color: #f0f0f0; /* Off-white text to match image */
+            color: #f0f0f0;
             text-decoration: none;
             font-size: 1rem;
-            padding: 0.8rem 1.2rem; /* Adjusted padding to match image */
-            border-radius: 8px; /* Rounded corners for menu items */
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
             transition: all 0.3s;
-            margin-bottom: 0.5rem; /* Space between menu items */
+            margin-bottom: 0.5rem;
         }
 
         .sidebar-nav a:hover,
         .sidebar-nav a.active {
-            background: #4a4a4a; /* Darker background on hover/active to match image */
-            color: #9370DB; /* Medium purple text on hover/active to match image */
+            background: #4a4a4a;
+            color: #9370DB; /* Medium purple */
         }
 
         .close-sidebar {
             position: absolute;
             top: 1rem;
-            right: 1rem; /* Kept on right within the sidebar */
+            right: 1rem;
             background: none;
             border: none;
-            color: white; /* White color to match image */
-            font-size: 1.8rem; /* Larger icon to match image */
+            color: white;
+            font-size: 1.8rem;
             cursor: pointer;
         }
 
@@ -191,8 +211,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-            z-index: 998; /* Below sidebar but above other content */
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s, visibility 0.3s;
@@ -203,46 +223,166 @@
             visibility: visible;
         }
 
-        /* --- Events Section Styles (from previous context, kept for consistency) --- */
-        .events-section {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 2rem auto;
-            text-align: center;
-        }
-
-        .events-section h2 {
-            font-size: 2.8rem;
-            color: #31033e;
-            margin-bottom: 2rem;
-        }
-
-        .event-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem; /* Increased gap for better spacing */
+        /* --- Hero Section Styles --- */
+        .hero {
+            display: flex;
             justify-content: center;
-            align-items: stretch; /* Ensure boxes stretch to same height */
-            padding: 1rem 0;
+            align-items: center;
+            min-height: 80vh; /* Adjust as needed */
+            background: #111; /* Dark background for hero section */
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            box-sizing: border-box;
         }
 
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-            z-index: 998; /* Below sidebar but above other content */
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
         }
 
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
+        @media (min-width: 769px) {
+            .hero-container {
+                flex-direction: row;
+                justify-content: space-around;
+                text-align: left;
+            }
+        }
+
+        .hero-text-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; /* Center text on smaller screens */
+        }
+
+        @media (min-width: 769px) {
+            .hero-text-area {
+                align-items: flex-start; /* Align text left on larger screens */
+            }
+        }
+
+        .club-info {
+            margin-bottom: 15px;
+        }
+
+        .club-name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #c5a1e4; /* Light purple */
+            text-shadow: 0 0 10px rgba(197, 161, 228, 0.5);
+            margin-bottom: 5px;
+        }
+
+        .club-location {
+            font-size: 1.1rem;
+            color: #bbb;
+        }
+
+        .hero-text-area h2 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-text-area h2 .changing-word {
+            color: #8A2BE2; /* A vibrant purple */
+        }
+
+        .hero-text-area p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .hero-logo-area {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Styling for the circular container of the logo */
+        .neon-circle {
+            width: 350px; /* Initial size for larger screens. Adjust as needed. */
+            height: 350px; /* Must match width for a perfect circle */
+            border-radius: 50%;
+            background-color: #000; /* Assuming a black background for the circle */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* Ensure it reduces slightly and doesn't touch screen borders */
+            max-width: 80vw; /* Max width will be 80% of viewport width */
+            max-height: 80vw; /* Max height will be 80% of viewport height (to keep it circular) */
+
+            /* Add a subtle transition for smoother resizing or interactive effects */
+            transition: all 0.5s ease-out; /* Apply transition to all properties over 0.5 seconds */
+
+            /* Glow effect */
+            box-shadow: 0 0 15px #00FFFF, /* Cyan glow */
+                        0 0 30px #00FFFF,
+                        0 0 45px #00FFFF,
+                        0 0 60px #00FFFF;
+        }
+
+        /* Styling for the logo image itself to overflow the circle */
+        .hero-logo-image {
+            width: 115%; /* Make the image slightly larger than its container */
+            height: 115%; /* Make the image slightly larger than its container */
+            object-fit: cover; /* Ensures the image fills the element, cropping if needed */
+            display: block; /* Removes any extra space below the image */
+        }
+
+        /* --- Countdown Section Styles --- */
+        .countdown {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #222; /* Darker background for countdown */
+            color: #eee;
+        }
+
+        .countdown-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #7a00b8; /* Purple shade */
+            margin-bottom: 40px;
+        }
+
+        #timer {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            margin-bottom: 50px;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+        }
+
+        #timer div {
+            background-color: #333;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            min-width: 120px;
+        }
+
+        #timer span {
+            display: block;
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #00FFFF; /* Neon blue color */
+            margin-bottom: 5px;
+        }
+
+        #timer small {
+            font-size: 1.1rem;
+            color: #bbb;
         }
 
         /* --- Events Section Styles --- */
@@ -257,11 +397,11 @@
             font-size: 2.8rem;
             color: #31033e;
             margin-bottom: 2rem;
+            font-weight: 800; /* Extra bold */
         }
 
         .event-container {
             display: grid;
-            /* Made placeholders a bit smaller */
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2.5rem; /* Increased gap for better spacing */
             justify-content: center;
@@ -290,19 +430,44 @@
             border-color: #24b8b8; /* Slightly brighter on hover */
         }
 
+        /* --- Consolidated and Improved Event Image Styles --- */
         .event-image {
             width: 100%;
-            height: 220px; /* Consistent height for images */
-            object-fit: cover;
-            border-radius: 8px; /* Match box border radius */
-            margin-bottom: 1.2rem; /* More space below image */
+            height: 280px; /* Significant default height for mobile */
+            object-fit: contain; /* Crucial: Ensures the entire image is visible without cropping */
+            border-radius: 8px;
+            margin-bottom: 1.2rem;
+            transition: transform 0.3s ease;
+            cursor: pointer; /* Indicates image is clickable */
         }
+
+        /* Responsive image sizing for larger screens */
+        @media (min-width: 481px) { /* For small tablets and up */
+            .event-image {
+                height: 250px;
+            }
+        }
+
+        @media (min-width: 769px) { /* For larger tablets and small laptops */
+            .event-image {
+                height: 300px;
+            }
+        }
+
+        @media (min-width: 1025px) { /* For desktops */
+            .event-image {
+                height: 350px;
+            }
+        }
+        /* --- End Event Image Styles --- */
+
 
         .event-box h3 {
             font-size: 1.8rem; /* Larger event titles */
             color: #00e0ff; /* Neon blue for titles */
             margin-bottom: 0.8rem;
             font-weight: 700;
+            text-shadow: 0 0 8px rgba(0, 224, 255, 0.3); /* Neon glow effect */
         }
 
         .event-box .event-date {
@@ -320,21 +485,22 @@
             flex-grow: 1; /* Allows description to take available space */
         }
 
-        /* --- Modal Styles --- */
+        /* --- Enhanced Modal Styles --- */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.85); /* Darker overlay for better focus */
+            background-color: rgba(0, 0, 0, 0.92); /* Darker overlay */
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000; /* On top of everything */
-            opacity: 0; /* Start hidden */
-            visibility: hidden; /* Start hidden */
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
+            backdrop-filter: blur(5px); /* Blur effect behind modal */
         }
 
         .modal-overlay.active {
@@ -344,75 +510,93 @@
 
         .modal-content {
             position: relative;
-            background-color: #fff;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); /* Stronger shadow */
-            max-width: 90vw; /* Max width relative to viewport */
-            max-height: 90vh; /* Max height relative to viewport */
+            background-color: #1a1a2e; /* Darker modal background */
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(0, 224, 255, 0.2); /* Neon glow effect */
+            max-width: 90vw;
+            max-height: 90vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            transform: scale(0.85); /* Start slightly smaller */
-            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bounce effect */
+            transform: scale(0.9);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0, 224, 255, 0.1); /* Subtle border */
         }
 
         .modal-overlay.active .modal-content {
-            transform: scale(1); /* Scale to full size when active */
+            transform: scale(1);
         }
 
         .modal-image-enlarged {
-            max-width: 100%;
-            max-height: 75vh; /* Max height for the image within the modal */
+            max-width: 85vw;
+            max-height: 80vh;
             display: block;
-            border-radius: 8px; /* Rounded corners for the enlarged image */
+            border-radius: 8px;
             object-fit: contain; /* Ensures entire image is visible without cropping */
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
         }
 
         .modal-close-button {
             position: absolute;
-            top: 10px;
+            top: 15px;
             right: 15px;
-            background: none;
+            background: rgba(0, 0, 0, 0.5);
             border: none;
-            font-size: 2.2rem; /* Slightly larger close icon */
-            color: #666; /* Softer color */
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            color: #fff;
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .modal-close-button:hover {
-            color: #dc3545; /* Red on hover */
-            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        /* Modal caption text */
+        .modal-caption {
+            color: #d0d0d0;
+            margin-top: 1rem;
+            text-align: center;
+            max-width: 80%;
+            font-size: 0.95rem;
         }
 
         /* --- Footer Styles --- */
         .footer {
-            width: 100%;
-            background: linear-gradient(to right, #330245, #1f0030); /* Dark gradient */
+            background: linear-gradient(to right, #330245, #1f0030); /* Dark gradient as previously defined */
             color: white;
-            text-align: center;
-            padding: 2.5rem 1rem; /* More padding */
-            margin-top: 2rem; /* Add some margin from content above */
+            padding: 2.5rem 1rem;
+            margin-top: 2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
+            box-sizing: border-box; /* Ensures padding is included in width */
         }
 
         .footer-container {
             display: flex;
-            justify-content: space-around; /* Use space-around for distribution */
+            justify-content: space-around;
             align-items: flex-start;
             flex-wrap: wrap;
-            gap: 2.5rem; /* More gap */
+            gap: 2.5rem;
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .footer-section {
             flex: 1;
-            min-width: 250px; /* Increased min-width for sections */
-            text-align: left; /* Align text left within sections */
+            min-width: 250px;
+            text-align: left;
         }
 
         .footer-section h3 {
@@ -457,7 +641,7 @@
         }
 
         .footer-section .socials img {
-            width: 38px; /* Slightly larger social icons */
+            width: 38px;
             height: 38px;
             transition: transform 0.3s ease;
             object-fit: contain;
@@ -467,41 +651,32 @@
             transform: scale(1.15);
         }
 
-        .contact-us h2 { /* Targeting the h2 within contact-us */
-            font-size: 1.3rem;
-            margin-bottom: 1.2rem;
-            color: #c5a1e4;
-            text-align: left; /* Ensure it's left aligned */
-        }
-
-        .contact-us .email,
-        .contact-us p {
-            text-align: left; /* Align contact details left */
-            font-size: 0.95rem;
-            color: #e0e0e0;
-            line-height: 1.7;
-        }
-
-        .contact-us .email {
+        .footer-section .contact-info { /* Replaced .contact-us with .contact-info for better structure */
             display: flex;
             align-items: center;
             gap: 8px; /* Space between icon and text */
             margin-bottom: 0.5rem;
         }
 
+        .footer-section .contact-info p {
+            text-align: left; /* Align contact details left */
+        }
+
         .icon {
             width: 18px; /* Slightly larger icon */
             height: 18px;
             vertical-align: middle;
+            object-fit: contain;
         }
 
         .footer-bottom {
-            margin-top: 3rem; /* More space before copyright */
+            margin-top: 3rem;
             font-size: 0.85rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.25); /* Stronger separator */
+            border-top: 1px solid rgba(255, 255, 255, 0.25);
             padding-top: 1.5rem;
             color: #bbbbbb;
-            width: 100%; /* Ensure separator spans full width */
+            width: 100%;
+            text-align: center;
         }
 
         /* --- Responsive Adjustments --- */
@@ -516,35 +691,33 @@
                 font-size: 2.2rem;
             }
             .event-container {
-                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Adjusted minmax for smaller boxes */
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
                 gap: 2rem;
             }
             .event-box h3 {
                 font-size: 1.5rem;
             }
-            .event-image {
-                height: 180px;
-            }
             .event-box p {
                 font-size: 0.95rem;
             }
             .footer-section {
-                min-width: 45%; /* Two columns for footer on tablets */
+                min-width: 45%;
             }
             .footer-container {
                 justify-content: space-around;
                 gap: 2rem;
             }
-            .footer-section h3, .contact-us h2 {
+            .footer-section h3 {
                 font-size: 1.2rem;
-                text-align: center; /* Center headings */
+                text-align: center; /* Center headings on tablet */
             }
-            .footer-section p, .footer-section ul, .contact-us p, .contact-us .email {
-                text-align: center; /* Center text/lists */
+            .footer-section p, .footer-section ul, .footer-section .contact-info {
+                text-align: center; /* Center text/lists/contact info on tablet */
+                justify-content: center; /* For flex items like .contact-info */
                 padding-left: 0;
             }
             .footer-section .socials {
-                justify-content: center; /* Center social icons */
+                justify-content: center; /* Center social icons on tablet */
             }
         }
 
@@ -558,6 +731,18 @@
             .header-logo {
                 width: 35px;
                 height: 35px;
+            }
+            .hero-text-area h2 {
+                font-size: 2.2rem;
+            }
+            .hero-text-area p {
+                font-size: 1rem;
+            }
+            .neon-circle {
+                width: 280px;
+                height: 280px;
+                max-width: 70vw;
+                max-height: 70vw;
             }
             .events-section {
                 padding: 1.5rem;
@@ -575,9 +760,6 @@
             .event-box h3 {
                 font-size: 1.4rem;
             }
-            .event-image {
-                height: 160px;
-            }
             .event-box .event-date {
                 font-size: 0.9rem;
             }
@@ -588,10 +770,11 @@
                 min-width: 100%; /* Stack footer sections vertically */
                 text-align: center;
             }
-            .footer-section .socials {
-                justify-content: center;
+            .footer-section .socials,
+            .footer-section .contact-info {
+                justify-content: center; /* Center everything when stacked */
             }
-             .footer-section h3, .contact-us h2 {
+            .footer-section h3 {
                 font-size: 1.1rem;
             }
         }
@@ -610,6 +793,34 @@
             .hamburger {
                 font-size: 1.3rem;
             }
+            .hero-text-area h2 {
+                font-size: 1.8rem;
+            }
+            .hero-text-area p {
+                font-size: 0.9rem;
+            }
+            .neon-circle {
+                width: 200px;
+                height: 200px;
+                max-width: 60vw;
+                max-height: 60vw;
+            }
+            .hero-container {
+                padding: 15px;
+            }
+            .countdown-title {
+                font-size: 2rem;
+            }
+            #timer div {
+                min-width: 90px;
+                padding: 15px 20px;
+            }
+            #timer span {
+                font-size: 2.5rem;
+            }
+            #timer small {
+                font-size: 0.9rem;
+            }
             .events-section {
                 padding: 1rem;
             }
@@ -622,200 +833,30 @@
             .event-box h3 {
                 font-size: 1.2rem;
             }
-            .event-image {
-                height: 140px;
-            }
             .event-box .event-date {
                 font-size: 0.85rem;
             }
             .event-box p {
                 font-size: 0.85rem;
             }
-             .footer-section h3, .contact-us h2 {
+            .footer-section h3 {
                 font-size: 1rem;
             }
+            .footer-section p, .footer-section ul li a {
+                font-size: 0.85rem;
+            }
+            .footer-section .socials img {
+                width: 30px;
+                height: 30px;
+            }
+            .icon {
+                width: 15px;
+                height: 15px;
+            }
+            .footer-bottom {
+                font-size: 0.75rem;
+            }
         }
-        .footer {
-    background-color: #0c0c2c; /* Deep navy color */
-    color: #fff;
-    padding: 2rem 1rem;
-    text-align: center;
-    margin-top: 0; /* Ensures no extra space above from previous elements */
-    display: flex; /* Added for flex column on smaller screens */
-    flex-direction: column; /* Added for flex column on smaller screens */
-    align-items: center; /* Added for flex column on smaller screens */
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap; /* Allows sections to wrap to the next line */
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%; /* Ensure container takes full width up to max-width */
-}
-
-.footer-section {
-    flex: 1; /* Allows sections to grow and shrink */
-    min-width: 200px; /* Minimum width before wrapping */
-    text-align: left; /* Default text alignment */
-}
-
-.footer-section h3 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    color: #c5a1e4; /* Added specific color for consistency */
-}
-
-.footer-section p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    color: #e0e0e0; /* Added specific color for consistency */
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-section ul li {
-    margin: 0.5rem 0;
-}
-
-.footer-section ul li a {
-    color: #c5a1e4; /* Subtle lavender color for links */
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.3s;
-}
-
-.footer-section ul li a:hover {
-    color: #ffffff; /* White on hover */
-}
-
-.footer-section .socials {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-    justify-content: center; /* Center social icons within their section */
-    align-items: center;
-}
-
-.footer-section .socials img {
-    width: 48px;
-    height: 35px;
-    transition: transform 0.3s;
-    object-fit: contain; /* Ensures the entire image fits */
-}
-
-.footer-section .socials img:hover {
-    transform: scale(1.2);
-}
-
-.footer-bottom {
-    margin-top: 2rem;
-    font-size: 0.8rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    padding-top: 1rem;
-    width: 100%; /* Ensure the border spans full width */
-    color: #bbbbbb; /* Adjusted color for copyright text */
-}
-
-.icon {
-    width: 40px;
-    height: 30px;
-    margin-right: 0.5rem;
-    vertical-align: middle;
-    /* justify-content: center; - This isn't valid CSS for 'icon' directly, used in flex parent */
-    object-fit: contain; /* Ensures icon fits well */
-}
-
-.footer-logo {
-    width: 15px; /* Adjust logo size */
-    height: 15px;
-    border-radius: 50%;
-    border: 3px solid #3b0051;
-    /* justify-content: center; - This isn't valid CSS for 'footer-logo' directly */
-    object-fit: cover; /* Ensures image covers area */
-}
-
-/* --- Responsive Adjustments --- */
-
-/* For tablets and smaller desktops (e.g., 1024px to 768px) */
-@media (max-width: 1024px) {
-    .footer-container {
-        gap: 1.5rem;
-    }
-    .footer-section {
-        flex: 1 1 calc(50% - 1.5rem); /* Two columns per row, accounting for gap */
-        min-width: unset; /* Remove min-width to allow calculation to take over */
-    }
-    .footer-section h3,
-    .footer-section p,
-    .footer-section ul,
-    .footer-section .socials {
-        text-align: center; /* Center align text/items within sections */
-        justify-content: center; /* Center social icons */
-    }
-}
-
-/* For mobile devices (e.g., up to 767px) */
-@media (max-width: 767px) {
-    .footer {
-        padding: 1.5rem 0.8rem; /* Reduce padding */
-    }
-    .footer-container {
-        flex-direction: column; /* Stack sections vertically */
-        gap: 1.5rem; /* Space between stacked sections */
-        align-items: center; /* Center items when stacked */
-    }
-    .footer-section {
-        width: 100%; /* Take full width */
-        max-width: 300px; /* Optional: limit max width for readability on very wide phones */
-        text-align: center; /* Center align all content in stacked sections */
-    }
-    .footer-section h3 {
-        font-size: 1.1rem; /* Slightly smaller headings */
-        margin-bottom: 0.8rem;
-    }
-    .footer-section p,
-    .footer-section ul li a {
-        font-size: 0.85rem; /* Smaller text */
-    }
-    .footer-section .socials img {
-        width: 40px; /* Slightly smaller social icons */
-        height: 30px;
-    }
-    .icon {
-        width: 30px; /* Smaller icon */
-        height: 25px;
-    }
-    .footer-bottom {
-        margin-top: 1.5rem;
-        padding-top: 0.8rem;
-        font-size: 0.75rem; /* Smaller copyright text */
-    }
-}
-
-
-/* Specific adjustment for the contact section, assuming 'contact-us' is a class you might use within a footer-section for contact details */
-.contact-us p,
-.contact-us .email {
-    text-align: left; /* Keep contact details left-aligned if they are in their own section */
-    display: flex; /* Apply flex to align icon and text */
-    align-items: center;
-    justify-content: center; /* Center the contact line itself */
-}
-
-/* Override for mobile if contact-us is part of a footer-section that gets centered */
-@media (max-width: 767px) {
-    .contact-us p,
-    .contact-us .email {
-        justify-content: center; /* Center align text/icon group */
-    }
-}
     </style>
 </head>
 <body>
