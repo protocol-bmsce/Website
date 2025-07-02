@@ -49,6 +49,9 @@
             min-height: 100vh; /* Ensure it covers full viewport height */
             transition: background 0.3s ease, color 0.3s ease; /* Smooth theme transition */
         }
+        .card-content p {
+    font-weight: 500; /* You can adjust this value (e.g., 600 for semi-bold, 700 for bold) */
+}
 
         /* Dark mode specific styles */
         body.dark {
@@ -148,7 +151,10 @@
         .mr-1 { margin-right: 0.25rem; }
         .mr-2 { margin-right: 0.5rem; }
         .mr-3 { margin-right: 0.75rem; }
-
+.mb-12 {
+    margin-bottom: 3rem;
+    font-weight: 525; /* Increased significantly from typical bold (700) */
+}
         .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
         .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
         .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
@@ -802,273 +808,6 @@
             visibility: visible;
         }
 
-        /* Quiz Modal Styles */
-        .quiz-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .quiz-modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        .quiz-modal-content {
-            background-color: #f2f2f2; /* Light grey background */
-            padding: 2rem;
-            border-radius: 0.5rem; /* Rounded corners */
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-            transform: scale(0.9);
-            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-            color: #333; /* Default text color for modal content */
-        }
-
-        .quiz-modal-overlay.active .quiz-modal-content {
-            transform: scale(1);
-        }
-
-        .quiz-modal-close-button {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: #666;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .quiz-modal-close-button:hover {
-            color: #dc3545;
-        }
-
-        .quiz-question {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
-            color: var(--main-text-light);
-        }
-
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .quiz-next-button {
-            background: linear-gradient(to right, #6a0dad, #9400d3);
-            color: rgb(235, 235, 191);
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 0.375rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .quiz-next-button:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-        .quiz-results {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-top: 1.5rem;
-            color: var(--main-text-light);
-        }
-        .quiz-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(67, 62, 62, 0.279); /* Darker overlay for better focus */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .quiz-modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .quiz-modal-content {
-            background-color: #575657; /* Solid dark grey background */
-            padding: 2rem;
-            border-radius: 0.5rem; /* Rounded corners */
-            box-shadow: 0 5px 20px rgba(43, 42, 42, 0.6); /* Stronger shadow */
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-            transform: scale(0.9);
-            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-            color: #f2f2f2; /* Default text color for modal content */
-        }
-        #featuredArticlesSection h2 { color: #3d0345; }
-
-        .quiz-modal-overlay.active .quiz-modal-content {
-            transform: scale(1);
-        }
-
-        .quiz-modal-close-button {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: #f2f2f2; /* White close button */
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .quiz-modal-close-button:hover {
-            color: #dc3545; /* Red on hover */
-        }
-
-        .quiz-question {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
-            color: #f2f2f2; /* White question text */
-        }
-
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .quiz-option {
-            background-color: rgba(255, 255, 255, 0.1); /* Light grey, slightly transparent */
-            border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
-            border-radius: 0.5rem; /* Rounded corners */
-            padding: 1rem 1.5rem; /* Increased padding */
-            cursor: pointer;
-            transition: background-color 0.2s ease, border-color 0.2s ease;
-            text-align: left;
-            font-size: 1rem;
-            color: #f2f2f2; /* White option text */
-        }
-
-        .quiz-option:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .quiz-option.selected {
-            border-color: var(--primary-gradient-end); /* Purple border */
-            background-color: rgba(139, 92, 246, 0.2); /* Purple transparent background */
-        }
-
-        .quiz-option.correct {
-            background-color: #28a745; /* Solid green */
-            border-color: #28a745; /* Green border */
-            color: #fff; /* White text */
-        }
-
-        .quiz-option.incorrect {
-            background-color: #dc3545; /* Solid red */
-            border-color: #dc3545; /* Red border */
-            color: #fff; /* White text */
-        }
-
-        .quiz-feedback {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-top: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .quiz-feedback.correct {
-            color: #4ade80; /* Lighter green for dark background */
-        }
-
-        .quiz-feedback.incorrect {
-            color: #f87171; /* Lighter red for dark background */
-        }
-
-        .quiz-next-button {
-            background: linear-gradient(to right, #6a0dad, #9400d3);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 0.375rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .quiz-next-button:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-        .quiz-results {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-top: 1.5rem;
-            color: #f2f2f2; /* White results text */
-        }
-
-        /* Dark mode for quiz */
-        body.dark .quiz-modal-content {
-            background-color: #2a2a2a;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
-        }
-
-        body.dark .quiz-question,
-        body.dark .quiz-option {
-            color: var(--main-text-dark);
-        }
-
-        body.dark .quiz-option {
-            background-color: #3a3a3a;
-            border-color: #555;
-        }
-
-        body.dark .quiz-option:hover {
-            background-color: #4a4a4a;
-        }
-
-        body.dark .quiz-option.selected {
-            border-color: #a020f0;
-            background-color: #4a2a5a;
-        }
-
-        body.dark .quiz-option.correct {
-            background-color: #1a4a2a;
-            border-color: #28a745;
-            color: #d4edda;
-        }
-
-        body.dark .quiz-option.incorrect {
-            background-color: #5a1a1a;
-            border-color: #dc3545;
-            color: #f8d7da;
-        }
-
         body.dark .quiz-results {
             color: var(--main-text-dark);
         }
@@ -1093,6 +832,7 @@
     animation: fadeInUp 0.6s ease-out forwards;
     opacity: 0; /* Start invisible */
 }
+
     </style>
 </head>
 <body>
@@ -1161,19 +901,7 @@
     </div>
 
     <!-- Quiz Pop-up Modal -->
-    <div id="quizModal" class="quiz-modal-overlay">
-        <div class="quiz-modal-content">
-            <button id="closeQuizModal" class="quiz-modal-close-button"><i class="fas fa-times"></i></button>
-            <h2 class="quiz-question" id="quizQuestion"></h2>
-            <div class="quiz-options" id="quizOptions">
-                <!-- Quiz options will be injected here by JS -->
-            </div>
-            <div class="quiz-feedback" id="quizFeedback"></div>
-            <button id="quizNextButton" class="quiz-next-button">Next</button>
-            <div class="quiz-results" id="quizResults"></div>
-        </div>
-    </div>
-
+    
     <!-- Footer added -->
     <footer class="footer">
         <div class="footer-container">
