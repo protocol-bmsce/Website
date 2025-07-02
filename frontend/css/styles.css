@@ -293,7 +293,7 @@ body.dark {
 .sidebar {
     position: fixed;
     top: 0;
-    left: -250px; 
+    right: -250px;
     width: 250px;
     height: 100%;
     background: #333;
@@ -302,10 +302,9 @@ body.dark {
     flex-direction: column;
     gap: 1rem;
     padding: 2rem 1rem;
-    transition: left 0.3s; 
+    transition: right 0.3s;
     z-index: 1000;
 }
-
 
 .sidebar-nav a {
     display: block;
@@ -487,7 +486,7 @@ footer .socials img:hover {
         flex-direction: column;
         gap: 1rem;
         padding: 2rem 1rem;
-        transition: left 0.3s;
+        transition: right 0.3s;
         z-index: 1000;
     }
     
@@ -801,3 +800,9 @@ footer .socials img:hover {
     }
     /* Adjust for extra small devices */
    
+    .countdown-title {
+    color: #7a00b8; /* Example color: a purple shade */
+    /* You can add other styles here if needed, e.g., */
+    /* font-weight: bold; */
+    /* font-size: 2em; */
+}
