@@ -4,169 +4,1136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
-    <link rel="stylesheet" href="../css/stylesgallery.css">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/abcd.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="../js/script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons (e.g., hamburger, close, theme toggle) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
 
-    <!-- For logos from fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
+    font-weight: 400; /* Explicitly set body text to normal for consistency */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to left, #211327, #020202);
+    color: white;
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between hamburger and logo */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: 700; /* Already bold, keeping as is */
+    gap: 8px; /* Space between logo image and text */
+}
+
+.logo-text {
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.header-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #5a007b;
+}
+
+.header-right {
+    font-size: 1.4rem;
+    font-weight: 700; /* Already bold, keeping as is */
+    color: white;
+}
+
+/* Remove the navbar as it's not shown in the image */
+.navbar {
+    display: none;
+}
+
+.hamburger {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: block; /* Always show hamburger for the desired layout */
+    margin-right: 10px; /* Space between hamburger and logo */
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Changed from right to left */
+    width: 250px;
+    height: 100vh;
+    background: #2a2a2a; /* Darker background to match image */
+    z-index: 1000;
+    transition: left 0.3s ease; /* Transition left property */
+    padding: 1.5rem; /* Adjusted padding to match image */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); /* Shadow from right side of sidebar */
+    overflow-y: auto; /* Allows scrolling if content is long */
+    border-radius: 10px; /* Added border-radius to match image */
+}
+
+.sidebar.open {
+    left: 0; /* Slides in from left when open */
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* Removed gap, spacing handled by padding/margin on links */
+    margin-top: 3rem;
+}
+
+.sidebar-nav a {
+    color: #f0f0f0; /* Off-white text to match image */
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.8rem 1.2rem; /* Adjusted padding to match image */
+    border-radius: 8px; /* Rounded corners for menu items */
+    transition: all 0.3s;
+    margin-bottom: 0.5rem; /* Space between menu items */
+    font-weight: 600; /* Increased thickness for sidebar links */
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    background: #4a4a4a; /* Darker background on hover/active to match image */
+    color: #9370DB; /* Medium purple text on hover/active to match image */
+}
+
+.close-sidebar {
+    position: absolute;
+    top: 1rem;
+    right: 1rem; /* Kept on right within the sidebar */
+    background: none;
+    border: none;
+    color: white; /* White color to match image */
+    font-size: 1.8rem; /* Larger icon to match image */
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 998; /* Below sidebar but above other content */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- Events Section Styles --- */
+.events-section {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.events-section h2 {
+    font-size: 2.8rem;
+    color: #31033e;
+    margin-bottom: 2rem;
+    font-weight: 400; /* Changed font-weight to 400 to match "About Us" lighter style */
+}
+
+.event-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem; /* Increased gap for better spacing */
+    justify-content: center;
+    align-items: stretch; /* Ensure boxes stretch to same height */
+    padding: 1rem 0;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.event-highlights-section {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.event-highlights-section h2 {
+    font-size: 2.8rem;
+    color:#31033e;
+    margin-bottom: 2rem;
+    font-weight: 400; /* Changed font-weight to 400 to match "About Us" lighter style */
+}
+
+.gallery-filter {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.gallery-filter button {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600; /* Increased thickness for filter buttons */
+}
+
+.gallery-filter button.active {
+    background-color: #643c77;
+    color: white;
+    border-color: #7a00b8;
+}
+
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Styling for the photo-card - applies to all categories now */
+.photo-card {
+    position: relative; /* Essential for positioning children relative to the card */
+    background-color: #fff; /* Fallback background, will be mostly covered by image */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 0; /* Remove padding to allow image to fill */
+    display: flex; /* Use flexbox for content alignment */
+    flex-direction: column;
+    justify-content: flex-end; /* Align content to the bottom by default */
+    align-items: center;
+    height: 250px; /* Set a fixed height for consistency in grid, adjust as needed */
+    text-align: center;
+    overflow: hidden; /* Hide anything that overflows the rounded corners */
+}
+
+/* Style for the thumbnail image - applies to all categories now */
+.photo-card .thumbnail-image {
+    position: absolute; /* Position the image absolutely */
+    top: 0;
+    left: 0;
+    width: 100%; /* Make it fill the width */
+    height: 100%; /* Make it fill the height */
+    object-fit: cover; /* Cover the entire area without distorting aspect ratio */
+    border-radius: 10px; /* Match card's border-radius */
+    z-index: 1; /* Place image below text and button */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.photo-card:hover .thumbnail-image {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.photo-card h3 {
+    position: relative; /* Ensure h3 is above the image */
+    z-index: 2; /* Higher z-index than the image */
+    font-size: 1.3rem;
+    color: white; /* Text color for readability over image */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for text */
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Space between title and button */
+    font-weight: 600; /* Keeping photo card headings semi-bold */
+}
+
+.view-3d-button, .view-pdf-button {
+    position: relative; /* Ensure buttons are above the image */
+    z-index: 2; /* Higher z-index than the image */
+    background: linear-gradient(to right, #a765d6, #5a007b); /* Light to dark purple gradient */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.5s ease; /* Smooth transition for background gradient */
+    margin-bottom: 20px; /* Space from the bottom of the card */
+    font-weight: 600; /* Keeping view buttons semi-bold */
+}
+
+.view-3d-button:hover, .view-pdf-button:hover {
+    background: linear-gradient(to left, #a765d6, #5a007b); /* Reverse gradient on hover */
+}
+
+/* Styles for the main contact section */
+.contact {
+    text-align: center;
+    padding: 20px;
+    color: #000;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #7a00b8;
+    font-weight: 400; /* Set to lighter weight to match "About Us" */
+}
+
+.contact p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-weight: 400; /* Keeping paragraphs normal weight */
+}
+
+.contact a {
+    color: #7a00b8;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500; /* Slightly thicker for links */
+}
+
+.contact a:hover {
+    color: #5a007b;
+    text-decoration: underline;
+}
+
+/* Footer Styles */
+.footer {
+    width: 100%;
+    background: linear-gradient(to right, #330245, #1f0030);
+    color: white;
+    text-align: center;
+    padding: 2.5rem 1rem;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    text-align: left;
+}
+
+.footer-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    color: #c5a1e4;
+    font-weight: 700; /* Increased thickness for footer headings */
+}
+
+.footer-section p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 0.8rem;
+    color: #e0e0e0;
+    font-weight: 400; /* Keeping footer paragraphs normal weight */
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 0.6rem 0;
+}
+
+.footer-section ul li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+    font-weight: 500; /* Slightly thicker for footer links */
+}
+
+.footer-section ul li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.footer-section .socials {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+    justify-content: flex-start;
+}
+
+.footer-section .socials img {
+    width: 38px;
+    height: 38px;
+    transition: transform 0.3s ease;
+    object-fit: contain;
+}
+
+.footer-section .socials img:hover {
+    transform: scale(1.15);
+}
+
+.contact-us h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    color: #c5a1e4;
+    text-align: left;
+    font-weight: 700; /* Increased thickness for contact-us h2 */
+}
+
+.contact-us .email,
+.contact-us p {
+    text-align: left;
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    line-height: 1.7;
+    font-weight: 400; /* Keeping contact-us paragraphs normal weight */
+}
+
+.contact-us .email {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+
+.footer-bottom {
+    margin-top: 3rem;
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    padding-top: 1.5rem;
+    color: #bbbbbb;
+    width: 100%;
+    font-weight: 500; /* Increased thickness for footer bottom text */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .navbar {
+        display: none;
+    }
+    .hamburger {
+        display: block;
+    }
+    .events-section h2 {
+        font-size: 2.2rem;
+    }
+    .event-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+    .event-box h3 {
+        font-size: 1.5rem;
+    }
+    .event-image {
+        height: 180px;
+    }
+    .event-box p {
+        font-size: 0.95rem;
+    }
+    .footer-section {
+        min-width: 45%;
+    }
+    .footer-container {
+        justify-content: space-around;
+        gap: 2rem;
+    }
+    .footer-section h3, .contact-us h2 {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    .footer-section p, .footer-section ul, .contact-us p, .contact-us .email {
+        text-align: center;
+        padding-left: 0;
+    }
+    .footer-section .socials {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 10px 3%;
+    }
+    .logo {
+        font-size: 1.1rem;
+    }
+    .header-logo {
+        width: 35px;
+        height: 35px;
+    }
+    .events-section {
+        padding: 1.5rem;
+    }
+    .events-section h2 {
+        font-size: 2rem;
+    }
+    .event-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .event-box {
+        padding: 1.5rem;
+    }
+    .event-box h3 {
+        font-size: 1.4rem;
+    }
+    .event-image {
+        height: 160px;
+    }
+    .event-box .event-date {
+        font-size: 0.9rem;
+    }
+    .event-box p {
+        font-size: 0.85rem;
+    }
+    .footer-section {
+        min-width: 100%;
+        text-align: center;
+    }
+    .footer-section .socials {
+        justify-content: center;
+    }
+     .footer-section h3, .contact-us h2 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 80%;
+    }
+    .logo {
+        font-size: 1rem;
+    }
+    .header-logo {
+        width: 30px;
+        height: 30px;
+    }
+    .hamburger {
+        font-size: 1.3rem;
+    }
+    .events-section {
+        padding: 1rem;
+    }
+    .events-section h2 {
+        font-size: 1.8rem;
+    }
+    .event-box {
+        padding: 1rem;
+    }
+    .event-box h3 {
+        font-size: 1.2rem;
+    }
+    .event-image {
+        height: 140px;
+    }
+    .event-box .event-date {
+        font-size: 0.85rem;
+    }
+    .event-box p {
+        font-size: 0.85rem;
+    }
+     .footer-section h3, .contact-us h2 {
+        font-size: 1rem;
+    }
+}
+
+        /* Book Viewer Styles */
+        .book-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .book-viewer.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .book-container {
+            position: relative;
+            width: 90vw;
+            max-width: 900px;
+            height: 80vh;
+            perspective: 1500px;
+        }
+
+        .book {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .page {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            transform-origin: left;
+            transition: transform 0.8s ease-in-out;
+            background-color: #df85f1;
+            overflow: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .page:nth-child(even) {
+            left: 50%;
+        }
+
+        .page.flipped {
+            transform: rotateY(-180deg);
+        }
+
+        .close-book {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+            z-index: 1001; /* Ensure it's above the book */
+        }
+
+        .book-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 1001; /* Ensure it's above the book */
+        }
+
+        #prev-page { left: 15px; }
+        #next-page { right: 15px; }
+
+        /* PDF Viewer Styles */
+        .pdf-viewer-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .pdf-viewer-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .pdf-viewer-content {
+            position: relative;
+            background-color: #fff;
+            border-radius: 10px;
+            width: 90vw;
+            height: 90vh;
+            max-width: 1000px;
+        }
+
+        .pdf-viewer-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .close-pdf-viewer {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+            z-index: 1001; /* Ensure it's above the PDF */
+        }
+
+        /* Footer Styles */
+        .footer {
+    background-color: #0c0c2c; /* Deep navy color */
+    color: #fff;
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 0; /* Ensures no extra space above from previous elements */
+    display: flex; /* Added for flex column on smaller screens */
+    flex-direction: column; /* Added for flex column on smaller screens */
+    align-items: center; /* Added for flex column on smaller screens */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Allows sections to wrap to the next line */
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%; /* Ensure container takes full width up to max-width */
+}
+
+.footer-section {
+    flex: 1; /* Allows sections to grow and shrink */
+    min-width: 200px; /* Minimum width before wrapping */
+    text-align: left; /* Default text alignment */
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #c5a1e4; /* Added specific color for consistency */
+}
+
+.footer-section p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #e0e0e0; /* Added specific color for consistency */
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 0.5rem 0;
+}
+
+.footer-section ul li a {
+    color: #c5a1e4; /* Subtle lavender color for links */
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #ffffff; /* White on hover */
+}
+
+.footer-section .socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center; /* Center social icons within their section */
+    align-items: center;
+}
+
+.footer-section .socials img {
+    width: 48px;
+    height: 35px;
+    transition: transform 0.3s;
+    object-fit: contain; /* Ensures the entire image fits */
+}
+
+.footer-section .socials img:hover {
+    transform: scale(1.2);
+}
+
+.footer-bottom {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1rem;
+    width: 100%; /* Ensure the border spans full width */
+    color: #bbbbbb; /* Adjusted color for copyright text */
+}
+
+.icon {
+    width: 40px;
+    height: 30px;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    /* justify-content: center; - This isn't valid CSS for 'icon' directly, used in flex parent */
+    object-fit: contain; /* Ensures icon fits well */
+}
+
+.footer-logo {
+    width: 15px; /* Adjust logo size */
+    height: 15px;
+    border-radius: 50%;
+    border: 3px solid #3b0051;
+    /* justify-content: center; - This isn't valid CSS for 'footer-logo' directly */
+    object-fit: cover; /* Ensures image covers area */
+}
+
+/* --- Responsive Adjustments --- */
+
+/* For tablets and smaller desktops (e.g., 1024px to 768px) */
+@media (max-width: 1024px) {
+    .footer-container {
+        gap: 1.5rem;
+    }
+    .footer-section {
+        flex: 1 1 calc(50% - 1.5rem); /* Two columns per row, accounting for gap */
+        min-width: unset; /* Remove min-width to allow calculation to take over */
+    }
+    .footer-section h3,
+    .footer-section p,
+    .footer-section ul,
+    .footer-section .socials {
+        text-align: center; /* Center align text/items within sections */
+        justify-content: center; /* Center social icons */
+    }
+}
+
+/* For mobile devices (e.g., up to 767px) */
+@media (max-width: 767px) {
+    .footer {
+        padding: 1.5rem 0.8rem; /* Reduce padding */
+    }
+    .footer-container {
+        flex-direction: column; /* Stack sections vertically */
+        gap: 1.5rem; /* Space between stacked sections */
+        align-items: center; /* Center items when stacked */
+    }
+    .footer-section {
+        width: 100%; /* Take full width */
+        max-width: 300px; /* Optional: limit max width for readability on very wide phones */
+        text-align: center; /* Center align all content in stacked sections */
+    }
+    .footer-section h3 {
+        font-size: 1.1rem; /* Slightly smaller headings */
+        margin-bottom: 0.8rem;
+    }
+    .footer-section p,
+    .footer-section ul li a {
+        font-size: 0.85rem; /* Smaller text */
+    }
+    .footer-section .socials img {
+        width: 40px; /* Slightly smaller social icons */
+        height: 30px;
+    }
+    .icon {
+        width: 30px; /* Smaller icon */
+        height: 25px;
+    }
+    .footer-bottom {
+        margin-top: 1.5rem;
+        padding-top: 0.8rem;
+        font-size: 0.75rem; /* Smaller copyright text */
+    }
+}
+
+/* Specific adjustment for the contact section, assuming 'contact-us' is a class you might use within a footer-section for contact details */
+.contact-us p,
+.contact-us .email {
+    text-align: left; /* Keep contact details left-aligned if they are in their own section */
+    display: flex; /* Apply flex to align icon and text */
+    align-items: center;
+    justify-content: center; /* Center the contact line itself */
+}
+
+/* Override for mobile if contact-us is part of a footer-section that gets centered */
+@media (max-width: 767px) {
+    .contact-us p,
+    .contact-us .email {
+        justify-content: center; /* Center align text/icon group */
+    }
+}
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            /* Navbar is already hidden in general for this layout */
+        }
+
+        @media (max-width: 768px) {
+            .event-highlights-section h2 { font-size: 2rem; }
+            .photo-card { height: 200px; } /* Adjust height for smaller screens if necessary */
+            .photo-card h3 { font-size: 1.1rem; }
+            .logo {
+                font-size: 1.2rem;
+            }
+            .header-right {
+                font-size: 1.2rem;
+            }
+            .hamburger {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.1rem;
+            }
+            .header-right {
+                font-size: 1.1rem;
+            }
+            .hamburger {
+                font-size: 1.2rem;
+            }
+            .header {
+                padding: 10px 3%;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header">
-                    <button id="hamburger" class="hamburger" aria-label="Menu">&#9776;</button>
-
         <div class="header-left">
-            <!-- <button id="hamburger" class="hamburger" aria-label="Menu">&#9776;</button> -->
+            <button id="hamburger" class="hamburger"><i class="fas fa-bars"></i></button>
             <div class="logo">
-                <img src="logos/proto.png" alt="Protocol Club Logo" class="header-logo">
-                <span>Protocol</span>
+                <img src="logos/proto.png" alt="Logo" class="header-logo">
+                <span class="logo-text">Protocol</span>
             </div>
         </div>
-        <nav id="navbar" class="navbar">
-            <a href="../index.html" class="active">Home</a>
-            <a href="about.html">About</a>
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
             <a href="events.html">Events</a>
             <a href="articles.html">Articles</a>
-            <a href="gallery.html">Gallery</a>
+            <a href="gallery.html" class="active">Gallery</a>
             <a href="contact.html">Contact</a>
         </nav>
-        <div class="header-right">
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌓</button>
-        </div>
     </header>
 
-    <aside id="sidebar" class="sidebar">
-        <button id="close-sidebar" class="close-sidebar" aria-label="Close menu">&times;</button>
+    <aside class="sidebar">
+        <button class="close-sidebar"><i class="fas fa-times"></i></button>
         <nav class="sidebar-nav">
-            <a href="abcd.html" class="active">Home</a>
-            <a href="about.html">About</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
             <a href="events.html">Events</a>
             <a href="articles.html">Articles</a>
             <a href="gallery.html">Gallery</a>
             <a href="contact.html">Contact</a>
         </nav>
     </aside>
+    <div class="overlay"></div>
 
     <main>
-        <!-- Book Viewer Section -->
-        <div id="book-viewer" class="book-viewer hidden">
+        <div class="book-viewer">
             <div class="book-container">
-                <button class="close-book" id="close-book" aria-label="Close book viewer">&times;</button>
-                <div class="book">
-                    <div class="page"><img src="team/TechHead.png" alt="Team Tech Head"></div>
-                    <div class="page"><img src="event1-2.jpg" alt="Event 1 Photo 2"></div>
-                    <div class="page"><img src="event2-1.jpg" alt="Event 2 Photo 1"></div>
-                    <div class="page"><img src="event2-2.jpg" alt="Event 2 Photo 2"></div>
-                    <div class="page"><img src="event2-3.jpg" alt="Event 2 Photo 3"></div>
-                </div>
-                <button id="prev-page" class="book-nav" aria-label="Previous page">⟵</button>
-                <button id="next-page" class="book-nav" aria-label="Next page">⟶</button>
+                <button class="close-book"><i class="fas fa-times"></i></button>
+                <div class="book" id="book-content">
+                    </div>
+                <button class="book-nav" id="prev-page"><i class="fas fa-arrow-left"></i></button>
+                <button class="book-nav" id="next-page"><i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
-    
-        <!-- Event Highlights Section -->
+
+        <div class="pdf-viewer-modal">
+            <div class="pdf-viewer-content">
+                <button class="close-pdf-viewer"><i class="fas fa-times"></i></button>
+                <iframe id="pdf-iframe"></iframe>
+            </div>
+        </div>
+
         <section class="event-highlights-section">
-            <h2>Event Highlights</h2>
-            <div class="gallery-filter">
-                <button data-filter="all">All</button>
-                <button data-filter="event1">Event 1</button>
-                <button data-filter="event2">Event 2</button>
-                <button data-filter="year2023">2023</button>
-                <button data-filter="year2024">2024</button>
-            </div>
-            <div class="masonry-grid">
-                <!-- Gallery Items -->
-                <div class="gallery-item" data-category="event1 year2024">
-                    <div class="photo-card">
-                        <img src="/frontend/images/PROTO Photos/among_us.jpg" alt="Event 1 Photo 1">
-                        <h3>Among Us</h3>
-                        <div class="view-3d">
-                            <button class="view-3d-button" data-page="1">View in 3D</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="event1 year2024">
-                    <div class="photo-card">
-                        <img src="/frontend/images/PROTO Photos/climb_n_slide.JPG" alt="Event 1 Photo 2">
-                        <h3>Climb & Slide</h3>
-                        <div class="view-3d">
-                            <button class="view-3d-button" data-page="2">View in 3D</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="event2 year2024">
-                    <div class="photo-card">
-                        <img src="event2-1.jpg" alt="Event 2 Photo 1">
-                        <h3>LeapCode</h3>
-                        <div class="view-3d">
-                            <button class="view-3d-button" data-page="3">View in 3D</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="event2 year2023">
-                    <div class="photo-card">
-                        <img src="event2-2.jpg" alt="Event 2 Photo 2">
-                        <h3>Flutter Workshop</h3>
-                        <div class="view-3d">
-                            <button class="view-3d-button" data-page="4">View in 3D</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="event2 year2023">
-                    <div class="photo-card">
-                        <img src="event2-3.jpg" alt="Event 2 Photo 3">
-                        <h3>GeoTag</h3>
-                        <div class="view-3d">
-                            <button class="view-3d-button" data-page="5">View in 3D</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Article Management Section (moved outside gallery section) -->
-        <section id="article-management" class="article-section">
-            <h2>Article Management</h2>
-            <div id="article-list"></div>
-        </section>
-
-        <!-- Upload Modal -->
-        <div id="upload-modal" class="modal">
-            <div class="modal-content">
-                <span id="close-upload" class="close-modal" aria-label="Close modal">&times;</span>
-                <h2>Add Article with Google Drive Link</h2>
-                <form id="upload-form">
-                    <div class="form-group">
-                        <label for="article-title">Article Title*</label>
-                        <input type="text" id="article-title" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="article-summary">Summary*</label>
-                        <textarea id="article-summary" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="google-drive-link">Google Drive Link*</label>
-                        <input type="url" id="google-drive-link" placeholder="https://drive.google.com/..." required>
-                        <small>Paste the shareable link to your Google Drive document</small>
-                    </div>
-                    <button type="submit">Add Article</button>
-                </form>
+    <!-- Updated H2 tag with Font Awesome icon and thicker weight -->
+    <h2><i class="fas fa-camera-retro fa-icon"></i> Event Highlights</h2>
+    <div class="gallery-filter">
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="events">Events</button>
+        <button data-filter="synergy-newsletters">Synergy Newsletters</button>
+        <button data-filter="techpulse-papers">TechPulse Papers</button>
+    </div>
+    <div class="masonry-grid">
+        <div class="gallery-item" data-category="events">
+            <div class="photo-card">
+                <img src="events/gallery/A2.jpg" alt="Annual Conference Thumbnail" class="thumbnail-image">
+                <h3>Among Us</h3>
+                <button class="view-3d-button" data-book="conference">View in 3D</button>
             </div>
         </div>
-  
-        <!-- Upload button -->
-        <button id="open-upload" class="floating-button" aria-label="Add article">
-            <svg width="24" height="24" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
-            </svg>
-            Add Article
-        </button>
+        <div class="gallery-item" data-category="events">
+            <div class="photo-card">
+                <img src="events/gallery/C2.JPG" alt="Tech Workshop Thumbnail" class="thumbnail-image">
+                <h3>Flutter Workshop</h3>
+                <button class="view-3d-button" data-book="workshop">View in 3D</button>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="events">
+            <div class="photo-card">
+                <img src="events/gallery/L2.jpg" alt="Networking Event Thumbnail" class="thumbnail-image">
+                <h3>LeapCode</h3>
+                <button class="view-3d-button" data-book="networking">View in 3D</button>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="events">
+            <div class="photo-card">
+                <img src="events/gallery/S2.jpg" alt="Product Launch Thumbnail" class="thumbnail-image">
+                <h3>Climb & Slide</h3>
+                <button class="view-3d-button" data-book="launch">View in 3D</button>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="synergy-newsletters">
+            <div class="photo-card">
+                <img src="events/gallery/NL1.jpg" alt="Q1 Newsletter Thumbnail" class="thumbnail-image">
+                <h3>Spark of Intelligence</h3>
+                <button class="view-pdf-button"><a href="https://drive.google.com/file/d/1q2ktTj4k__4a_jMez5h9ZxArupD1zy2j/preview" target="_blank" class="view-pdf-link-btn">View PDF</a></button>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="synergy-newsletters">
+            <div class="photo-card">
+                <img src="events/gallery/NL2.jpeg" alt="Q1 Newsletter Thumbnail" class="thumbnail-image">
+                <h3>Dock It Down</h3>
+                <button class="view-pdf-button"><a href="https://drive.google.com/file/d/1F44Hp7Kly8GPkgVA2GdPe0FhjLJSBZG-/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a></button>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="synergy-newsletters">
+            <div class="photo-card">
+                <img src="events/gallery/NL3.webp" alt="Q1 Newsletter Thumbnail" class="thumbnail-image">
+                <h3>Terminal Times</h3>
+                <button class="view-pdf-button"><a href="https://drive.google.com/file/d/1m3xwXNaNRWl87j_vSb6cmop0AWMfqqQo/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a></button>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="synergy-newsletters">
+            <div class="photo-card">
+                <img src="events/gallery/NL4.jpeg" alt="Q1 Newsletter Thumbnail" class="thumbnail-image">
+                <h3>Design Decode</h3>
+                <button class="view-pdf-button"><a href="https://drive.google.com/file/d/1BRy8XmUIAvaXv-Psh-VmDt0eqHhdA3mZ/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a></button>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="synergy-newsletters">
+            <div class="photo-card">
+                <img src="events/gallery/NL5.webp" alt="Q1 Newsletter Thumbnail" class="thumbnail-image">
+                <h3>Wired Wisdom</h3>
+                <button class="view-pdf-button"><a href="https://drive.google.com/file/d/1xuSW_saBFlpf_hmOX4v0BkL6j7Jaa-zW/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a></button>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="synergy-newsletters">
+            <div class="photo-card">
+                <img src="events/gallery/NL6.webp" alt="Q1 Newsletter Thumbnail" class="thumbnail-image">
+                <h3>Code & Crosshairs</h3>
+                <button class="view-pdf-button"><a href="https://drive.google.com/file/d/1m6jxC3-S_R8bNT3UEMLwBWVRgGrtLZ2z/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a></button>
+            </div>
+        </div>
+
+
+        <div class="gallery-item" data-category="techpulse-papers">
+            <div class="photo-card">
+                <img src="events/gallery/T1.jpeg" alt="Q1 Newsletter Thumbnail" class="thumbnail-image">
+                <h3>Tech Pulse</h3>
+                <button class="view-pdf-button"><a href="https://drive.google.com/file/d/1-Cewcd41PI8lVJ6qGu04YvnS1mUuPJko/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a></button>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="techpulse-papers">
+            <div class="photo-card">
+                <img src="events/gallery/T2.jpeg" alt="Q1 Newsletter Thumbnail" class="thumbnail-image">
+                <h3>Techstalgia</h3>
+                <button class="view-pdf-button"><a href="https://drive.google.com/file/d/1rI-yyb3PNxKXHpn4bDQvo6SBQd-s6NC0/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a></button>
+            </div>
+        </div>
+        
+    </div>
+</section>
     </main>
 
     <footer class="footer">
@@ -175,9 +1142,9 @@
                 <h3>Protocol Club</h3>
                 <p>Official computer science club of BMS College of Engineering, Bengaluru. Join us in our journey of innovation and learning.</p>
                 <div class="socials">
-                    <a href="https://www.linkedin.com/company/protocol-bmsce/posts/?feedView=all" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="https://www.instagram.com/protocol_bmsce/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=protocol.cse@bmsce.ac.in" target="_blank"><i class="fa-regular fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/company/protocol-bmsce/"><img src="logos/linkedinlogo.png" alt="LinkedIn"></a>
+                    <a href="https://www.instagram.com/protocol-bmsce/"><img src="logos/instalogo.png" alt="Instagram"></a>
+                    <a href="mailto:protocol.cse@bmsce.ac.in"><img src="logos/maillogo.png" alt="Gmail"></a>
                 </div>
             </div>
             <div class="footer-section">
@@ -191,7 +1158,7 @@
             </div>
             <div class="footer-section">
                 <h3>Contact Us</h3>
-                <p> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=protocol.cse@bmsce.ac.in" target="_blank">protocol.cse@bmsce.ac.in</a></p>
+                <p><img src="logos/maillogo.png" alt="Gmail" class="icon"> protocol.cse@bmsce.ac.in</p>
                 <p>B M S College of Engineering<br>Bull Temple Road, Basavanagudi<br>Bengaluru - 560019</p>
             </div>
         </div>
@@ -199,5 +1166,160 @@
             © 2025 Protocol Club. All rights reserved.
         </div>
     </footer>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+    // Sidebar toggle
+    const hamburger = document.querySelector('.hamburger');
+    const sidebar = document.querySelector('.sidebar');
+    const closeSidebar = document.querySelector('.close-sidebar');
+    const overlay = document.querySelector('.overlay');
+
+    function toggleSidebar() {
+        sidebar.classList.toggle('open');
+        overlay.classList.toggle('active');
+    }
+
+    hamburger.addEventListener('click', toggleSidebar);
+    closeSidebar.addEventListener('click', toggleSidebar);
+    overlay.addEventListener('click', toggleSidebar);
+
+    // Gallery filter
+    const filterButtons = document.querySelectorAll('.gallery-filter button');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const filter = button.dataset.filter;
+
+            galleryItems.forEach(item => {
+                if (filter === 'all' || item.dataset.category === filter) {
+                    item.style.display = 'block';
+                    item.style.animation = 'none';
+                    void item.offsetWidth; /* Trigger reflow to restart animation */
+                    item.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Book viewer functionality
+    const bookViewer = document.querySelector('.book-viewer');
+    const closeBookBtn = document.querySelector('.close-book');
+    const bookContent = document.getElementById('book-content');
+    const prevPageBtn = document.getElementById('prev-page');
+    const nextPageBtn = document.getElementById('next-page');
+    const view3dButtons = document.querySelectorAll('.view-3d-button');
+
+    // Book data - each event has 5 different images
+    const bookData = {
+        conference: [
+            'events/gallery/A1.jpg',
+            'events/gallery/A2.jpg',
+            'events/gallery/A3.jpg',
+            'events/gallery/A4.jpg',
+            'events/gallery/A5.jpg'
+        ],
+        workshop: [
+            'events/gallery/C1.jpg',
+            'events/gallery/C2.jpg',
+            'events/gallery/C3.jpg',
+            'events/gallery/C4.jpg',
+            'events/gallery/C5.jpg'
+        ],
+        networking: [
+            'events/gallery/L1.jpg',
+            'events/gallery/L2.jpg',
+            'events/gallery/L3.jpg',
+            'events/gallery/L4.jpg',
+            'events/gallery/L5.jpg'
+        ],
+        launch: [
+            'events/gallery/S1.jpg',
+            'events/gallery/S2.jpg',
+            'events/gallery/S3.jpg',
+            'events/gallery/S4.jpg',
+            'events/gallery/S5.jpg'
+        ]
+    };
+
+    let currentPage = 0;
+    let totalPages = 0;
+
+    view3dButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const bookType = button.dataset.book;
+            bookContent.innerHTML = ''; // Clear previous pages
+            
+            // Create pages for this book
+            // Each image becomes a single "page" (half-spread)
+            bookData[bookType].forEach((image, index) => {
+                const page = document.createElement('div');
+                page.className = 'page';
+                // Assign a data-page attribute for easier indexing
+                page.dataset.pageIndex = index; 
+                page.innerHTML = `<img src="${image}" alt="Page ${index + 1}">`;
+                bookContent.appendChild(page);
+            });
+
+            totalPages = bookData[bookType].length;
+            currentPage = 0; // Start at the first page
+            updateBookView();
+            bookViewer.classList.add('active');
+        });
+    });
+
+    function updateBookView() {
+        const pages = document.querySelectorAll('.book .page');
+        
+        // Loop through all pages to apply correct state and z-index
+        pages.forEach((page, index) => {
+            // Set z-index to control stacking
+            // Pages further back should have lower z-index
+            // This is a common pattern for flipping books
+            page.style.zIndex = totalPages - index; // Pages at the beginning have higher z-index
+
+            if (index <= currentPage) {
+                page.classList.add('flipped');
+            } else {
+                page.classList.remove('flipped');
+            }
+        });
+
+        // Disable buttons based on current page
+        prevPageBtn.disabled = currentPage <= 0;
+        nextPageBtn.disabled = currentPage >= totalPages - 1;
+    }
+
+    prevPageBtn.addEventListener('click', () => {
+        if (currentPage > 0) {
+            currentPage--;
+            updateBookView();
+        }
+    });
+
+    nextPageBtn.addEventListener('click', () => {
+        if (currentPage < totalPages - 1) {
+            currentPage++;
+            updateBookView();
+        }
+    });
+
+    closeBookBtn.addEventListener('click', () => {
+        bookViewer.classList.remove('active');
+        bookContent.innerHTML = ''; // Clear the book content when closing
+    });
+
+    // --- REMOVED: Old PDF viewer functionality (modal, iframe, and associated JS) ---
+    // Since you are now using direct <a> tags in HTML for PDFs,
+    // this entire section is no longer needed in the JavaScript.
+});
+    </script>
 </body>
 </html>
