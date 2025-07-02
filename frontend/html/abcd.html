@@ -5,8 +5,139 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Protocol - Home</title>
     <link rel="stylesheet" href="abcd.css">
+    
     <script src="abcd.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .countdown-title {
+    color: #7a00b8; /* Example color: a purple shade */
+    /* You can add other styles here if needed, e.g., */
+    /* font-weight: bold; */
+    /* font-size: 2em; */
+}
+/* Styling for the circular container of the logo */
+.neon-circle {
+    /* Existing styles for background, border-radius, box-shadow, etc. should remain here */
+    /* Example: */
+    width: 350px; /* Initial size for larger screens. Adjust as needed. */
+    height: 350px; /* Must match width for a perfect circle */
+    border-radius: 50%;
+    background-color: #000; /* Assuming a black background for the circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensures the image doesn't overflow the circle */
+
+    /* Ensure it reduces slightly and doesn't touch screen borders */
+    max-width: 80vw; /* Max width will be 80% of viewport width */
+    max-height: 80vw; /* Max height will be 80% of viewport height (to keep it circular) */
+
+    /* Add a subtle transition for smoother resizing or interactive effects */
+    transition: all 0.5s ease-out; /* Apply transition to all properties over 0.5 seconds */
+}
+
+/* Styling for the logo image itself */
+.hero-logo-image {
+    max-width: 150%; /* Reduce image size slightly within its container (e.g., 85% of 350px) */
+    max-height: 150%; /* Maintain aspect ratio */
+    height: auto; /* Ensures image scales down proportionally */
+    display: block; /* Removes any extra space below the image */
+    object-fit: contain; /* Ensures the image fits within its boundaries without cropping */
+}
+/* Styling for the circular container of the logo */
+.neon-circle {
+    /* Keep your existing styles for background, border-radius, box-shadow, etc. */
+    width: 350px; /* Or whatever fixed/responsive size you prefer */
+    height: 350px;
+    border-radius: 50%;
+    /* background-color: #000; /* Assuming a black background for the circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* REMOVE THIS LINE if it exists and you want overflow */
+    /* overflow: hidden; */
+
+    /* Ensure it reduces slightly and doesn't touch screen borders */
+    max-width: 80vw;
+    max-height: 80vw;
+
+    /* Add a subtle transition for smoother resizing or interactive effects */
+    transition: all 0.5s ease-out;
+}
+
+/* Styling for the logo image itself */
+.hero-logo-image {
+    width: 110%; /* Make the image 110% of its container width */
+    height: 110%; /* Make the image 110% of its container height */
+    object-fit: cover; /* Use 'cover' to ensure it fills the space and crops if necessary */
+    /* If your image has transparency and you want it to maintain its aspect ratio
+       while overflowing, you might adjust width/height percentages until it looks right.
+       Sometimes, just making one dimension larger is enough if object-fit is handled. */
+    
+    /* Ensure it's centered if you're not using flexbox on the parent */
+    /* For flexbox parent (like .neon-circle with display:flex), this might not be strictly needed */
+    /* If you removed overflow:hidden, you might see parts of the image that extend beyond the circle's original bounds. */
+}
+
+/* You might need to adjust the padding on .hero-container if the overflow is too much */
+.hero-container {
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .neon-circle {
+        width: 280px;
+        height: 280px;
+        max-width: 70vw;
+        max-height: 70vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .neon-circle {
+        width: 200px;
+        height: 200px;
+        max-width: 60vw;
+        max-height: 60vw;
+    }
+    .hero-container {
+        padding: 15px;
+    }
+}
+
+/* Optional: Add padding to the hero-logo-area or hero-container
+   to ensure the logo (and other hero content) has space from the screen edges
+   especially on smaller viewports. */
+.hero-container {
+    padding: 20px; /* Add padding around the content within the hero section */
+    box-sizing: border-box; /* Ensures padding is included in the element's total width/height */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .neon-circle {
+        width: 280px; /* Slightly smaller on tablets */
+        height: 280px;
+        max-width: 70vw; /* Adjust max-width for smaller screens */
+        max-height: 70vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .neon-circle {
+        width: 200px; /* Even smaller on mobile phones */
+        height: 200px;
+        max-width: 60vw; /* Adjust max-width for very small screens */
+        max-height: 60vw;
+    }
+    .hero-container {
+        padding: 15px; /* Reduce padding slightly on very small screens if content is too cramped */
+    }
+}
+    </style>
 </head>
 <body class="dark">
     <header class="header">
@@ -62,15 +193,15 @@
     </section>
 
     <section id="countdown" class="countdown">
-        <h2>Next Big Event</h2>
-        <div id="timer">
-            <div><span id="days">00</span><small>Days</small></div>
-            <div><span id="hours">00</span><small>Hours</small></div>
-            <div><span id="minutes">00</span><small>Minutes</small></div>
-            <div><span id="seconds">00</span><small>Seconds</small></div>
-        </div>
-        <a href="events.html" class="btn gradient-button">View Events</a>
-    </section>
+    <h2 id="countdown-title">Next Big Event</h2> <!-- Changed: Added id="countdown-title" -->
+    <div id="timer">
+        <div><span id="days">00</span><small>Days</small></div>
+        <div><span id="hours">00</span><small>Hours</small></div>
+        <div><span id="minutes">00</span><small>Minutes</small></div>
+        <div><span id="seconds">00</span><small>Seconds</small></div>
+    </div>
+    <a href="events.html" class="btn gradient-button">View Events</a>
+</section>
 
     <footer class="footer">
         <div class="footer-container">
