@@ -135,52 +135,97 @@
         .sidebar {
             position: fixed;
             top: 0;
-            left: -100%; /* Fully hidden off-screen */
+            left: -100%; /* Changed from right to left */
             width: 250px;
             height: 100vh;
-            background: #1a0126; /* Dark background */
+            background: #2a2a2a; /* Darker background to match image */
             z-index: 1000;
-            transition: left 0.3s ease;
-            padding: 2rem 1.5rem;
-            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+            transition: left 0.3s ease; /* Transition left property */
+            padding: 1.5rem; /* Adjusted padding to match image */
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); /* Shadow from right side of sidebar */
             overflow-y: auto; /* Allows scrolling if content is long */
+            border-radius: 10px; /* Added border-radius to match image */
         }
 
         .sidebar.open {
-            left: 0; /* Slides in when open */
+            left: 0; /* Slides in from left when open */
         }
 
         .sidebar-nav {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0; /* Removed gap, spacing handled by padding/margin on links */
             margin-top: 3rem;
         }
 
         .sidebar-nav a {
-            color: white;
+            color: #f0f0f0; /* Off-white text to match image */
             text-decoration: none;
             font-size: 1rem;
-            padding: 0.8rem 1rem;
-            border-radius: 5px;
+            padding: 0.8rem 1.2rem; /* Adjusted padding to match image */
+            border-radius: 8px; /* Rounded corners for menu items */
             transition: all 0.3s;
+            margin-bottom: 0.5rem; /* Space between menu items */
         }
 
         .sidebar-nav a:hover,
         .sidebar-nav a.active {
-            background: rgba(122, 0, 184, 0.3); /* Purple transparent background on hover/active */
+            background: #4a4a4a; /* Darker background on hover/active to match image */
+            color: #9370DB; /* Medium purple text on hover/active to match image */
         }
 
         .close-sidebar {
             position: absolute;
             top: 1rem;
-            right: 1rem;
+            right: 1rem; /* Kept on right within the sidebar */
             background: none;
             border: none;
-            color: white;
-            font-size: 1.5rem;
+            color: white; /* White color to match image */
+            font-size: 1.8rem; /* Larger icon to match image */
             cursor: pointer;
         }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            z-index: 998; /* Below sidebar but above other content */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* --- Events Section Styles (from previous context, kept for consistency) --- */
+        .events-section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .events-section h2 {
+            font-size: 2.8rem;
+            color: #31033e;
+            margin-bottom: 2rem;
+        }
+
+        .event-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem; /* Increased gap for better spacing */
+            justify-content: center;
+            align-items: stretch; /* Ensure boxes stretch to same height */
+            padding: 1rem 0;
+        }
+
 
         .overlay {
             position: fixed;
@@ -210,7 +255,7 @@
 
         .events-section h2 {
             font-size: 2.8rem;
-            color: #7a00b8;
+            color: #31033e;
             margin-bottom: 2rem;
         }
 
@@ -590,6 +635,187 @@
                 font-size: 1rem;
             }
         }
+        .footer {
+    background-color: #0c0c2c; /* Deep navy color */
+    color: #fff;
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 0; /* Ensures no extra space above from previous elements */
+    display: flex; /* Added for flex column on smaller screens */
+    flex-direction: column; /* Added for flex column on smaller screens */
+    align-items: center; /* Added for flex column on smaller screens */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Allows sections to wrap to the next line */
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%; /* Ensure container takes full width up to max-width */
+}
+
+.footer-section {
+    flex: 1; /* Allows sections to grow and shrink */
+    min-width: 200px; /* Minimum width before wrapping */
+    text-align: left; /* Default text alignment */
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #c5a1e4; /* Added specific color for consistency */
+}
+
+.footer-section p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #e0e0e0; /* Added specific color for consistency */
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 0.5rem 0;
+}
+
+.footer-section ul li a {
+    color: #c5a1e4; /* Subtle lavender color for links */
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #ffffff; /* White on hover */
+}
+
+.footer-section .socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center; /* Center social icons within their section */
+    align-items: center;
+}
+
+.footer-section .socials img {
+    width: 48px;
+    height: 35px;
+    transition: transform 0.3s;
+    object-fit: contain; /* Ensures the entire image fits */
+}
+
+.footer-section .socials img:hover {
+    transform: scale(1.2);
+}
+
+.footer-bottom {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1rem;
+    width: 100%; /* Ensure the border spans full width */
+    color: #bbbbbb; /* Adjusted color for copyright text */
+}
+
+.icon {
+    width: 40px;
+    height: 30px;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    /* justify-content: center; - This isn't valid CSS for 'icon' directly, used in flex parent */
+    object-fit: contain; /* Ensures icon fits well */
+}
+
+.footer-logo {
+    width: 15px; /* Adjust logo size */
+    height: 15px;
+    border-radius: 50%;
+    border: 3px solid #3b0051;
+    /* justify-content: center; - This isn't valid CSS for 'footer-logo' directly */
+    object-fit: cover; /* Ensures image covers area */
+}
+
+/* --- Responsive Adjustments --- */
+
+/* For tablets and smaller desktops (e.g., 1024px to 768px) */
+@media (max-width: 1024px) {
+    .footer-container {
+        gap: 1.5rem;
+    }
+    .footer-section {
+        flex: 1 1 calc(50% - 1.5rem); /* Two columns per row, accounting for gap */
+        min-width: unset; /* Remove min-width to allow calculation to take over */
+    }
+    .footer-section h3,
+    .footer-section p,
+    .footer-section ul,
+    .footer-section .socials {
+        text-align: center; /* Center align text/items within sections */
+        justify-content: center; /* Center social icons */
+    }
+}
+
+/* For mobile devices (e.g., up to 767px) */
+@media (max-width: 767px) {
+    .footer {
+        padding: 1.5rem 0.8rem; /* Reduce padding */
+    }
+    .footer-container {
+        flex-direction: column; /* Stack sections vertically */
+        gap: 1.5rem; /* Space between stacked sections */
+        align-items: center; /* Center items when stacked */
+    }
+    .footer-section {
+        width: 100%; /* Take full width */
+        max-width: 300px; /* Optional: limit max width for readability on very wide phones */
+        text-align: center; /* Center align all content in stacked sections */
+    }
+    .footer-section h3 {
+        font-size: 1.1rem; /* Slightly smaller headings */
+        margin-bottom: 0.8rem;
+    }
+    .footer-section p,
+    .footer-section ul li a {
+        font-size: 0.85rem; /* Smaller text */
+    }
+    .footer-section .socials img {
+        width: 40px; /* Slightly smaller social icons */
+        height: 30px;
+    }
+    .icon {
+        width: 30px; /* Smaller icon */
+        height: 25px;
+    }
+    .footer-bottom {
+        margin-top: 1.5rem;
+        padding-top: 0.8rem;
+        font-size: 0.75rem; /* Smaller copyright text */
+    }
+}
+
+
+/* Specific adjustment for the contact section, assuming 'contact-us' is a class you might use within a footer-section for contact details */
+.contact-us p,
+.contact-us .email {
+    text-align: left; /* Keep contact details left-aligned if they are in their own section */
+    display: flex; /* Apply flex to align icon and text */
+    align-items: center;
+    justify-content: center; /* Center the contact line itself */
+}
+
+/* Override for mobile if contact-us is part of a footer-section that gets centered */
+@media (max-width: 767px) {
+    .contact-us p,
+    .contact-us .email {
+        justify-content: center; /* Center align text/icon group */
+    }
+}
     </style>
 </head>
 <body>
@@ -632,83 +858,87 @@
                 <!-- Existing Events -->
                 <div class="event-box">
                     <img src="events/codeblitz.jpg" alt="Climb and Slide Event" class="event-image">
-                    <h3>Climb and Slide</h3>
-                    <p class="event-date"><strong>Date:</strong> 9 April 2025</p>
-                    <p>An amazing way to experience the thrill of navigating through obstacles and racing to the finish line.</p>
+                    <h3>CodeBlitz 2.0</h3>
+                    <p class="event-date"><strong>Date:</strong> 8th April 2025</p>
+                    <p>An intense codeathon where logic met adrenaline, with rapid-fire problem solving and high-speed coding showdowns.</p>
                 </div>
 
                 <div class="event-box">
                     <img src="events/amongus.jpg" alt="Among Us - IRL Event" class="event-image">
                     <h3>Among Us - IRL</h3>
                     <p class="event-date"><strong>Date:</strong> 10 & 11 April 2025</p>
-                    <p>One heck of a rollercoaster-An exciting real-life version of Among Us! Team up and find the imposters.</p>
+                    <p>A chaotic and hilarious live-action version of the classic game, filled with sneaky imposters and thrilling reveals.</p>
                 </div>
 
                 <div class="event-box">
                     <img src="events/UIUX.png" alt="Coding Challenge" class="event-image">
                     <h3>UI/UX Workshop</h3>
-                    <p class="event-date"><strong>Date:</strong> 15 April 2025</p>
-                    <p>Upskilling your designing skills with this mind blowing hands-on workshop!</p>
+                    <p class="event-date"><strong>Date:</strong> 13th March 2025</p>
+                    <p>A creative jam where design thinking, wireframing, and sleek prototypes came together in one hands-on sprint.</p>
                 </div>
 
                 <div class="event-box">
-                    <img src="tech-talk.jpg" alt="Tech Talk" class="event-image">
-                    <h3>Tech Talk</h3>
-                    <p class="event-date"><strong>Date:</strong> 18 April 2025</p>
-                    <p>An insightful talk by industry experts on the latest advancements in technology.</p>
+                    <img src="events/leapcode.jpg" alt="LeapCode" class="event-image">
+                    <h3>LeapCode</h3>
+                    <p>A four-week deep dive into DSA concepts—packed with guided tutorials, real-time problem solving, and steady skill building.</p>
+                </div>
+                
+                <div class="event-box">
+                    <img src="events/ccq.jpg" alt="The Ciphered Coordinates Quest" class="event-image">
+                    <h3>The Ciphered Coordinates Quest</h3>
+                    <p class="event-date"><strong>Date:</strong> 9th July 2024</p>
+                    <p>A cryptic campus treasure hunt with riddles, twists, and brainy teamwork that kept hearts racing.</p>
+                </div>
+                <div class="event-box">
+                    <img src="events/matrix.jpg" alt="MergerVerse" class="event-image">
+                    <h3>The Matrix</h3>
+                    <p class="event-date"><strong>Date:</strong>9th December 2023</p>
+                    <p>A thrilling mission of codes, puzzles, and choices that pulled everyone deep into a simulated mystery world</p>
+                </div>
+                <div class="event-box">
+                    <img src="events/cod.jpg" alt="COD (Call of Duty)" class="event-image">
+                    <h3>COD (Call of Duty)</h3>
+                    <p class="event-date"><strong>Date:</strong> 7th April 2025</p>
+                    <p>A high-energy gaming face-off where every match was intense, strategic, and packed with epic wins.</p>
                 </div>
 
                 <div class="event-box">
-                    <img src="gaming-tournament.jpg" alt="Gaming Tournament" class="event-image">
-                    <h3>Gaming Tournament</h3>
-                    <p class="event-date"><strong>Date:</strong> 22 April 2025</p>
-                    <p>Competing in a high-stakes gaming tournament while bringing your best skills and dominate the competition!</p>
+                    <img src="events/climb.jpg" alt="Tech Talk" class="event-image">
+                    <h3>Climb & Slide</h3>
+                    <p class="event-date"><strong>Date:</strong> 9th May 2025</p>
+                    <p>A life-size game board experience where luck, trivia, and wild turns made every move unpredictable fun.</p>
                 </div>
 
                 <div class="event-box">
-                    <img src="hackathon.jpg" alt="Hackathon" class="event-image">
-                    <h3>Hackathon</h3>
-                    <p class="event-date"><strong>Date:</strong> 26 & 27 April 2025</p>
-                    <p>Collaborating with a team to build innovative projects in a 24-hour hackathon. Unleashing your creativity!</p>
+                    <img src="events/cloud.jpg" alt="Gaming Tournament" class="event-image">
+                    <h3>Cloud Connect</h3>
+                    <p class="event-date"><strong>Date:</strong> 15th December 2023</p>
+                    <p>A smart dive into cloud tech that bridged skills with industry insights, unlocking the future of computing.</p>
+                </div>
+
+                <div class="event-box">
+                    <img src="events/flutter.jpg" alt="Hackathon" class="event-image">
+                    <h3>Flutter Workshop</h3>
+                    <p class="event-date"><strong>Date:</strong> 8th June 2023</p>
+                    <p>A fast-paced, hands-on mobile dev workshop that brought beautiful apps to life with Flutter power.</p>
                 </div>
 
                 <!-- New Events -->
                 <div class="event-box">
-                    <img src="events/flutter_workshop.jpg" alt="Flutter Workshop" class="event-image">
-                    <h3>Flutter Workshop</h3>
-                    <p class="event-date"><strong>Date:</strong> TBD</p>
-                    <p>A whirlwind of app-building magic that left everyone inspired and buzzing with ideas.</p>
+                    <img src="events/green.jpg" alt="Flutter Workshop" class="event-image">
+                    <h3>Greentech Innovate</h3>
+                    <p class="event-date"><strong>Date:</strong> 21st June 2024</p>
+                    <p>An eco-driven ideathon with smart farming tech, fresh thinking, and a whole lot of green innovation.</p>
                 </div>
+
                 <div class="event-box">
-                    <img src="events/leapcode.jpg" alt="LeapCode" class="event-image">
-                    <h3>LeapCode</h3>
-                    <p class="event-date"><strong>Date:</strong> TBD</p>
-                    <p>A power-packed coding spree where brilliance shone and problem-solving skills soared.</p>
+                    <img src="events/image.jpg" alt="Cryptic Killer" class="event-image">
+                    <h3>The World Of Pixels</h3>
+                    <p class="event-date"><strong>Date:</strong> 6th May 2024</p>
+                    <p>A vibrant, hands-on intro to image processing where pixels turned into art through code and creativity.</p>
                 </div>
-                <div class="event-box">
-                    <img src="events/ciphered_coordinates.jpg" alt="The Ciphered Coordinates Quest" class="event-image">
-                    <h3>The Ciphered Coordinates Quest</h3>
-                    <p class="event-date"><strong>Date:</strong> TBD</p>
-                    <p>A thrilling treasure hunt that had everyone decoding, running, and celebrating every clue cracked.</p>
-                </div>
-                <div class="event-box">
-                    <img src="events/mergerverse.jpg" alt="MergerVerse" class="event-image">
-                    <h3>MergerVerse</h3>
-                    <p class="event-date"><strong>Date:</strong> TBD</p>
-                    <p>A fusion of ideas, innovation, and collaboration that created pure magic.</p>
-                </div>
-                <div class="event-box">
-                    <img src="events/call_of_duty.jpg" alt="COD (Call of Duty)" class="event-image">
-                    <h3>COD (Call of Duty)</h3>
-                    <p class="event-date"><strong>Date:</strong> TBD</p>
-                    <p>A gaming showdown full of intense battles, epic plays, and roaring cheers.</p>
-                </div>
-                <div class="event-box">
-                    <img src="events/cryptic_killer.jpg" alt="Cryptic Killer" class="event-image">
-                    <h3>Cryptic Killer</h3>
-                    <p class="event-date"><strong>Date:</strong> TBD</p>
-                    <p>A gripping mystery that kept everyone hooked till the final twist unraveled.</p>
-                </div>
+                
+                
             </div>
         </section>
     </main>
@@ -725,17 +955,13 @@
         <div class="footer-container">
             <div class="footer-section">
                 <h3>Protocol Club</h3>
-                <p>
-                    Official computer science club of BMS College of Engineering, Bengaluru.
-                    Join us in our journey of innovation and learning.
-                </p>
+                <p>Official computer science club of BMS College of Engineering, Bengaluru. Join us in our journey of innovation and learning.</p>
                 <div class="socials">
-                    <a href="https://www.linkedin.com/company/protocol-bmsce/" target="_blank"><img src="logos/linkedinlogo.png" alt="LinkedIn"></a>
-                    <a href="https://www.instagram.com/protocol-bmsce/" target="_blank"><img src="logos/instalogo.png" alt="Instagram"></a>
+                    <a href="https://www.linkedin.com/company/protocol-bmsce/"><img src="logos/linkedinlogo.png" alt="LinkedIn"></a>
+                    <a href="https://www.instagram.com/protocol-bmsce/"><img src="logos/instalogo.png" alt="Instagram"></a>
                     <a href="mailto:protocol.cse@bmsce.ac.in"><img src="logos/maillogo.png" alt="Gmail"></a>
                 </div>
             </div>
-
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
@@ -745,15 +971,10 @@
                     <li><a href="articles.html">Articles</a></li>
                 </ul>
             </div>
-
-            <div class="footer-section contact-us">
-                <h2>Contact Us</h2>
-                <div class="email">
-                    <p><img src="logos/maillogo.png" alt="Gmail" class="icon"> protocol.cse@bmsce.ac.in</p>
-                </div>
-                <p>B M S College of Engineering<br>
-                    Bull Temple Road, Basavanagudi<br>
-                    Bengaluru - 560019</p>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><img src="logos/maillogo.png" alt="Gmail" class="icon"> protocol.cse@bmsce.ac.in</p>
+                <p>B M S College of Engineering<br>Bull Temple Road, Basavanagudi<br>Bengaluru - 560019</p>
             </div>
         </div>
         <div class="footer-bottom">
