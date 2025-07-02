@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol - Home</title>
+    <link rel="stylesheet" href="abcd.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="abcd.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .countdown-title {
+    color: #7a00b8; /* Example color: a purple shade */
+    /* You can add other styles here if needed, e.g., */
+    /* font-weight: bold; */
+    /* font-size: 2em; */
+}
+    </style>
+</head>
+<body class="dark">
+    <header class="header">
+        <div class="header-left">
+            <button id="hamburger" class="hamburger">&#9776;</button>
+            <div class="logo">
+                <img src="logos/proto.png" alt="Logo" class="header-logo">
+                <span>Protocol</span>
+            </div>
+        </div>
+        <nav id="navbar" class="navbar">
+            <a href="abcd.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="events.html">Events</a>
+            <a href="articles.html">Articles</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="header-right">
+            <button id="theme-toggle" class="theme-toggle">🌓</button>
+        </div>
+    </header>
+
+    <aside id="sidebar" class="sidebar">
+        <button id="close-sidebar" class="close-sidebar">&times;</button>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="events.html">Events</a>
+            <a href="articles.html">Articles</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </aside>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text-area">
+                <div class="club-info">
+                    <h1 class="club-name">PROTOCOL</h1>
+                    <p class="club-location">BMSCE, Bengaluru</p>
+                </div>
+                <h2>Where <span class="changing-word">Creativity</span> Happens</h2>
+                <p>Join our community to explore, learn, and build cutting-edge technologies together.</p>
+                <a href="about.html" class="btn gradient-button">Learn More</a>
+            </div>
+            <div class="hero-logo-area">
+                <div class="neon-circle">
+                    <img src="logos/proto.png" alt="Protocol Club Logo" class="hero-logo-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="countdown" class="countdown">
+    <h2 id="countdown-title">Next Big Event</h2> <!-- Changed: Added id="countdown-title" -->
+    <div id="timer">
+        <div><span id="days">00</span><small>Days</small></div>
+        <div><span id="hours">00</span><small>Hours</small></div>
+        <div><span id="minutes">00</span><small>Minutes</small></div>
+        <div><span id="seconds">00</span><small>Seconds</small></div>
+    </div>
+    <a href="events.html" class="btn gradient-button">View Events</a>
+</section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Protocol Club</h3>
+                <p>Official computer science club of BMS College of Engineering, Bengaluru. Join us in our journey of innovation and learning.</p>
+                <div class="socials">
+                    <a href="https://www.linkedin.com/company/protocol-bmsce/"><img src="logos/linkedinlogo.png" alt="LinkedIn"></a>
+                    <a href="https://www.instagram.com/protocol-bmsce/"><img src="logos/instalogo.png" alt="Instagram"></a>
+                    <a href="mailto:protocol.cse@bmsce.ac.in"><img src="logos/maillogo.png" alt="Gmail"></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="articles.html">Articles</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><img src="logos/maillogo.png" alt="Gmail" class="icon"> protocol.cse@bmsce.ac.in</p>
+                <p>B M S College of Engineering<br>Bull Temple Road, Basavanagudi<br>Bengaluru - 560019</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 Protocol Club. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="abcd.js"></script>
+</body>
+</html>
