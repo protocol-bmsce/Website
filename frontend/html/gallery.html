@@ -72,8 +72,24 @@ body {
 
 /* Remove the navbar as it's not shown in the image */
 .navbar {
-    display: none;
-}
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar a {
+            color: rgb(212, 173, 237); /* Light purple */
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            white-space: nowrap;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: #3d00b6; /* Darker purple on hover/active */
+        }
 
 .hamburger {
     background: none;
@@ -628,6 +644,17 @@ body {
             transition: opacity 0.3s ease;
         }
 
+
+        /* design for theme toggle */
+          .theme-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.3rem;
+        }
+
         .book-viewer.active {
             opacity: 1;
             visibility: visible;
@@ -995,6 +1022,10 @@ body {
             <a href="gallery.html" class="active">Gallery</a>
             <a href="contact.html">Contact</a>
         </nav>
+        <div class="header-right">
+            <!-- <button id="hamburger" class="hamburger"><i class="fas fa-bars"></i></button> -->
+            <button id="theme-toggle" class="theme-toggle">🌓</button>
+        </div>
     </header>
 
     <aside class="sidebar">
