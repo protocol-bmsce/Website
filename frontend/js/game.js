@@ -166,6 +166,7 @@ window.addEventListener("load", () => {
   loadNewQuestion();
   setInterval(spawnAsteroids, 2000);
   setInterval(moveAsteroids, 50);
+  spawnInitialStars(100)
 });
 
 window.addEventListener("click", fire);
@@ -278,3 +279,58 @@ function showExplosion(at) {
   setTimeout(() => explosion.remove(), 500);
 }
 
+const starsContainer = document.getElementById("stars-container");
+
+function spawnStar() {
+  const star = document.createElement("div");
+  star.classList.add("star");
+  star.style.left = Math.random() * window.innerWidth + "px";
+  star.style.top = "0px";
+  star.style.opacity = Math.random(); 
+  const size = Math.random() * 2 + 1;
+  star.style.width = size + "px";
+  star.style.height = size + "px";
+
+  
+  star.dataset.speed = Math.random() * 3 + 1; 
+
+  starsContainer.appendChild(star);
+}
+
+function moveStars() {
+  const stars = starsContainer.querySelectorAll(".star");
+  stars.forEach((star) => {
+    let top = parseFloat(star.style.top);
+    let speed = parseFloat(star.dataset.speed);
+    top += speed; 
+    star.style.top = top + "px";
+
+    if (top > window.innerHeight) {
+      star.remove();
+    }
+  });
+}
+
+function spawnInitialStars(count) {
+  for (let i = 0; i < count; i++) {
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.style.left = Math.random() * window.innerWidth + "px";
+    star.style.top = Math.random() * window.innerHeight + "px";
+    star.style.opacity = Math.random(); 
+    const size = Math.random() * 2 + 1;
+    star.style.width = size + "px";
+    star.style.height = size + "px";
+
+   
+    star.dataset.speed = Math.random() * 3 + 1;
+
+    starsContainer.appendChild(star);
+  }
+}
+
+
+
+
+setInterval(spawnStar, 100); 
+setInterval(moveStars, 50);
