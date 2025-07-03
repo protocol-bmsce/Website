@@ -8,6 +8,9 @@ const questionBox = document.querySelector("#question-box");
 
 let ship_left = 0;
 let bullet_top = 500;
+
+let questionCount=0;
+let maxQuestions = 10;
 const move_inter = 20;
 let score = 0;
 let currentQuestion = {};
@@ -136,8 +139,8 @@ const questions = [
   },
   { 
     question: "What challenge limits QKD over fiber optic cables without repeaters?", 
-    options: ["Weather interference", "Distance limitations of 100–200 km", "Insufficient data speeds"], 
-    answer: "Distance limitations of 100–200 km" 
+    options: ["Weather interference", "Distance limitations of 100-200 km", "Insufficient data speeds"], 
+    answer: "Distance limitations of 100-200 km" 
   },
   { 
     question: "Quantum mesh networks enhance military communication by enabling:", 
@@ -163,7 +166,7 @@ const questions = [
 
 
 window.addEventListener("load", () => {
-  loadNewQuestion();
+  
   setInterval(spawnAsteroids, 2000);
   setInterval(moveAsteroids, 50);
   spawnInitialStars(100)
@@ -184,10 +187,31 @@ window.addEventListener("keydown", (e) => {
 });
 
 function loadNewQuestion() {
+
+  questionCount++;
+  if (questionCount > maxQuestions ) {
+    endGame();
+    return;
+  }
+
   currentQuestion = questions[Math.floor(Math.random() * questions.length)];
   questionBox.textContent = "Question: " + currentQuestion.question;
   currentOptions = [...currentQuestion.options];
 }
+
+
+function endGame() {
+  questionBox.textContent = `Game Over! Final Score: ${score}/${maxQuestions}`;
+  
+  // Remove remaining asteroids
+  const allAsteroids = asteroidContainer.querySelectorAll(".asteroid");
+  allAsteroids.forEach(a => a.remove());
+
+  // Optionally: disable firing
+  window.removeEventListener("click", fire);
+  window.removeEventListener("keydown", fire);
+}
+
 
 function fire() {
   const ship_loc = ship.getBoundingClientRect();
@@ -207,12 +231,19 @@ function fire() {
 
     asteroids.forEach((at) => {
       if (isCollapsed(bullet, at)) {
+        showExplosion(at);
+       const allAsteroids = asteroidContainer.querySelectorAll(".asteroid");
+    allAsteroids.forEach((asteroid) => asteroid.remove());
+         loadNewQuestion();
+
+
         if (at.textContent.trim().toLowerCase() === currentQuestion.answer.toLowerCase()) {
           score++;
+        
           scoreDisplay.textContent = "Score: " + score;
         }
-        showExplosion(at);
-        at.remove();
+        
+
         clearInterval(tid);
         bullet.style.display = "none";
       }
@@ -237,10 +268,8 @@ function isCollapsed(obj1, obj2) {
 }
 
 function spawnAsteroids() {
-  if (currentOptions.length === 0) {
-    loadNewQuestion();
-  }
-
+  if (currentOptions.length != 0) {
+  
   const opt = currentOptions.pop();
   const at = document.createElement("div");
   at.classList.add("asteroid");
@@ -249,7 +278,7 @@ function spawnAsteroids() {
   at.style.top = "0px";
 
   asteroidContainer.appendChild(at);
-}
+}}
 
 function moveAsteroids() {
   const asteroids = asteroidContainer.querySelectorAll(".asteroid");
@@ -261,23 +290,51 @@ function moveAsteroids() {
 
     if (top > window.innerHeight) {
       at.remove();
+
     }
-  });
-}
+   
+  }  
+);
+if (
+    asteroidContainer.querySelectorAll(".asteroid").length === 0 &&
+    currentOptions.length === 0 // all options spawned
+  ) {
+    // Missed question — load next
+    loadNewQuestion(); // this already handles questionCount++
+  }}
+
+// function showExplosion(at) {
+//   const rect = at.getBoundingClientRect();
+//   const explosion = document.createElement("div");
+//   explosion.textContent = "💥";
+//   explosion.style.position = "absolute";
+//   explosion.style.left = rect.left + "px";
+//   explosion.style.top = rect.top + "px";
+//   explosion.style.fontSize = "30px";
+//   explosion.style.color = "red";
+//   document.body.appendChild(explosion);
+
+//   setTimeout(() => explosion.remove(), 500);
+// }
 
 function showExplosion(at) {
-  const rect = at.getBoundingClientRect();
-  const explosion = document.createElement("div");
-  explosion.textContent = "💥";
-  explosion.style.position = "absolute";
-  explosion.style.left = rect.left + "px";
-  explosion.style.top = rect.top + "px";
-  explosion.style.fontSize = "30px";
-  explosion.style.color = "red";
-  document.body.appendChild(explosion);
+	const rect = at.getBoundingClientRect(); 
 
-  setTimeout(() => explosion.remove(), 500);
+	const explosion = document.createElement("img");
+	explosion.src = "../images/explod.gif"; 
+	explosion.style.width = "50px";
+	explosion.style.position = "absolute";
+	explosion.style.left = rect.left + "px";
+	explosion.style.top = rect.top + "px";
+	document.body.appendChild(explosion);
+
+
+	setTimeout(() => {
+		explosion.remove();
+	}, 500);
 }
+
+ 
 
 const starsContainer = document.getElementById("stars-container");
 
@@ -333,4 +390,4 @@ function spawnInitialStars(count) {
 
 
 setInterval(spawnStar, 100); 
-setInterval(moveStars, 50);
+setInterval(moveStars, 50);
