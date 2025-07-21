@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Asteroid Quiz Game</title>
+  <meta charset="UTF-8">
+  <title>Asteroid Quiz Game</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/game.css">
+  <!-- Orbitron font for sci-fi feel -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+  <!-- Link to game CSS (correct path from html to css folder) -->
+  <link rel="stylesheet" href="../css/game.css">
 </head>
 <body>
-<div id="game-board">
- <!-- <button id="start-button">Start Game</button> -->
-  <!-- //<button id="pause-button">Pause</button> -->
-   <a id=Homebutton href="index.html">EXIT</a>
 
-	<div id= "stars-container"></div> 
-  <div id="question-box">Question: </div>
-  <div id="asteroid"></div>
-  <div id="bullet"></div>
-  <!-- <div id="ship">🚀</div> -->
-   <div id="ship">
-    <img src="../images/ship.gif" alt="Spaceship">
+  <!-- Game Board Container -->
+  <div id="game-board">
+    <!-- Exit Button to go back to homepage -->
+    <a id="Homebutton" href="index.html">EXIT</a>
+
+    <!-- Stars background layer -->
+    <div id="stars-container"></div> 
+
+    <!-- Dynamic Question Area -->
+    <div id="question-box">Question: </div>
+
+    <!-- Asteroid and Bullet placeholders -->
+    <div id="asteroid"></div>
+    <div id="bullet"></div>
+
+    <!-- Spaceship (GIF) -->
+    <div id="ship">
+      <img src="../images/ship.gif" alt="Spaceship">
+    </div>
+
+    <!-- Score Counter -->
+    <div id="score">Score: 0</div>
   </div>
-  <div id="score">Score: 0</div>
-</div>
-<script src="../js/game.js"></script>
+
+  <!-- JavaScript file (correct path from html to js folder) -->
+  <script src="../js/game.js"></script>
 </body>
 </html>
