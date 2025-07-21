@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol - Home</title>
+    <link rel="stylesheet" href="abcd.css">
+    
+    <script src="abcd.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .countdown-title {
+    color: #7a00b8; /* Example color: a purple shade */
+    /* You can add other styles here if needed, e.g., */
+    /* font-weight: bold; */
+    /* font-size: 2em; */
+}
+/* Styling for the circular container of the logo */
+.neon-circle {
+    /* Existing styles for background, border-radius, box-shadow, etc. should remain here */
+    /* Example: */
+    width: 350px; /* Initial size for larger screens. Adjust as needed. */
+    height: 350px; /* Must match width for a perfect circle */
+    border-radius: 50%;
+    background-color: #000; /* Assuming a black background for the circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensures the image doesn't overflow the circle */
+
+    /* Ensure it reduces slightly and doesn't touch screen borders */
+    max-width: 80vw; /* Max width will be 80% of viewport width */
+    max-height: 80vw; /* Max height will be 80% of viewport height (to keep it circular) */
+
+    /* Add a subtle transition for smoother resizing or interactive effects */
+    transition: all 0.5s ease-out; /* Apply transition to all properties over 0.5 seconds */
+}
+
+/* Styling for the logo image itself */
+.hero-logo-image {
+    max-width: 150%; /* Reduce image size slightly within its container (e.g., 85% of 350px) */
+    max-height: 150%; /* Maintain aspect ratio */
+    height: auto; /* Ensures image scales down proportionally */
+    display: block; /* Removes any extra space below the image */
+    object-fit: contain; /* Ensures the image fits within its boundaries without cropping */
+}
+/* Styling for the circular container of the logo */
+.neon-circle {
+    /* Keep your existing styles for background, border-radius, box-shadow, etc. */
+    width: 350px; /* Or whatever fixed/responsive size you prefer */
+    height: 350px;
+    border-radius: 50%;
+    /* background-color: #000; /* Assuming a black background for the circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    /* Ensure it reduces slightly and doesn't touch screen borders */
+    max-width: 80vw;
+    max-height: 80vw;
+
+    /* Add a subtle transition for smoother resizing or interactive effects */
+    transition: all 0.5s ease-out;
+}
+
+/* Styling for the logo image itself */
+.hero-logo-image {
+    width: 110%; /* Make the image 110% of its container width */
+    height: 110%; /* Make the image 110% of its container height */
+    object-fit: cover; /* Use 'cover' to ensure it fills the space and crops if necessary */
+    /* If your image has transparency and you want it to maintain its aspect ratio
+       while overflowing, you might adjust width/height percentages until it looks right.
+       Sometimes, just making one dimension larger is enough if object-fit is handled. */
+    
+    /* Ensure it's centered if you're not using flexbox on the parent */
+    /* For flexbox parent (like .neon-circle with display:flex), this might not be strictly needed */
+    /* If you removed overflow:hidden, you might see parts of the image that extend beyond the circle's original bounds. */
+}
+
+/* You might need to adjust the padding on .hero-container if the overflow is too much */
+.hero-container {
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .neon-circle {
+        width: 280px;
+        height: 280px;
+        max-width: 70vw;
+        max-height: 70vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .neon-circle {
+        width: 200px;
+        height: 200px;
+        max-width: 60vw;
+        max-height: 60vw;
+    }
+    .hero-container {
+        padding: 15px;
+    }
+}
+
+.hero-container {
+    padding: 20px; /* Add padding around the content within the hero section */
+    box-sizing: border-box; /* Ensures padding is included in the element's total width/height */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .neon-circle {
+        width: 280px; /* Slightly smaller on tablets */
+        height: 280px;
+        max-width: 70vw; /* Adjust max-width for smaller screens */
+        max-height: 70vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .neon-circle {
+        width: 200px; /* Even smaller on mobile phones */
+        height: 200px;
+        max-width: 60vw; /* Adjust max-width for very small screens */
+        max-height: 60vw;
+    }
+    .hero-container {
+        padding: 15px; /* Reduce padding slightly on very small screens if content is too cramped */
+    }
+}
+.social-icons {
+    margin-top: 15px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+    color: #fff;
+    font-size: 30px; /* Adjust icon size as needed */
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px);
+}
+.footer-section .socials img {
+    width: 38px;
+    height: 27px;
+    transition: transform 0.3s;
+    text-align: center;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+  }
+  .h2{
+    color: #7a00b8;
+  }
+  .footer {
+    background-color: #0c0c2c; /* Deep navy color */
+    color: #fff;
+    padding: 2rem 1rem;
+    text-align: center; /* This centers the footer-bottom text and acts as a fallback */
+    display: flex; /* Enable flexbox for the footer itself */
+    flex-direction: column; /* Stack children (container and bottom) vertically */
+    align-items: center; /* Center footer-container and footer-bottom horizontally */
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center; /* Center the footer sections when they wrap */
+    align-items: flex-start; /* Align sections to the top */
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%; /* Ensure container takes full width to center effectively */
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    text-align: center; /* **Crucial: Center text within each section** */
+    /* Add max-width to control section width on large screens and prevent excessive stretching */
+    max-width: 300px; /* Adjust as needed */
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #fff; /* Ensure headings are white or suitable for the dark background */
+}
+
+.footer-section p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 0.5rem 0;
+}
+
+.footer-section ul li a {
+    color: #c5a1e4; /* Subtle lavender color for links */
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #ffffff; /* White on hover */
+}
+
+.footer-section .socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center; /* **Center social icons** */
+    align-items: center;
+    width: 100%; /* Ensure the flex container for socials takes full width to center its content */
+}
+
+.footer-section .socials img {
+    width: 35px;
+    height: 27px;
+    transition: transform 0.3s;
+    /* Remove redundant flex properties here, they apply to the container not the image */
+}
+
+.footer-section .socials img:hover {
+    transform: scale(1.2);
+}
+
+.footer-bottom {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1rem;
+    width: 100%; /* Ensure the border spans the full width */
+}
+
+.icon {
+    width: 40px;
+    height: 30px;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    /* justify-content: center is for flex containers, not individual elements */
+}
+
+.footer-logo {
+    width: 15px; /* Adjust logo size */
+    height: 13px;
+    border-radius: 50%;
+    border: 3px solid #3b0051;
+    /* justify-content: center is for flex containers, not individual elements */
+}
+
+/* Responsive adjustments for central alignment on smaller screens */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Stack sections vertically */
+        align-items: center; /* Center the stacked sections */
+        gap: 1.5rem; /* Adjust gap for stacked sections */
+    }
+
+    .footer-section {
+        min-width: unset; /* Remove min-width to allow full width on small screens */
+        width: 90%; /* Give some padding from the sides */
+        max-width: 350px; /* Constrain width on smaller screens for readability */
+        margin-bottom: 1.5rem; /* Space between stacked sections */
+    }
+
+    .footer-section:last-child {
+        margin-bottom: 0;
+    }
+
+    .footer-section h3,
+    .footer-section p,
+    .footer-section ul {
+        text-align: center; /* Explicitly center text for all elements within sections on mobile */
+    }
+
+    .footer-section ul {
+        padding: 0; /* Ensure no extra padding pushing list items */
+    }
+
+    .footer-section .socials {
+        justify-content: center; /* Explicitly center social icons on mobile */
+    }
+}
+    </style>
+</head>
+<body class="dark">
+    <header class="header">
+        <div class="header-left">
+            <button id="hamburger" class="hamburger">&#9776;</button>
+            <div class="logo">
+                <img src="logos/proto.png" alt="Logo" class="header-logo">
+                <span>Protocol</span>
+            </div>
+        </div>
+        <nav id="navbar" class="navbar">
+            <a href="abcd.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="events.html">Events</a>
+            <a href="articles.html">Articles</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+            <a href="game.html">CLICK HERE</a>
+          
+        </nav>
+        <div class="header-right">
+            <button id="theme-toggle" class="theme-toggle">🌓</button>
+        </div>
+    </header>
+
+    <aside id="sidebar" class="sidebar">
+        <button id="close-sidebar" class="close-sidebar">&times;</button>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="events.html">Events</a>
+            <a href="articles.html">Articles</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+            <a href="game.html">CLICK HERE</a>
+        </nav>
+    </aside>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text-area">
+                <div class="club-info">
+                    <h1 class="club-name">PROTOCOL</h1>
+                    <p class="club-location">BMSCE, Bengaluru</p>
+                </div>
+                <h2>Where <span class="changing-word">Creativity</span> Happens</h2>
+                <p>Join our community to explore, learn, and build cutting-edge technologies together.</p>
+                <a href="about.html" class="btn gradient-button">Learn More</a>
+            </div>
+            <div class="hero-logo-area">
+                <div class="neon-circle">
+                    <img src="logos/proto.png" alt="Protocol Club Logo" class="hero-logo-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="countdown" class="countdown">
+    <h2 id="countdown-title">Next Big Event</h2> <!-- Changed: Added id="countdown-title" -->
+    <div id="timer">
+        <div><span id="days">00</span><small>Days</small></div>
+        <div><span id="hours">00</span><small>Hours</small></div>
+        <div><span id="minutes">00</span><small>Minutes</small></div>
+        <div><span id="seconds">00</span><small>Seconds</small></div>
+    </div>
+    <a href="events.html" class="btn gradient-button">View Events</a>
+</section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Protocol Club</h3>
+                <p>Official Club of the Department of Computer Science and Engineering
+Join us in our journey of innovation and learning.</p>
+                
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                     <li><a href="about.html">About Us</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="articles.html">Articles</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Phone No:+918217617133</p>
+                <p>protocol.cse@bmsce.ac.in</p>
+                <p>B M S College of Engineering<br>Bull Temple Road, Basavanagudi<br>Bengaluru - 560019</p>
+                <div class="socials">
+                    <a href="https://www.linkedin.com/company/protocol-bmsce/"><img src="logos/linkedinlogo.png" alt="LinkedIn"></a>
+                    <a href="https://www.instagram.com/protocol_bmsce?igsh=MTBjcmpzMWtxeW9ncQ=="><img src="logos/instalogo.png" alt="Instagram"></a>
+                    <a href="mailto:protocol.cse@bmsce.ac.in"><img src="logos/maillogo.png" alt="Gmail"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 Protocol Club. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="abcd.js"></script>
+</body>
+</html>
