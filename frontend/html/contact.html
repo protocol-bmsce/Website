@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Assuming abcd.js contains your sidebar and theme toggle logic -->
     <script src="abcd.js" defer></script>
+    <link rel="stylesheet" href="../css/abcd.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- JavaScript for sidebar and theme toggle -->
+    <script src="../js/abcd.js" defer></script>
     <style>
         /* Ensure html and body take full viewport height and enable flexbox for layout */
         html, body {
@@ -44,6 +51,7 @@
             font-size: 1.1rem;
             line-height: 1.8;
             margin-bottom: 15px;
+            font-weight: 650;
         }
         
         .contact a {
@@ -594,6 +602,157 @@ footer {
                 font-size: 1rem;
             }
         }
+ 
+/* Footer Styles */
+.footer {
+    background-color: #0c0c2c; /* Deep navy color */
+    color: #fff;
+    padding: 2rem 1rem;
+    text-align: center; /* Centers text like the copyright */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally centers the footer-container and footer-bottom */
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center; /* Centers the footer sections horizontally within the footer */
+    align-items: flex-start; /* Aligns sections to the top */
+    flex-wrap: wrap; /* Allows sections to wrap to the next line on smaller screens */
+    gap: 2rem; /* Space between footer sections */
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%; /* Ensures the container takes full width for proper centering */
+}
+
+.footer-section {
+    flex: 1; /* Allows sections to grow and shrink */
+    min-width: 200px; /* Minimum width for each section before wrapping */
+    text-align: center; /* **Crucial: Centers text within each footer section** */
+    max-width: 300px; /* Optional: Sets a max width for sections on larger screens */
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    /* text-align: center is inherited from .footer-section, no need to redefine */
+}
+
+.footer-section p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    /* text-align: center is inherited from .footer-section, no need to redefine */
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    /* text-align: center is inherited from .footer-section, no need to redefine */
+}
+
+.footer-section ul li {
+    margin: 0.5rem 0;
+}
+
+.footer-section ul li a {
+    color: #c5a1e4; /* Subtle lavender color for links */
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #ffffff; /* White on hover */
+}
+
+.footer-section .socials {
+    display: flex;
+    flex-direction: row; /* **Default to row for horizontal icons as per your desired desktop layout (image_ebc3a9.png)** */
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center; /* **Centers the social icons horizontally** */
+    align-items: center;
+    width: 100%; /* Ensures the flex container for socials takes full width to center its content */
+}
+
+.footer-section .socials img {
+    width: 30px;
+    height: 28px; /* Set a specific height as shown in the images */
+    transition: transform 0.3s;
+    object-fit: contain; /* Ensures the image scales correctly within its bounds */
+}
+
+.footer-section .socials img:hover {
+    transform: scale(1.2);
+}
+
+.footer-bottom {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1rem;
+    width: 100%; /* Ensure the border spans the full width */
+}
+
+/* Specific styling for icons within contact info (if applicable) */
+.footer-section p img.icon {
+    width: 18px; /* Example size */
+    height: 18px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+/* Responsive adjustments for central alignment on smaller screens */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Stack sections vertically */
+        align-items: center; /* Center the stacked sections */
+        gap: 1.5rem;
+    }
+
+    .footer-section {
+        min-width: unset; /* Remove min-width to allow full width on small screens */
+        width: 90%; /* Give some padding from the sides */
+        max-width: 350px; /* Constrain width on smaller screens for readability */
+        margin-bottom: 1.5rem; /* Space between stacked sections */
+    }
+
+    .footer-section:last-child {
+        margin-bottom: 0;
+    }
+
+    .footer-section h3,
+    .footer-section p,
+    .footer-section ul {
+        text-align: center; /* Explicitly center text for all elements within sections on mobile */
+    }
+
+    .footer-section ul {
+        padding: 0; /* Ensure no extra padding pushing list items */
+    }
+
+    .footer-section .socials {
+        flex-direction: row; /* Keep social icons horizontal on mobile */
+        justify-content: center; /* Explicitly center social icons on mobile */
+        gap: 1rem;
+    }
+}
+
+/* For very small phones, optional adjustments */
+@media (max-width: 480px) {
+    .footer {
+        padding: 1.5rem 3%; /* Further reduce horizontal padding */
+    }
+    .footer-section h3 {
+        font-size: 1rem;
+    }
+    .footer-section p,
+    .footer-section ul li a {
+        font-size: 0.85rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -601,7 +760,7 @@ footer {
         <div class="header-left">
             <button id="hamburger" class="hamburger">&#9776;</button>
             <div class="logo">
-                <img src="logos/proto.png" alt="Logo" class="header-logo">
+                <img src="../images/logos/proto.png" alt="Logo" class="header-logo">
                 <span>Protocol</span>
             </div>
         </div>
@@ -611,13 +770,15 @@ footer {
             <a href="events.html">Events</a>
             <a href="articles.html">Articles</a>
             <a href="gallery.html">Gallery</a>
-            <a href="contact.html" class="active">Contact</a>
+            <a href="contact.html" class="active">Contact Us</a>
+            <a href="game.html">CLICK HERE</a>
         </nav>
         <div class="header-right">
             <button id="theme-toggle" class="theme-toggle">🌓</button>
         </div>
     </header>
 
+    <!-- SIDEBAR -->
     <aside id="sidebar" class="sidebar">
         <button id="close-sidebar" class="close-sidebar">&times;</button>
         <nav class="sidebar-nav">
@@ -627,44 +788,72 @@ footer {
             <a href="articles.html">Articles</a>
             <a href="gallery.html">Gallery</a>
             <a href="contact.html">Contact</a>
-            <a href="game.html">Click here</a>
+            <a href="game.html">CLICK HERE</a>
         </nav>
     </aside>
-    <!-- Overlay for sidebar, if used -->
+
     <div class="overlay" id="overlay"></div>
 
+    <!-- CONTACT SECTION -->
     <section class="contact">
         <h1>Contact Us</h1>
         <p>Email: <a href="mailto:protocol.cse@bmsce.ac.in">protocol.cse@bmsce.ac.in</a></p>
-        <p>Address: B M S College of Engineering<br>Bull Temple Road, Basavanagudi<br>Bengaluru - 560019</p>
+        <p>Aaryan Prakash (President): +91 82176 17133</p>
+        <p>Bhavya J Makadia (Vice President): +91 80888 24847</p>
+        <p>Address:<br>
+            B M S College of Engineering<br>
+            Bull Temple Road, Basavanagudi<br>
+            Bengaluru - 560019
+        </p>
     </section>
 
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-container">
+            <!-- Club Info -->
             <div class="footer-section">
                 <h3>Protocol Club</h3>
-                <p>Official computer science club of BMS College of Engineering, Bengaluru. Join us in our journey of innovation and learning.</p>
-                <div class="socials">
-                    <a href="https://www.linkedin.com/company/protocol-bmsce/"><img src="logos/linkedinlogo.png" alt="LinkedIn"></a>
-                    <a href="https://www.instagram.com/protocol-bmsce/"><img src="logos/instalogo.png" alt="Instagram"></a>
-                    <a href="mailto:protocol.cse@bmsce.ac.in"><img src="logos/maillogo.png" alt="Gmail"></a>
-                </div>
+                <p>Official Club of the Department of Computer Science and Engineering<br>
+                Join us in our journey of innovation and learning.</p>
             </div>
+
+            <!-- Quick Links -->
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="events.html">Events</a></li>
                     <li><a href="about.html">About Us</a></li>
+                    <li><a href="events.html">Events</a></li>
                     <li><a href="articles.html">Articles</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
+
+            <!-- Contact Info -->
             <div class="footer-section">
                 <h3>Contact Us</h3>
-                <p><img src="logos/maillogo.png" alt="Gmail" class="icon"> protocol.cse@bmsce.ac.in</p>
-                <p>B M S College of Engineering<br>Bull Temple Road, Basavanagudi<br>Bengaluru - 560019</p>
+                <p>Phone No: +91 82176 17133</p>
+                <p>Email: protocol.cse@bmsce.ac.in</p>
+                <p>
+                    B M S College of Engineering<br>
+                    Bull Temple Road, Basavanagudi<br>
+                    Bengaluru - 560019
+                </p>
+                <div class="socials">
+                    <a href="https://www.linkedin.com/company/protocol-bmsce/">
+                        <img src="../images/logos/linkedinlogo.png" alt="LinkedIn">
+                    </a>
+                    <a href="https://www.instagram.com/protocol_bmsce?igsh=MTBjcmpzMWtxeW9ncQ==">
+                        <img src="../images/logos/instalogo.png" alt="Instagram">
+                    </a>
+                    <a href="mailto:protocol.cse@bmsce.ac.in">
+                        <img src="../images/logos/maillogo.png" alt="Gmail">
+                    </a>
+                </div>
             </div>
         </div>
+
         <div class="footer-bottom">
             © 2025 Protocol Club. All rights reserved.
         </div>
