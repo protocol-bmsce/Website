@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -209,10 +210,11 @@ body {
 
 .about-description {
     text-align: center;
+    font-weight: 508;
     line-height: 1.6;
     margin-bottom: 2rem;
     font-size: 1.2em;
-    font-weight: 400; /* Adjusted font weight to match About Us image */
+     /* Adjusted font weight to match About Us image */
 }
 
 /* --- Base Member Card Styles (common to all cards) --- */
@@ -246,7 +248,7 @@ body {
 
 .member-card img {
     width: 100%;
-    height: 220px; /* Standardized height for better visual consistency */
+    height: 275px; /* Standardized height for better visual consistency */
     object-fit: cover; /* Ensures image fills the area, cropping if necessary */
     border-radius: 10px; /* Soften image corners */
     margin-bottom: 10px; /* Space below image */
@@ -668,10 +670,11 @@ footer {
 }
 
 .footer-section h3 {
-    color: #fff;
+    color: rgb(238, 235, 240);
     margin-bottom: 20px;
     font-size: 1.2em;
     font-weight: bold;
+    
 }
 
 .footer-section p {
@@ -769,37 +772,33 @@ footer {
 </head>
 <body class="dark background-image">
     <header class="header">
-                    <button id="hamburger" class="hamburger"><i class="fas fa-bars"></i></button>
-
+        <button id="hamburger" class="hamburger"><i class="fas fa-bars"></i></button>
         <div class="header-left">
-            <div class="logo">Protocol <img src="logos/proto.png" alt="Logo" class="header-logo"></div>
+            <div class="logo"> <img src="logos/proto.png" alt="Logo" class="header-logo">Protocol</div>
         </div>
         <nav id="navbar" class="navbar">
             <a href="index.html">Home</a>
-            <a href="about.html" class="active">About Us</a>
+            <a href="about.html" class="active">About</a>
             <a href="events.html">Events</a>
             <a href="articles.html">Articles</a>
             <a href="gallery.html">Gallery</a>
             <a href="contact.html">Contact</a>
-            <a href="game.html">Click here</a>
-
+            <a href="game.html">CLICK HERE</a>
         </nav>
         <div class="header-right">
-            <!-- <button id="hamburger" class="hamburger"><i class="fas fa-bars"></i></button> -->
             <button id="theme-toggle" class="theme-toggle">🌓</button>
         </div>
     </header>
 
     <aside id="sidebar" class="sidebar">
         <nav class="sidebar-nav">
-            <a href="abcd.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="about.html">About Us</a>
             <a href="events.html">Events</a>
             <a href="articles.html">Articles</a>
             <a href="gallery.html">Gallery</a>
             <a href="contact.html">Contact</a>
-            <a href="game.html">Click here</a>
-
+            <a href="game.html">CLICK HERE</a>
             <button id="close-sidebar" class="close-sidebar"><i class="fas fa-times"></i></button>
         </nav>
     </aside>
@@ -809,21 +808,24 @@ footer {
         <section class="about-us-page">
             <h1 class="subheading">About Us</h1>
             <p class="about-description">
-                Protocol Club is the official computer science club of BMS College of Engineering, Bengaluru.
-                <br><br>We aim to create a community of tech enthusiasts and provide a platform for students to learn, collaborate and grow in the field of computer science.
-                <br><br>From workshops and seminars to hackathons and coding competitions, we organize various events throughout the academic year to enhance the technical skills and knowledge of our members.
+                Protocol is the official department club of the Computer Science and Engineering Department at BMS College of Engineering, Bengaluru.
+                <br><br>We’re a student-led community of tech enthusiasts passionate about innovation, learning, and collaboration. At Protocol, our mission is to create a space where students can explore new technologies, build meaningful projects, and grow, both technically and personally.
+                <br><br>Throughout the academic year, we host a wide range of events, from hands-on workshops and expert-led seminars to competitive hackathons and coding contests, all designed to sharpen skills and spark curiosity.
+                <br><br>Beyond technical excellence, we’re equally committed to nurturing soft skills like leadership, communication, and teamwork. Every event, initiative, and project is an opportunity for our members to grow as confident, well-rounded individuals.
+                <br><br>Protocol is also an active part of BMSCE’s cultural and technical scene, organizing engaging events at the college’s flagship fests—fun, interactive experiences at Utsav, and cutting-edge showcases at Phaseshift.
+                <br><br>At Protocol, we don’t just code, we build, we connect, and we grow together.
             </p>
 
             <h3 class="subheading">Faculty Coordinator</h3>
             <div class="member-card single-card">
                 <img src="team/faculty.png" alt="Faculty Coordinator">
                 <p class="member-name">Dr. Asha G R</p>
-                <p class="member-desc">Associate Professor</p>
+                <p class="member-desc">Professor</p>
                 <p class="member-details">M.E. (CSE), Ph.D</p>
             </div>
 
             <h3 class="subheading">Senior Core '25</h3>
-            <div class="card-container"> <!-- This container handles the 3-then-2 layout -->
+            <div class="card-container">
                 <div class="member-card">
                     <img src="team/president.png" alt="President">
                     <p class="member-name">Aaryan Prakash</p>
@@ -835,72 +837,71 @@ footer {
                     <p class="member-desc">Vice President</p>
                 </div>
                 <div class="member-card">
-                    <img src="team/TechHead.png" alt="Tech Head">
-                    <p class="member-name">Khushi Nataraj</p>
-                    <p class="member-desc">Technical head</p>
-                </div>
-                <div class="member-card">
-                    <img src="team/secretary.png" alt="Secretary">
-                    <p class="member-name">Aisha Nayz</p>
+                    <img src="team/aisha.jpg" alt="Secretary">
+                    <p class="member-name">Aisha Nyaz</p>
                     <p class="member-desc">Secretary</p>
                 </div>
                 <div class="member-card">
-                    <img src="team/synergyHead.png" alt="Synergy Head">
+                    <img src="team/khushi.jpg" alt="Tech Head">
+                    <p class="member-name">Khushi Nataraj</p>
+                    <p class="member-desc">Technical Head</p>
+                </div>
+                <div class="member-card">
+                    <img src="team/bhoomi.jpg" alt="Synergy Head">
                     <p class="member-name">Bhoomi S Kota</p>
-                    <p class="member-desc">Chief editor of Synergy</p>
+                    <p class="member-desc">Chief Editor Of Synergy</p>
                 </div>
             </div>
 
             <h3 class="subheading">Senior Team '25</h3>
-            <div class="card-container senior-team-layout"> <!-- Use a combined class for Senior Team to differentiate if needed -->
-                <!-- 12 Senior Team Members: 4 in each of 3 rows -->
+            <div class="card-container senior-team-layout">
                 <div class="member-card">
-                    <img src="team/member1.png" alt="Suhan S">
-                    <p class="member-name">Suhan S</p>
-                </div>
-                <div class="member-card">
-                    <img src="team/member2.png" alt="Shailesh">
-                    <p class="member-name">Shailesh</p>
-                </div>
-                <div class="member-card">
-                    <img src="team/memebr3.png" alt="Kavana M A">
-                    <p class="member-name">Kavana M A</p>
-                </div>
-                <div class="member-card">
-                    <img src="" alt="Aaron B Ajay">
+                    <img src="team/aaron.jpg" alt="Aaron B Ajay">
                     <p class="member-name">Aaron B Ajay</p>
-                </div>
-                <div class="member-card">
-                    <img src="" alt="Bhuvan A">
-                    <p class="member-name">Bhuvan A</p>
-                </div>
-                <div class="member-card">
-                    <img src="" alt="Manoj Kumar">
-                    <p class="member-name">Manoj Kumar</p>
-                </div>
-                <div class="member-card">
-                    <img src="" alt="Sanath S Shetty">
-                    <p class="member-name">Sanath S Shetty</p>
-                </div>
-                <div class="member-card">
-                    <img src="" alt="Sam Manu Jacob">
-                    <p class="member-name">Sam Manu Jacob</p>
-                </div>
-                <div class="member-card">
-                    <img src="" alt="V Jayanth Vikram">
-                    <p class="member-name">V Jayanth Vikram</p>
-                </div>
-                <div class="member-card">
-                    <img src="team/member4.png" alt="Punarnava">
-                    <p class="member-name">Punarnava</p>
                 </div>
                 <div class="member-card">
                     <img src="team/member5.png" alt="Afeefah">
                     <p class="member-name">Afeefah</p>
                 </div>
                 <div class="member-card">
+                    <img src="team/bhuvan.jpg" alt="Bhuvan A">
+                    <p class="member-name">Bhuvan A</p>
+                </div>
+                <div class="member-card">
+                    <img src="team/memebr3.png" alt="Kavana M A">
+                    <p class="member-name">Kavana M A</p>
+                </div>
+                <div class="member-card">
+                    <img src="team/manoj.jpg" alt="Manoj Kumar">
+                    <p class="member-name">Manoj Kumar</p>
+                </div>
+                <div class="member-card">
+                    <img src="team/member2.png" alt="Shailesh">
+                    <p class="member-name">M S Shailesh</p>
+                </div>
+                <div class="member-card">
+                    <img src="team/punar.jpg" alt="Punarnava">
+                    <p class="member-name">Punarnava</p>
+                </div>
+                <div class="member-card">
                     <img src="team/member6.png" alt="Revathi">
                     <p class="member-name">Revathi</p>
+                </div>
+                <div class="member-card">
+                    <img src="team/sam.jpg" alt="Sam Manu Jacob">
+                    <p class="member-name">Sam Manu Jacob</p>
+                </div>
+                <div class="member-card">
+                    <img src="team/sanath.jpg" alt="Sanath S Shetty">
+                    <p class="member-name">Sanath S Shetty</p>
+                </div>
+                <div class="member-card">
+                    <img src="team/member1.png" alt="Suhan S">
+                    <p class="member-name">Suhan S</p>
+                </div>
+                <div class="member-card">
+                    <img src="team/jayanth.png" alt="V Jayanth Vikram">
+                    <p class="member-name">V Jayanth Vikram</p>
                 </div>
             </div>
         </section>
@@ -909,19 +910,19 @@ footer {
             <h2 class="milestones-heading">Milestones</h2>
             <div class="milestones-container">
                 <p class="milestones-text">Protocol Club - Our Journey</p>
-                <!-- This image will now open in a modal on click -->
-                <img src="team/time.jpg" alt="Timeline" class="milestones-image" id="milestoneImage">
+                <img src="logos/milestones.png" alt="Timeline" class="milestones-image" id="milestoneImage">
                 <ul class="milestones-list">
-                    <li>2005: Founded the Protocol Club</li>
-                    <li>2021: Hosted our first hackathon</li>
-                    <li>2023: Introduced new tech workshops</li>
-                    <li>2024: Expanded community outreach</li>
+                    <li>2005: Founded Protocol Club</li>
+                    <li>2019: Released Our First Newsletter</li>
+                    <li>2023: Introduced New Tech Workshops</li>
+                    <li>2023: Our First Phaseshift</li>
+                    <li>2024: Expanded Community Outreach</li>
+                    <li>2025: Our First Utsav</li>
                 </ul>
             </div>
         </section>
     </main>
 
-    <!-- The Modal for Enlarged Image -->
     <div id="imageModal" class="modal-overlay">
         <div class="modal-content">
             <button class="modal-close-button" id="closeModal"><i class="fas fa-times"></i></button>
@@ -933,114 +934,34 @@ footer {
         <div class="footer-container">
             <div class="footer-section">
                 <h3>Protocol Club</h3>
-                <p>Official computer science club of BMS College of Engineering, Bengaluru. Join us in our journey of innovation and learning.</p>
-                <div class="socials">
-                    <a href="https://www.linkedin.com/company/protocol-bmsce/"><img src="logos/linkedinlogo.png" alt="LinkedIn"></a>
-                    <a href="https://www.instagram.com/protocol-bmsce/"><img src="logos/instalogo.png" alt="Instagram"></a>
-                    <a href="mailto:protocol.cse@bmsce.ac.in"><img src="logos/maillogo.png" alt="Gmail"></a>
-                </div>
+                <p>Official Club of the Department of Computer Science and Engineering
+Join us in our journey of innovation and learning.</p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="events.html">Events</a></li>
                     <li><a href="about.html">About Us</a></li>
+                    <li><a href="events.html">Events</a></li>
                     <li><a href="articles.html">Articles</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Contact Us</h3>
-                <p><img src="logos/maillogo.png" alt="Gmail" class="icon"> protocol.cse@bmsce.ac.in</p>
+                <p>Phone No:+918217617133</p>
+                <p>protocol.cse@bmsce.ac.in</p>
                 <p>B M S College of Engineering<br>Bull Temple Road, Basavanagudi<br>Bengaluru - 560019</p>
+                <div class="socials">
+                    <a href="https://www.linkedin.com/company/protocol-bmsce/"><img src="logos/linkedinlogo.png" alt="LinkedIn"></a>
+                    <a href="https://www.instagram.com/protocol_bmsce?igsh=MTBjcmpzMWtxeW9ncQ=="><img src="logos/instalogo.png" alt="Instagram"></a>
+                    <a href="mailto:protocol.cse@bmsce.ac.in"><img src="logos/maillogo.png" alt="Gmail"></a>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
             © 2025 Protocol Club. All rights reserved.
         </div>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-
-            // Theme Toggle Logic (Placeholder - you might have actual dark mode logic in abcd.js/script.js)
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            if (themeToggleBtn) {
-                themeToggleBtn.addEventListener('click', function() {
-                    document.body.classList.toggle('dark');
-                    // You might want to save the user's preference in localStorage
-                    // if (document.body.classList.contains('dark')) {
-                    //     localStorage.setItem('theme', 'dark');
-                    // } else {
-                    //     localStorage.setItem('theme', 'light');
-                    // }
-                });
-                // Apply saved theme on load
-                // if (localStorage.getItem('theme') === 'dark') {
-                //     document.body.classList.add('dark');
-                // } else {
-                //     document.body.classList.remove('dark');
-                // }
-            }
-
-
-            // Sidebar Toggle Logic
-            const sidebar = document.getElementById('sidebar');
-            const openSidebarBtn = document.getElementById('hamburger'); // Corrected ID to your HTML
-            const closeSidebarBtn = document.getElementById('close-sidebar');
-            const overlay = document.getElementById('overlay');
-
-            function toggleSidebar() {
-                sidebar.classList.toggle('open');
-                overlay.classList.toggle('active');
-            }
-
-            if (openSidebarBtn) openSidebarBtn.addEventListener('click', toggleSidebar);
-            if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', toggleSidebar);
-            if (overlay) overlay.addEventListener('click', toggleSidebar); // Close sidebar when clicking outside
-
-            // Milestone Image Modal Logic
-            const milestoneImage = document.getElementById('milestoneImage');
-            const imageModal = document.getElementById('imageModal');
-            const enlargedImage = document.getElementById('enlargedImage');
-            const closeModalBtn = document.getElementById('closeModal');
-
-            // Open modal when milestone image is clicked
-            if (milestoneImage) {
-                milestoneImage.addEventListener('click', function() {
-                    enlargedImage.src = this.src; // Set enlarged image source to the clicked image's source
-                    imageModal.classList.add('active'); // Show the modal
-                });
-            }
-
-
-            // Close modal when close button is clicked
-            if (closeModalBtn) {
-                closeModalBtn.addEventListener('click', function() {
-                    imageModal.classList.remove('active'); // Hide the modal
-                });
-            }
-
-
-            // Close modal when clicking outside the modal content (on the overlay)
-            if (imageModal) {
-                imageModal.addEventListener('click', function(event) {
-                    // Check if the click occurred directly on the overlay, not on the content
-                    if (event.target === imageModal) {
-                        imageModal.classList.remove('active');
-                    }
-                });
-            }
-        });
-    </script>
 </body>
-</html>
