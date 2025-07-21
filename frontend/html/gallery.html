@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -857,8 +858,8 @@ body {
 }
 
 .footer-section .socials img {
-    width: 48px;
-    height: 35px;
+    width: 40px;
+    height: 30px;
     transition: transform 0.3s;
     object-fit: contain; /* Ensures the entire image fits */
 }
@@ -985,7 +986,7 @@ footer {
 }
 
 .footer-section h3 {
-    color: #fff;
+    color: rgb(208, 162, 235);
     margin-bottom: 20px;
     font-size: 1.2em;
     font-weight: bold;
@@ -1166,6 +1167,13 @@ footer {
 .view-pdf-button:hover {
     background-color: #0056b3; /* Darker background on hover */
 }
+.footer-logo {
+    width: 15px; /* Adjust logo size */
+    height: 15px;
+    border-radius: 50%;
+    border: 3px solid #3b0051;
+    /* justify-content: center is for flex containers, not individual elements */
+}
     </style>
 </head>
 <body>
@@ -1173,22 +1181,20 @@ footer {
         <div class="header-left">
             <button id="hamburger" class="hamburger"><i class="fas fa-bars"></i></button>
             <div class="logo">
-                <img src="logos/proto.png" alt="Logo" class="header-logo">
+                <img src="../images/logos/proto.png" alt="Logo" class="header-logo">
                 <span class="logo-text">Protocol</span>
             </div>
         </div>
         <nav class="navbar">
             <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
+            <a href="about.html">About</a>
             <a href="events.html">Events</a>
             <a href="articles.html">Articles</a>
             <a href="gallery.html" class="active">Gallery</a>
             <a href="contact.html">Contact</a>
-                        <a href="game.html">Click here</a>
-
+            <a href="game.html">CLICK HERE</a>
         </nav>
         <div class="header-right">
-            <!-- <button id="hamburger" class="hamburger"><i class="fas fa-bars"></i></button> -->
             <button id="theme-toggle" class="theme-toggle">🌓</button>
         </div>
     </header>
@@ -1202,8 +1208,7 @@ footer {
             <a href="articles.html">Articles</a>
             <a href="gallery.html">Gallery</a>
             <a href="contact.html">Contact</a>
-                        <a href="game.html">Click here</a>
-
+            <a href="game.html">CLICK HERE</a>
         </nav>
     </aside>
     <div class="overlay"></div>
@@ -1212,8 +1217,7 @@ footer {
         <div class="book-viewer">
             <div class="book-container">
                 <button class="close-book"><i class="fas fa-times"></i></button>
-                <div class="book" id="book-content">
-                    </div>
+                <div class="book" id="book-content"></div>
                 <button class="book-nav" id="prev-page"><i class="fas fa-arrow-left"></i></button>
                 <button class="book-nav" id="next-page"><i class="fas fa-arrow-right"></i></button>
             </div>
@@ -1227,137 +1231,157 @@ footer {
         </div>
 
         <section class="event-highlights-section">
-    <!-- Updated H2 tag with Font Awesome icon and thicker weight -->
-    <h2><i class="fas fa-camera-retro fa-icon"></i> Event Highlights</h2>
-    <div class="gallery-filter">
-        <button data-filter="all" class="active">All</button>
-        <button data-filter="events">Events</button>
-        <button data-filter="synergy-newsletters">Synergy Newsletters</button>
-        <button data-filter="techpulse-papers">TechPulse Papers</button>
-    </div>
-    <div class="masonry-grid">
-        <div class="gallery-item" data-category="events">
-            <div class="photo-card">
-                <img src="events/gallery/A2.jpg" alt="Annual Conference Thumbnail" class="thumbnail-image">
-                <h3>Among Us</h3>
-                <button class="view-3d-button" data-book="conference">View in 3D</button>
+            <h2><i class="fas fa-camera-retro fa-icon"></i> Event Highlights</h2>
+            <div class="gallery-filter">
+                <button data-filter="all" class="active">All</button>
+                <button data-filter="events">Events</button>
+                <button data-filter="synergy-newsletters">Synergy Newsletters</button>
+                <button data-filter="techpulse-papers">TechPulse Papers</button>
             </div>
-        </div>
-        <div class="gallery-item" data-category="events">
-            <div class="photo-card">
-                <img src="events/gallery/C2.JPG" alt="Tech Workshop Thumbnail" class="thumbnail-image">
-                <h3>Flutter Workshop</h3>
-                <button class="view-3d-button" data-book="workshop">View in 3D</button>
-            </div>
-        </div>
-        <div class="gallery-item" data-category="events">
-            <div class="photo-card">
-                <img src="events/gallery/L2.jpg" alt="Networking Event Thumbnail" class="thumbnail-image">
-                <h3>LeapCode</h3>
-                <button class="view-3d-button" data-book="networking">View in 3D</button>
-            </div>
-        </div>
-        <div class="gallery-item" data-category="events">
-            <div class="photo-card">
-                <img src="events/gallery/S2.jpg" alt="Product Launch Thumbnail" class="thumbnail-image">
-                <h3>Climb & Slide</h3>
-                <button class="view-3d-button" data-book="launch">View in 3D</button>
-            </div>
-        </div>
+            <div class="masonry-grid">
+                <!-- Event Gallery -->
+                <div class="gallery-item" data-category="events">
+                    <div class="photo-card">
+                        <img src="../images/events/gallery/A2.jpg" alt="Among Us" class="thumbnail-image">
+                        <h3>Among Us</h3>
+                        <button class="view-3d-button" data-book="conference">View in 3D</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <div class="photo-card">
+                        <img src="../images/events/gallery/C2.jpg" alt="Flutter Workshop" class="thumbnail-image">
+                        <h3>Flutter Workshop</h3>
+                        <button class="view-3d-button" data-book="workshop">View in 3D</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <div class="photo-card">
+                        <img src="../images/events/gallery/L2.jpg" alt="LeapCode" class="thumbnail-image">
+                        <h3>LeapCode</h3>
+                        <button class="view-3d-button" data-book="networking">View in 3D</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <div class="photo-card">
+                        <img src="../images/events/gallery/S2.JPG" alt="Climb & Slide" class="thumbnail-image">
+                        <h3>Climb & Slide</h3>
+                        <button class="view-3d-button" data-book="launch">View in 3D</button>
+                    </div>
+                </div>
 
-        <div class="gallery-item" data-category="synergy-newsletters">
-            <div class="photo-card">
-                <img src="events/gallery/NL1.jpg" alt="Q1 Newsletter Thumbnail" class="thumbnail-image">
-                <h3>Spark of Intelligence</h3>
-                <button class="view-pdf-button"><a href="https://drive.google.com/file/d/1q2ktTj4k__4a_jMez5h9ZxArupD1zy2j/preview" target="_blank" class="view-pdf-link-btn">View PDF</a></button>
-            </div>
-        </div>
+                <!-- Synergy Newsletters -->
+                <div class="gallery-item" data-category="synergy-newsletters">
+                    <div class="photo-card">
+                        <img src="../images/events/gallery/NL1.jpg" alt="Spark of Intelligence" class="thumbnail-image">
+                        <h3>Spark of Intelligence</h3>
+                        <button class="view-pdf-button">
+                            <a href="https://drive.google.com/file/d/1q2ktTj4k__4a_jMez5h9ZxArupD1zy2j/preview" target="_blank" class="view-pdf-link-btn">View PDF</a>
+                        </button>
+                    </div>
+                </div>
 
-        <div class="gallery-item" data-category="synergy-newsletters">
-            <div class="photo-card">
-                <img src="events/gallery/NL2.jpeg" alt="Q1 Newsletter Thumbnail" class="thumbnail-image">
-                <h3>Dock It Down</h3>
-                <button class="view-pdf-button"><a href="https://drive.google.com/file/d/1F44Hp7Kly8GPkgVA2GdPe0FhjLJSBZG-/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a></button>
-            </div>
-        </div>
+                <div class="gallery-item" data-category="synergy-newsletters">
+                    <div class="photo-card">
+                        <img src="../images/events/gallery/NL2.jpeg" alt="Dock It Down" class="thumbnail-image">
+                        <h3>Dock It Down</h3>
+                        <button class="view-pdf-button">
+                            <a href="https://drive.google.com/file/d/1F44Hp7Kly8GPkgVA2GdPe0FhjLJSBZG-/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a>
+                        </button>
+                    </div>
+                </div>
 
-        <div class="gallery-item" data-category="synergy-newsletters">
-            <div class="photo-card">
-                <img src="events/gallery/NL3.webp" alt="Q1 Newsletter Thumbnail" class="thumbnail-image">
-                <h3>Terminal Times</h3>
-                <button class="view-pdf-button"><a href="https://drive.google.com/file/d/1m3xwXNaNRWl87j_vSb6cmop0AWMfqqQo/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a></button>
-            </div>
-        </div>
+                <div class="gallery-item" data-category="synergy-newsletters">
+                    <div class="photo-card">
+                        <img src="../images/events/gallery/NL3.webp" alt="Terminal Times" class="thumbnail-image">
+                        <h3>Terminal Times</h3>
+                        <button class="view-pdf-button">
+                            <a href="https://drive.google.com/file/d/1m3xwXNaNRWl87j_vSb6cmop0AWMfqqQo/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a>
+                        </button>
+                    </div>
+                </div>
 
-        <div class="gallery-item" data-category="synergy-newsletters">
-            <div class="photo-card">
-                <img src="events/gallery/NL4.jpeg" alt="Q1 Newsletter Thumbnail" class="thumbnail-image">
-                <h3>Design Decode</h3>
-                <button class="view-pdf-button"><a href="https://drive.google.com/file/d/1BRy8XmUIAvaXv-Psh-VmDt0eqHhdA3mZ/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a></button>
-            </div>
-        </div>
+                <div class="gallery-item" data-category="synergy-newsletters">
+                    <div class="photo-card">
+                        <img src="../images/events/gallery/NL4.jpeg" alt="Design Decode" class="thumbnail-image">
+                        <h3>Design Decode</h3>
+                        <button class="view-pdf-button">
+                            <a href="https://drive.google.com/file/d/1BRy8XmUIAvaXv-Psh-VmDt0eqHhdA3mZ/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a>
+                        </button>
+                    </div>
+                </div>
 
-        <div class="gallery-item" data-category="synergy-newsletters">
-            <div class="photo-card">
-                <img src="events/gallery/NL5.webp" alt="Q1 Newsletter Thumbnail" class="thumbnail-image">
-                <h3>Wired Wisdom</h3>
-                <button class="view-pdf-button"><a href="https://drive.google.com/file/d/1xuSW_saBFlpf_hmOX4v0BkL6j7Jaa-zW/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a></button>
-            </div>
-        </div>
+                <div class="gallery-item" data-category="synergy-newsletters">
+                    <div class="photo-card">
+                        <img src="../images/events/gallery/NL5.webp" alt="Wired Wisdom" class="thumbnail-image">
+                        <h3>Wired Wisdom</h3>
+                        <button class="view-pdf-button">
+                            <a href="https://drive.google.com/file/d/1xuSW_saBFlpf_hmOX4v0BkL6j7Jaa-zW/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a>
+                        </button>
+                    </div>
+                </div>
 
-        <div class="gallery-item" data-category="synergy-newsletters">
-            <div class="photo-card">
-                <img src="events/gallery/NL6.webp" alt="Q1 Newsletter Thumbnail" class="thumbnail-image">
-                <h3>Code & Crosshairs</h3>
-                <button class="view-pdf-button"><a href="https://drive.google.com/file/d/1m6jxC3-S_R8bNT3UEMLwBWVRgGrtLZ2z/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a></button>
-            </div>
-        </div>
+                <div class="gallery-item" data-category="synergy-newsletters">
+                    <div class="photo-card">
+                        <img src="../images/events/gallery/NL6.webp" alt="Code & Crosshairs" class="thumbnail-image">
+                        <h3>Code & Crosshairs</h3>
+                        <button class="view-pdf-button">
+                            <a href="https://drive.google.com/file/d/1m6jxC3-S_R8bNT3UEMLwBWVRgGrtLZ2z/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a>
+                        </button>
+                    </div>
+                </div>
 
+                <!-- TechPulse -->
+                <div class="gallery-item" data-category="techpulse-papers">
+                    <div class="photo-card">
+                        <img src="../images/events/gallery/T1.jpeg" alt="Tech Pulse" class="thumbnail-image">
+                        <h3>Tech Pulse</h3>
+                        <button class="view-pdf-button">
+                            <a href="https://drive.google.com/file/d/1-Cewcd41PI8lVJ6qGu04YvnS1mUuPJko/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a>
+                        </button>
+                    </div>
+                </div>
 
-        <div class="gallery-item" data-category="techpulse-papers">
-            <div class="photo-card">
-                <img src="events/gallery/T1.jpeg" alt="Q1 Newsletter Thumbnail" class="thumbnail-image">
-                <h3>Tech Pulse</h3>
-                <button class="view-pdf-button"><a href="https://drive.google.com/file/d/1-Cewcd41PI8lVJ6qGu04YvnS1mUuPJko/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a></button>
+                <div class="gallery-item" data-category="techpulse-papers">
+                    <div class="photo-card">
+                        <img src="../images/events/gallery/T2.jpeg" alt="Techstalgia" class="thumbnail-image">
+                        <h3>Techstalgia</h3>
+                        <button class="view-pdf-button">
+                            <a href="https://drive.google.com/file/d/1rI-yyb3PNxKXHpn4bDQvo6SBQd-s6NC0/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a>
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="gallery-item" data-category="techpulse-papers">
-            <div class="photo-card">
-                <img src="events/gallery/T2.jpeg" alt="Q1 Newsletter Thumbnail" class="thumbnail-image">
-                <h3>Techstalgia</h3>
-                <button class="view-pdf-button"><a href="https://drive.google.com/file/d/1rI-yyb3PNxKXHpn4bDQvo6SBQd-s6NC0/view?usp=drive_link" target="_blank" class="view-pdf-link-btn">View PDF</a></button>
-            </div>
-        </div>
-        
-    </div>
-</section>
+        </section>
     </main>
 
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
-                <h3>Protocol Club</h3>
-                <p>Official computer science club of BMS College of Engineering, Bengaluru. Join us in our journey of innovation and learning.</p>
-                <div class="socials">
-                    <a href="https://www.linkedin.com/company/protocol-bmsce/"><img src="logos/linkedinlogo.png" alt="LinkedIn"></a>
-                    <a href="https://www.instagram.com/protocol-bmsce/"><img src="logos/instalogo.png" alt="Instagram"></a>
-                    <a href="mailto:protocol.cse@bmsce.ac.in"><img src="logos/maillogo.png" alt="Gmail"></a>
-                </div>
+                <h4>Protocol Club</h4>
+                <p>Official Club of the Department of Computer Science and Engineering<br>
+                    Join us in our journey of innovation and learning.</p>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
+                <h4>Quick Links</h4>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="events.html">Events</a></li>
                     <li><a href="about.html">About Us</a></li>
+                    <li><a href="events.html">Events</a></li>
                     <li><a href="articles.html">Articles</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p><img src="logos/maillogo.png" alt="Gmail" class="icon"> protocol.cse@bmsce.ac.in</p>
+                <h4>Contact Us</h4>
+                <p>Phone No: +91 82176 17133</p>
+                <p>Email: protocol.cse@bmsce.ac.in</p>
                 <p>B M S College of Engineering<br>Bull Temple Road, Basavanagudi<br>Bengaluru - 560019</p>
+                <div class="socials">
+                    <a href="https://www.linkedin.com/company/protocol-bmsce/"><img src="../images/logos/linkedinlogo.png" alt="LinkedIn"></a>
+                    <a href="https://www.instagram.com/protocol_bmsce?igsh=MTBjcmpzMWtxeW9ncQ=="><img src="../images/logos/instalogo.png" alt="Instagram"></a>
+                    <a href="mailto:protocol.cse@bmsce.ac.in"><img src="../images/logos/maillogo.png" alt="Gmail"></a>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
@@ -1425,25 +1449,25 @@ footer {
             'events/gallery/A5.jpg'
         ],
         workshop: [
-            'events/gallery/C1.jpg',
-            'events/gallery/C2.jpg',
-            'events/gallery/C3.jpg',
-            'events/gallery/C4.jpg',
-            'events/gallery/C5.jpg'
+            'C5.jpg',
+            'C2.jpg',
+            'C3.jpg',
+            'C4.jpg',
+            'C5.jpg'
         ],
         networking: [
-            'events/gallery/L1.jpg',
+            'events/galleries/L1.jpg',
             'events/gallery/L2.jpg',
-            'events/gallery/L3.jpg',
-            'events/gallery/L4.jpg',
-            'events/gallery/L5.jpg'
+            'events/galleries/L3.jpg',
+            'events/galleries/L4.jpg',
+            'events/galleries/L5.jpg'
         ],
         launch: [
-            'events/gallery/S1.jpg',
-            'events/gallery/S2.jpg',
-            'events/gallery/S3.jpg',
-            'events/gallery/S4.jpg',
-            'events/gallery/S5.jpg'
+            'S1.JPG',
+            'climb.jpg',
+            'S3.JPG',
+            'S4.JPG',
+            'S5.JPG'
         ]
     };
 
